@@ -1,0 +1,19 @@
+digraph C {
+	"Knoten"  [label="Knoten (Ecke?)"];
+	"Graph" -> "Knoten";
+	"Graph" -> "Kante";
+	"Graph" -> "schlicht";
+	"Graph" -> "zusammenhängend";
+	"zusammenhängend" -> "Baum";
+	"Graph" -> "kantengewichtet";
+	"Knoten" -> "Untergraph";
+	"Kante" -> "Untergraph";
+	"Untergraph" -> "Baum";
+	"Baum" -> "Spannbaum";
+	"Baum" -> "Wald";
+	"Spannbaum" -> "Minimaler Spannbaum";
+	"kantengewichtet" -> "Minimaler Spannbaum";
+	"Minimaler Spannbaum" -> "Hilfssatz";
+	"Hilfssatz" -> "Kruskal";
+	"Hilfssatz" -> "Prim";
+}
