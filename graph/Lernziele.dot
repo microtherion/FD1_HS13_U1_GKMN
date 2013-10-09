@@ -1,5 +1,4 @@
 digraph C {
-	"Knoten"  [label="Knoten (Ecke?)"];
 	"Graph" -> "Knoten";
 	"Graph" -> "Kante";
 	"Graph" -> "schlicht";
