@@ -3,8 +3,8 @@ vpath %.pdf img
 .PHONY: directed undirected
 all : directed undirected
 
-DIRECTED 	= Lernziele
-UNDIRECTED	= 
+DIRECTED 	= Lernziele Gerichtet GerichtetUnschlicht
+UNDIRECTED	= Ungerichtet UngerichtetUnschlicht
 
 DIRECTED_pdf	= $(patsubst %,%.pdf,$(DIRECTED))
 $(DIRECTED_pdf) : %.pdf : %.dot

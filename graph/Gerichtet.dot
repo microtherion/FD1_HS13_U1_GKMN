@@ -1,0 +1,7 @@
+digraph Gerichtet {
+      A -> B
+      B -> C
+      C -> D
+      C -> E
+      E -> B
+}
