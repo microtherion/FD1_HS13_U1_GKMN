@@ -4,7 +4,7 @@ vpath %.pdf img
 all : directed undirected
 
 DIRECTED 	= Lernziele Gerichtet GerichtetUnschlicht
-UNDIRECTED	= Ungerichtet UngerichtetUnschlicht
+UNDIRECTED	= Ungerichtet UngerichtetUnschlicht Sub1 Sub2 Sub3
 
 DIRECTED_pdf	= $(patsubst %,%.pdf,$(DIRECTED))
 $(DIRECTED_pdf) : %.pdf : %.dot

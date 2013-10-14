@@ -1,0 +1,5 @@
+graph Sub3 {
+      A -- B
+      C -- D
+      C -- E
+}

@@ -2,8 +2,9 @@
 
 \usepackage{times}
 \usepackage[german]{babel}
-\usepackage{ntheorem}
 \usepackage{graphics}
+\usepackage{color}
+\usepackage{ntheorem}
 \theoremstyle{break}
 \theorembodyfont{\normalfont}
 \theoremprework{\bigskip\hrule\leavevmode}
@@ -61,8 +62,8 @@ verbinden, dass die Gesamtl\"{a}nge der Kanten so kurz wie m\"{o}glich bleibt:
 
 Bor\r{u}vka's L\"{o}sung, die er 1926 publizierte, gilt als der erste
 Algorithmus zur Konstruktion eines minimalen Spannbaums. Weil sowohl
-die Problemstellung als auch die verwendeten Algorithmen einigermassen
-leicht verst\"{a}ndlich sind, werden wir uns jetzt diesem Problem widmen.
+die Problemstellung als auch die verwendeten Algorithmen interessant
+und einigermassen leicht verst\"{a}ndlich sind, werden wir uns jetzt diesem Problem widmen.
 
 \chapter{Graphen}
 \label{graphs}
@@ -87,18 +88,91 @@ Knoten nicht mehr als eine Kante existiert.
 Welche dieser vier Graphen sind gerichtet, welche ungerichtet? Welche
 sind schlicht?
 
-\resizebox{3.5cm}{!}{\includegraphics{../graph/img/UngerichtetUnschlicht.pdf}}
-\resizebox{3.5cm}{!}{\includegraphics{../graph/img/Gerichtet.pdf}}
-\resizebox{3.5cm}{!}{\includegraphics{../graph/img/Ungerichtet.pdf}}
-\resizebox{3.5cm}{!}{\includegraphics{../graph/img/GerichtetUnschlicht.pdf}}
+\scalebox{0.4}{\includegraphics{../graph/img/UngerichtetUnschlicht.pdf}}
+\scalebox{0.4}{\includegraphics{../graph/img/Gerichtet.pdf}}
+\scalebox{0.4}{\includegraphics{../graph/img/Ungerichtet.pdf}}
+\scalebox{0.4}{\includegraphics{../graph/img/GerichtetUnschlicht.pdf}}
 \end{exercise}
 
+\section{Beschreibung von Graphen}
+\label{Beschreibung}
+\noindent Ein Graph $G(V,E)$ kann auf verschiedene Arten beschrieben werden:
+
+\begin{description}
+\item[Grafisch] indem die Knoten und Kanten aufgezeichnet werden:
+
+\scalebox{0.5}{\includegraphics{../graph/img/Ungerichtet.pdf}}
+
+gerade bei kleineren Graphen ist diese Darstellung f\"{u}r Menschen am
+Einfachsten zu verstehen, aber sie ist z.B. f\"{u}r
+Computerverarbeitung nicht besonders gut geeignet.
+\item[Mengentheoretisch] indem die Knoten- und die Kantenmenge
+  beschrieben werden:
+
+\begin{displaymath}
+V = \{\mathsf{A,B,C,D,E}\}\hspace{2cm}E = \{\mathsf{(A,B), (B,C),
+  (C,D), (C,E), (B,E)}\}
+\end{displaymath}
+
+\item[\textnormal{als} Adjazenzmatrix] indem die Kanten als $n\times{n}$ Matrix $A(G)$
+  dargestellt werden, wo der Eintrag $a_{ij}$ gleich $1$ ist, wenn eine Kante
+  von Knoten $i$ nach Knoten $j$ existiert, und sonst gleich $0$.
+
+\begin{displaymath}
+A(G) = \left( 
+\begin{array}{ccccc}
+0 & 1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 0 & 1 \\
+0 & 1 & 0 & 1 & 1 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 1 & 1 & 0 & 0 
+\end{array}
+\right)
+\end{displaymath}
+
+Wie zu beobachten ist, ist die Adjazenzmatrix bei einem ungerichteten
+Graphen immer symmetrisch.
+\end{description}
+
 \begin{exercise}
-Zeichnen Sie einen ungerichteten Graphen $G(V,E)$ mit Knoten 
+\begin{itemize}
+\item Zeichnen Sie einen ungerichteten Graphen $G(V,E)$ mit Knoten 
 $V = \{\mathsf{A,B,C,D,E}\}$ und Kanten 
 $E = \{\mathsf{(A, B), (A, D), (C, D), (A, E)}\}$.
+\item Konstruieren sie die Adjazenzmatrix dieses Graphen.
+\end{itemize}
 \end{exercise}
- 
+
+\section{Zusammenh\"{a}ngende Graphen}
+
+Wenn in einem Graphen $G(V,E)$ eine Folge von Knoten $v_0, v_1,
+\ldots, v_n \in V$ existiert, die von Kanten $e_i = (v_i, v_i+1) \in
+E$ verbunden werden, dann existiert ein \textbf{Weg} von $v_0$ nach
+$v_n$. Falls solch ein Weg f\"{u}r \emph{jedes} Knotenpaar $v_0, v_n
+\in V$ existiert, nennen wir den Graphen \textbf{zusammenh\"{a}ngend}.
+
+\begin{exercise}
+\textcolor{red}{Irgendwelche Ideen?}
+\end{exercise}
+
+\section{Untergraphen}
+
+Ein Graph $U(W,F)$ ist ein \textbf{Untergraph} eines Graphen $G(V,E)$
+wenn seine Knotenmenge $W$ eine Untermenge der Knotenmenge $V$ ist und
+seine Kantenmenge $F$ eine Untermenge der Kantenmenge $E$.
+
+\begin{exercise}
+Welche der folgenden drei Graphen sind Untergraphen des Graphen in
+Abschnitt \ref{Beschreibung} ?
+
+\scalebox{0.4}{\includegraphics{../graph/img/Sub1.pdf}}
+\scalebox{0.4}{\includegraphics{../graph/img/Sub2.pdf}}
+\scalebox{0.4}{\includegraphics{../graph/img/Sub3.pdf}}
+
+\end{exercise}
+
+\section{Gewichtete Graphen}
+
 \chapter{B\"{a}ume}
 \chapter{Algorithmen}
 \section{Der Algorithmus von Kruskal}
