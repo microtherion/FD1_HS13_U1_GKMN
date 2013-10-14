@@ -2,6 +2,10 @@
 
 \usepackage{times}
 \usepackage[german]{babel}
+\usepackage{ntheorem}
+\theoremstyle{break}
+\theorembodyfont{\normalfont}
+\newtheorem{exercise}{Aufgabe}[section]
 
 \title{Minimale Spannb\"{a}ume}
 \author{Gabriel Katz\\ Matthias Neeracher}
@@ -10,7 +14,65 @@
 \maketitle
 \tableofcontents
 \chapter{Einleitung}
+
+\section{Wie kann hier gearbeitet werden?}
+
+Dieser Text wird Sie mit einem wichtigen algorithmischen Problem
+bekannt machen: dem Finden eines minimalen Spannbaums. Im n\"{a}chsten
+Unterkapitel finden Sie eine Einf\"{u}hrung in das Thema, doch bevor
+Sie loslegen, soll Ihnen hier noch kurz der Aufbau des Textes und die
+Arbeitsweise damit erl\"{a}utert werden.
+
+Die folgenden Kapitel sind zur selbstst\"{a}ndigen Bearbeitung
+gedacht. Sie werden zuerst kurz Ihre Kenntnisse von ungerichteten
+Graphen nochmals auffrischen, lernen dann die Theorie von B\"{a}umen
+und gerichteten Graphen kennen, und lernen dann zwei verschiedene
+Algorithmen, um einen \emph{minimalen Spannbaum} zu finden.
+ 
+Wenn Sie einige dieser Begriffe jetzt noch nicht verstehen, macht das
+nichts. Mitbringen sollten Sie aber die folgenden Kenntnisse:
+
+\begin{itemize}
+\item Sie wissen, was ein Algorithmus ist.
+\item Sie kennen die Grundbegriffe ungerichteter Graphen (wir werden
+  diese allerdings in Kapitel \ref{graphs} kurz repetieren.
+\end{itemize}
+
+Zur behandelten Theorie finden Sie immer auch Aufgaben, anhand derer
+Sie das Gelernte pr\"{u}fen k\"{o}nnen. Die L\"{o}sungen dieser Aufgaben stehen
+jeweils im zweitletzten Unterkapitel f\"{u}r jedes Thema. Das letzte
+Unterkapitel ist dann der Kapiteltest, den Sie bearbeiten und mit
+Ihrer Lehrperson besprechen sollten.
+
+\section{Worum geht es hier?}
+
+In den fr\"uhen 20er Jahren besch\"aftigte sich der tschechische
+Mathematiker Otakar Bor\r{u}vka mit dem Problem, ein Gebiet
+m\"{o}glichst effizient mit Elektrizit\"{a}t zu erschliessen. Sein
+Ansatz war, das Problem als Graphen abzubilden, in dem die
+anzuschliessenden Punkte als Knoten, und die Distanzen zwischen ihnen
+als Kanten repr\"{a}sentiert wurden:
+
+Das Elektrifizierungsproblem besteht somit darin, alle Knoten so zu
+verbinden, dass die Gesamtl\"{a}nge der Kanten so kurz wie m\"{o}glich bleibt:  
+
+Bor\r{u}vka's L\"{o}sung, die er 1926 publizierte, gilt als der erste
+Algorithmus zur Konstruktion eines minimalen Spannbaums. Weil sowohl
+die Problemstellung als auch die verwendeten Algorithmen einigermassen
+leicht verst\"{a}ndlich sind, werden wir uns jetzt diesem Problem widmen.
+
 \chapter{Graphen}
+\label{graphs}
+
+\section{Rekapitulation: Was ist ein Graph?}
+
+Ein \textbf{Graph}
+
+\begin{exercise}
+Zeichnen Sie einen ungerichteten Graphen G(V,E) mit Knoten V =
+{A,B,C,D,E} und Kanten E = {(A, B), (A, D), (C, D), (A, E)}.
+\end{exercise}
+ 
 \chapter{B\"{a}ume}
 \chapter{Algorithmen}
 \section{Der Algorithmus von Kruskal}
