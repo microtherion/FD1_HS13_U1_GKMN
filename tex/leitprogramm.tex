@@ -3,6 +3,7 @@
 \usepackage{times}
 \usepackage[german]{babel}
 \usepackage{graphics}
+\graphicspath{ {../img/} {../graph/img/} }
 \usepackage{color}
 \usepackage{ntheorem}
 \theoremstyle{break}
@@ -39,7 +40,7 @@ nichts. Mitbringen sollten Sie aber die folgenden Kenntnisse:
 \begin{itemize}
 \item Sie wissen, was ein Algorithmus ist.
 \item Sie kennen die Grundbegriffe ungerichteter Graphen (wir werden
-  diese allerdings in Kapitel \ref{graphs} kurz repetieren.
+  diese allerdings in Kapitel \ref{graphs} kurz repetieren).
 \end{itemize}
 
 Zur behandelten Theorie finden Sie immer auch Aufgaben, anhand derer
@@ -48,20 +49,33 @@ jeweils im zweitletzten Unterkapitel f\"{u}r jedes Thema. Das letzte
 Unterkapitel ist dann der Kapiteltest, den Sie bearbeiten und mit
 Ihrer Lehrperson besprechen sollten.
 
+\newpage
 \section{Worum geht es hier?}
 
 In den fr\"uhen 20er Jahren besch\"aftigte sich der tschechische
-Mathematiker Otakar Bor\r{u}vka mit dem Problem, ein Gebiet
-m\"{o}glichst effizient mit Elektrizit\"{a}t zu erschliessen. Sein
-Ansatz war, das Problem als Graphen abzubilden, in dem die
-anzuschliessenden Punkte als Knoten, und die Distanzen zwischen ihnen
-als Kanten repr\"{a}sentiert wurden:
+Mathematiker Otakar Bor\r{u}vka mit dem Problem, ein Gebiet (40
+St\"{a}dte in S\"{u}d-M\"{a}hren) m\"{o}glichst effizient mit 
+Elektrizit\"{a}t zu erschliessen.
 
-Das Elektrifizierungsproblem besteht somit darin, alle Knoten so zu
-verbinden, dass die Gesamtl\"{a}nge der Kanten so kurz wie m\"{o}glich bleibt:  
+\begin{figure}[h!]
+\resizebox{!}{4cm}{\includegraphics{BoruvkaPoints.pdf}}
+\resizebox{!}{4cm}{\includegraphics{BoruvkaTree.pdf}}
+\caption{Elektrische Erschliessung von S\"{u}d-M\"{a}hren. 
+Otakar  Bor\r{u}vka, \emph{O jist\'{e}m probl\'{e}mu minim\'{a}ln\'{i}m} (\"{U}ber ein
+  gewisses Minimalisierungsproblem). 
+Zitiert aus: J. Ne\v{s}et\v{r}il,
+  E. Milkov\'{a}, H. Ne\v{s}et\v{r}ilov\'{a}, \emph{Otakar Bor\r{u}vka on minimum spanning tree problem: translation of both the 1926 papers, comments, history.}}
+\end{figure}
+
+Sein Ansatz war, das Problem als Graphen abzubilden, in dem die
+anzuschliessenden St\"{a}dte als Knoten, und die Distanzen zwischen ihnen
+als Kanten repr\"{a}sentiert wurden. Das Elektrifizierungsproblem
+besteht somit darin, alle Knoten so zu verbinden, dass die
+Gesamtl\"{a}nge der Kanten so kurz wie m\"{o}glich bleibt.
 
 Bor\r{u}vka's L\"{o}sung, die er 1926 publizierte, gilt als der erste
-Algorithmus zur Konstruktion eines minimalen Spannbaums. Weil sowohl
+Algorithmus zur Konstruktion eines minimalen Spannbaums, und als einer
+der ersten Optimierungs-Algorithmen. Weil sowohl
 die Problemstellung als auch die verwendeten Algorithmen interessant
 und einigermassen leicht verst\"{a}ndlich sind, werden wir uns jetzt diesem Problem widmen.
 
@@ -88,10 +102,10 @@ Knoten nicht mehr als eine Kante existiert.
 Welche dieser vier Graphen sind gerichtet, welche ungerichtet? Welche
 sind schlicht?
 
-\scalebox{0.4}{\includegraphics{../graph/img/UngerichtetUnschlicht.pdf}}
-\scalebox{0.4}{\includegraphics{../graph/img/Gerichtet.pdf}}
-\scalebox{0.4}{\includegraphics{../graph/img/Ungerichtet.pdf}}
-\scalebox{0.4}{\includegraphics{../graph/img/GerichtetUnschlicht.pdf}}
+\scalebox{0.4}{\includegraphics{UngerichtetUnschlicht.pdf}}
+\scalebox{0.4}{\includegraphics{Gerichtet.pdf}}
+\scalebox{0.4}{\includegraphics{Ungerichtet.pdf}}
+\scalebox{0.4}{\includegraphics{GerichtetUnschlicht.pdf}}
 \end{exercise}
 
 \section{Beschreibung von Graphen}
@@ -101,7 +115,7 @@ sind schlicht?
 \begin{description}
 \item[Grafisch] indem die Knoten und Kanten aufgezeichnet werden:
 
-\scalebox{0.5}{\includegraphics{../graph/img/Ungerichtet.pdf}}
+\scalebox{0.5}{\includegraphics{Ungerichtet.pdf}}
 
 gerade bei kleineren Graphen ist diese Darstellung f\"{u}r Menschen am
 Einfachsten zu verstehen, aber sie ist z.B. f\"{u}r
@@ -165,10 +179,19 @@ seine Kantenmenge $F$ eine Untermenge der Kantenmenge $E$.
 Welche der folgenden drei Graphen sind Untergraphen des Graphen in
 Abschnitt \ref{Beschreibung} ?
 
-\scalebox{0.4}{\includegraphics{../graph/img/Sub1.pdf}}
-\scalebox{0.4}{\includegraphics{../graph/img/Sub2.pdf}}
-\scalebox{0.4}{\includegraphics{../graph/img/Sub3.pdf}}
+\scalebox{0.4}{\includegraphics{Sub1.pdf}}
+\scalebox{0.4}{\includegraphics{Sub2.pdf}}
+\scalebox{0.4}{\includegraphics{Sub3.pdf}}
 
+\end{exercise}
+\begin{exercise}
+\textbf{FAKULTATIV} Wie viele Untergraphen $\mathcal{U}_n$ hat ein
+vollst\"{a}ndig verkn\"{u}pfter Graph 
+\[ 
+G(V = \{v_1, v_2, \ldots, v_n\}, E = \{(v_a, v_b) | v_a, v_b \in V,
+v_a \neq v_b\}) ?
+\] 
+Finden Sie eine rekursive Definition $\mathcal{U}_n = f(\mathcal{U}_{n-1})$.
 \end{exercise}
 
 \newpage
@@ -183,13 +206,13 @@ z.B. Hotelkosten.
 Der folgende Graph zeigt Flug- und Hotelkosten, sowie Reisedistanzen
 f\"{u}r eine Reise.
 
-\scalebox{0.5}{\includegraphics{../graph/img/Travel.pdf}}
+\scalebox{0.5}{\includegraphics{Travel.pdf}}
 
-\begin{enumerate}
+\begin{itemize}
 \item Was ist die \emph{k\"{u}rzeste} Route zwischen Z\"{u}rich und
     Sydney?
 \item Was ist die \emph{billigste} Route?
-\end{enumerate}
+\end{itemize}
 \end{exercise}
 
  In der weiteren Diskussion werden wir hier nur noch an \textbf{Kantengewichteten} Graphen interessiert sein.
