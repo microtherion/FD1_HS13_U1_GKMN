@@ -44,7 +44,7 @@ nichts. Mitbringen sollten Sie aber die folgenden Kenntnisse:
 \begin{itemize}
 \item Sie wissen, was ein Algorithmus ist.
 \item Sie kennen die Grundbegriffe ungerichteter Graphen (wir werden
-  diese allerdings in Kapitel \ref{graphs} kurz repetieren).
+  diese allerdings in Kapitel~\ref{graphs} kurz repetieren).
 \end{itemize}
 
 Zur behandelten Theorie finden Sie immer auch Aufgaben, anhand derer
@@ -193,7 +193,7 @@ seine Kantenmenge $F$ eine Untermenge der Kantenmenge $E$.
 
 \begin{exercise}
 Welche der folgenden drei Graphen sind Untergraphen des Graphen in
-Abschnitt \ref{Beschreibung} ?
+Abschnitt~\ref{Beschreibung} ?
 
 \scalebox{0.4}{\includegraphics{Sub1.pdf}}
 \scalebox{0.4}{\includegraphics{Sub2.pdf}}
@@ -212,6 +212,7 @@ Finden Sie eine rekursive Definition $\mathcal{U}_n = f(\mathcal{U}_{n-1})$.
 
 \newpage
 \section{Gewichtete Graphen}
+\label{gewichtet}
 
 In vielen praktischen Anwendungen sind die Knoten und/oder Kanten
 eines Graphen mit \textbf{Gewichten} versehen. Die Kantengewichte k\"{o}nnen
@@ -255,30 +256,44 @@ haben, bezeichnet man (anschaulicherweise) als \textbf{Wald}.
 \begin{proof}
 Ein Baum mit $n$ Knoten hat exakt $n-1$ Kanten.
 
-\bigskip\noindent\textbf{Beweis:} 
-\begin{itemize}
-\item Ein Baum mit $1$ Knoten kann keine Kanten haben.
-\item In einem Baum mit $n$ Knoten sucht man sich einen beliebigen Knoten
+\bigskip\noindent\textbf{Beweis:} Ein Baum mit $1$~Knoten kann keine Kanten haben.
+In einem Baum mit $n$~Knoten sucht man sich einen beliebigen Knoten
 aus, folgt einer beliebigen Kante, und beim n\"{a}chsten Knoten sucht
 man sich eine andere Kante aus.
-\item Weil der Baum ja keinen geschlossenen
+Weil der Baum ja keinen geschlossenen
 Weg enth\"{a}lt, landet man irgendwann in einem Knoten, der von nur
-$1$ Kante erreicht wird. 
-\item Wenn man diesen Knoten und seine Kante aus
-dem Baum entfernt, erh\"{a}lt man einen Baum mit $n-1$ Knoten, und
+$1$~Kante erreicht wird. 
+Wenn man diesen Knoten und seine Kante aus
+dem Baum entfernt, erh\"{a}lt man einen Baum mit $n-1$~Knoten, und
 durch Induktion l\"{a}sst sich sehen, dass der Satz gilt.
-\end{itemize}
 \end{proof}
 
 \section{Spannb\"{a}ume}
 
 F\"ur jeden zusammenh\"{a}ngenden Graphen $G(V,E)$ kann man einen oder mehrere
-\textbf{aufspannende B\"{a}ume} konstruieren, die aus allen Knoten $V$ des
-Graphen und einer Untermenge der Kanten $E$ bestehen.
+\textbf{Spannb\"{a}ume} konstruieren, die aus \emph{allen Knoten} $V$ des
+Graphen und einer \emph{Untermenge der Kanten} $E$ bestehen.
 
-\textcolor{red}{Aufgaben: Alle Baeume fast vollstaendiger 4-Graph}
+\textcolor{red}{Aufgaben: Alle aufspannenden Baeume fast vollstaendiger 4-Graph}
 
 \section{Minimale Spannb\"{a}ume}
+
+Wenn wir jetzt wieder an das in Kapitel~\ref{gewichtet}
+eingef\"{u}hrten Konzept des \emph{kantengewichteten Graphen}
+zur\"{u}ckdenken, k\"{o}nnen wir dieses auch auf B\"{a}ume
+anwenden. Das \textbf{Gewicht} eines Baumes l\"{a}sst sich dann als
+Summe der Kantengewichte des Baumes definieren.
+
+\textcolor{red}{Aufgabe: Gewicht}
+
+Somit k\"{o}nnen wir nun den zentralen Begriff dieses Textes
+definieren: Ein Spannbaum $B$ eines Graphen $G$ ist ein
+\textbf{minimaler Spannbaum} von $G$ wenn kein Spannbaum von $G$
+existiert, dessen Gewicht kleiner als das Gewicht von $B$ ist.
+
+Ein Graph kann ohne weiteres mehrere minimale Spannb\"{a}ume haben:
+Wenn z.B. alle Kantengewichte identisch sind, sind \emph{alle}
+Spannb\"{a}ume minimal!
 
 \textcolor{red}{Aufgaben}
 
