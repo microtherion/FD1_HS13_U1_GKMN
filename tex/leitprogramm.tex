@@ -15,6 +15,7 @@
 \theoremprework{\bigskip\hrule\leavevmode}
 \theorempostwork{\nopagebreak\hrule\leavevmode}
 \newtheorem{proof}{Satz}[section]
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}
 
 \title{Minimale Spannb\"{a}ume}
 \author{Gabriel Katz\\ Matthias Neeracher}
@@ -56,7 +57,7 @@ Ihrer Lehrperson besprechen sollten.
 \newpage
 \section{Worum geht es hier?}
 
-In den fr\"uhen 20er Jahren besch\"aftigte sich der tschechische
+In den fr\"uhen 20er Jahren besch\"aftigte sich der 
 Mathematiker Otakar Bor\r{u}vka mit dem Problem, ein Gebiet (40
 St\"{a}dte in S\"{u}d-M\"{a}hren) m\"{o}glichst effizient mit 
 Elektrizit\"{a}t zu erschliessen.
@@ -330,13 +331,14 @@ Gl\"{u}cklicherweise ist das Finden eines minimalen Spannbaums eines
 der Probleme, bei denen gierige Algorithmen ein optimales Resultat
 garantieren k\"{o}nnen:
 
-\begin{proof}Es sei $G(V,E)$ ein kantenbewerteter
+\begin{proof}\label{minimalkante}
+  Es sei $G(V,E)$ ein kantenbewerteter
   zusammenh\"{a}ngender Graph. $U$ sei eine Teilmenge der Knoten $V$ und
   $e_{min}$ die Kante mit dem kleinsten Gewicht in der Kantenmenge
   $\{e=(u,v) \mid e\in E, u\in U, v\in (V\!\setminus\!U) \}$. Dann existiert ein
   minimaler Spannbaum von $G$, der $e_{min}$ enth\"{a}lt.
 
-\bigskip\noindent\textsc{Beweis:} Nehmen wir das Gegenteil an: $e_{min}$
+ \bigskip\noindent\textsc{Beweis:} Nehmen wir das Gegenteil an: $e_{min}$
 liegt in \emph{keinem} minimalen Spannbaum von $G$. Wenn wir dann $B$,
 einen beliebigen minimalen Spannbaum von $G$, nehmen und $e_{min}$ in $B$
 einf\"{u}gen, erh\"{a}lt man einen geschlossenen Weg $W$ in $B$, der
@@ -349,12 +351,102 @@ das von $(u',v')$, kann auch das Gewicht von $B'$ nicht
 gr\"{o}sser sein als das von $B$: $B'$ muss ebenfalls ein minimaler
 Spannbaum sein, und da $B'$ $e_{min}$ enth\"{a}lt, ist die
 Gegenannahme widerlegt.
+
+\textcolor{red}{Wollen wir diesen Beweis?}
 \end{proof} 
 
-\section{Der Algorithmus von Prim}
-\textcolor{red}{To Be Completed}
 \section{Der Algorithmus von Kruskal}
-\textcolor{red}{To Be Completed}
+
+Der erste Algorithmus den wir behandeln wurde von dem
+amerikanischen Mathematiker Joseph Kruskal entwickelt und erstmals
+1956 publiziert. Der minimale Spannbaum f\"{u}r den Graphen $G(V,E)$
+wird konstruiert, indem ein Wald $W(V, E')$ von minimalen B\"{a}umen
+sukzessive verbunden wird, bis ein einziger minimaler Spannbaum
+\"ubrigbleibt:
+
+\begin{enumerate}
+\item Der Anfangszustand des Waldes besteht aus einem Baum pro Knoten:
+  $W \gets (V, \{\})$ (Beachten Sie, dass ein
+  einzelner Knoten bereits einen Baum darstellt)
+\item So lange es Kanten $K$, $K\subset (E\setminus{E'})$ gibt, die in $W$ noch nicht
+  verwendet wurden, und die mit den verwendeten Kanten $E'$ keinen
+  geschlossenen Weg bilden:
+\begin{enumerate}
+\item W\"{a}hlen Sie die Kante $e_i\in K$ mit dem kleinsten
+  Kantengewicht aus.
+\item F\"{u}gen Sie diese Kante zu $W$ hinzu: $E' \gets E'+\{e_i\}$.
+\end{enumerate}
+\end{enumerate}
+
+\begin{proof}\label{primproof}Der Algorithmus von Kruskal konstruiert
+  einen minimalen Spannbaum.
+
+\textcolor{red}{Beweis ist etwas komplex. Wollen wir ihn?}
+\end{proof}
+
+\section{Der Algorithmus von Prim}
+
+Viele Optimierungsprobleme k\"{o}nnen auf viele verschiedene Arten
+gel\"{o}st werden. Auch f\"{u}r das minimale Spannbaumproblem gibt es
+viele Algorithmen, und wir wollen deshalb noch einen zweiten
+Algorithmus vorstellen, um einen anderen Ansatz zu zeigen.
+
+Dieser Algorithmus wurde bereits 1930 von dem Mathematiker
+Vojt\v{e}ch Jarn\'ik entwickelt, geriet dann aber in Vergessenheit,
+bis er 1957 von Robert C. Prim und 1959 von Edsger W. Dijkstra
+unabh\"{a}ngig wiederentdeckt wurde (Aus diesem Grund ist der
+Algorithmus auch unter anderen Namen, z.B. \emph{Prim-Dijkstra
+  Algorithmus} oder \emph{Algorithmus von Jarnik, Prim, und Dijkstra}
+bekannt).
+
+Der Algorithmus von Prim konstruiert einen minimalen Spannbaum f\"{u}r
+den zusammenh\"{a}ngenden Graphen $G(V,E)$ indem er einen bestehenden Baum $B(V_B,E_B)$
+sukzessive durch Hinzuf\"{u}gen minimaler Kanten erweitert:
+
+\begin{enumerate}
+\item W\"{a}hlen Sie einen beliebigen Knoten $v_0\in V$ als
+  Anfangszustand f\"{u}r $B$: $V_B \gets \{v_0\}$, $E_B \gets \{\})$.
+\item Solange $V_B\neq V$:
+\begin{enumerate}
+\item W\"{a}hlen Sie unter den Kanten $\{e = (u,v)\mid u\in V_B, v\in
+  (V\!\setminus\!V_B)\}$ die Kante $e_i= (u_i,v_i)$ mit dem kleinsten
+Kantengewicht aus.
+\item F\"{u}gen Sie die Kante und ihren Endpunkt zu $B$ hinzu: $V_B \gets
+  V_B+\{v_i\}$, $E_B \gets E_B+\{e_{min}\}$.
+\end{enumerate}
+\end{enumerate}
+
+\begin{proof}\label{primproof}Der Algorithmus von Prim konstruiert
+  einen minimalen Spannbaum.
+
+\textcolor{red}{Beweis ist etwas komplex. Wollen wir ihn?}
+\end{proof}
+
+\section{Schlussbetrachtung: Wer Gewinnt?}
+
+Wenn mehrere verschiedene Algorithmen zur L\"{o}sung eines Problems
+zur Wahl stehen, ist es eine naheliegende Frage, welcher davon denn
+der effizienteste ist. Leider w\"{u}rde eine umfassende Erforschung dieser
+Frage den Rahmen dieses Textes bei weitem sprengen, deshalb soll nur
+kurz erw\"{a}hnt sein:
+
+\begin{itemize}
+\item Da alle Algorithmen hier optimale L\"{o}sungen finden,
+  unterscheidet sich die Qualit\"{a}t der Resultate nicht.
+\item Wenn man diese Algorithmen auf einem Computer programmiert,
+  h\"{a}ngt deren Laufzeit- und Speichereffizienz enorm von den
+  verwendeten Datenstrukturen ab, weil die Auswahl- und Testschritte
+  (z.B. auf geschlossene Wege in Kruskal's Algorithmus, auf
+  Mitgliedschaft von Knoten in Untergraphen in Prim's Algorithmus)
+  entscheidend auf geeignete Datenrepr\"{a}sentation angewiesen sind.
+\item In einer Studie von mehreren Implementierungen von Kruskal's und
+  Prim's Algorithmus ist der Informatiker Donald
+  E. Knuth\footnote{Donald E. Knuth, \emph{The Stanford GraphBase},
+    Seiten 460--497} zum Schluss
+  gelangt, dass sich die Effizienz der beiden Algorithmen nicht
+  wesentlich voneinander unterscheidet.
+\end{itemize}
+
 \section{L\"{o}sungen}
 \textcolor{red}{To Be Completed}
 \section{Kapiteltest}
