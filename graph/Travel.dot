@@ -1,0 +1,10 @@
+graph Travel {
+      "Zürich" -- "Moskau" [label="2192km\nFr. 900.-"]
+      "Moskau" [label="Moskau\nFr. 200.-"]
+      "Moskau" -- "Ulan Bator" [label="4632km\nFr. 400.-"]
+      "Ulan Bator" [label="Ulan Bator\nFr. 100.-"]
+      "Ulan Bator" -- "Sydney" [label="10099km\nFr. 1800.-"]
+      "Zürich" -- "Singapur" [label="10283km\nFr. 2500.-"]
+      "Singapur" [label="Singapur\nFr. 200.-"]
+      "Singapur" -- "Sydney" [label="6306km\nFr. 1200.-"]
+}
