@@ -11,6 +11,10 @@
 \theoremprework{\bigskip\hrule\leavevmode}
 \theorempostwork{\nopagebreak\hrule\leavevmode}
 \newtheorem{exercise}{Aufgabe}[section]
+\theoremstyle{plain}
+\theoremprework{\bigskip\hrule\leavevmode}
+\theorempostwork{\nopagebreak\hrule\leavevmode}
+\newtheorem{proof}{Satz}[section]
 
 \title{Minimale Spannb\"{a}ume}
 \author{Gabriel Katz\\ Matthias Neeracher}
@@ -60,18 +64,23 @@ Elektrizit\"{a}t zu erschliessen.
 \begin{figure}[h!]
 \resizebox{!}{4cm}{\includegraphics{BoruvkaPoints.pdf}}
 \resizebox{!}{4cm}{\includegraphics{BoruvkaTree.pdf}}
-\caption{Elektrische Erschliessung von S\"{u}d-M\"{a}hren. 
-Otakar  Bor\r{u}vka, \emph{O jist\'{e}m probl\'{e}mu minim\'{a}ln\'{i}m} (\"{U}ber ein
-  gewisses Minimalisierungsproblem). 
-Zitiert aus: J. Ne\v{s}et\v{r}il,
-  E. Milkov\'{a}, H. Ne\v{s}et\v{r}ilov\'{a}, \emph{Otakar Bor\r{u}vka on minimum spanning tree problem: translation of both the 1926 papers, comments, history.}}
+\caption{Elektrische Erschliessung von S\"{u}d-M\"{a}hren.\protect\footnotemark}
 \end{figure}
 
+\footnotetext{ 
+Otakar  Bor\r{u}vka, \emph{O jist\'{e}m probl\'{e}mu minim\'{a}ln\'{i}m} (\"{U}ber ein
+  gewisses Minimalisierungsproblem). \\
+Zitiert aus: J. Ne\v{s}et\v{r}il,
+  E. Milkov\'{a}, H. Ne\v{s}et\v{r}ilov\'{a}, \emph{Otakar Bor\r{u}vka
+    on minimum spanning tree problem: translation of both the 1926
+    papers, comments, history.}, Discrete Mathematics 233 (201)}
 Sein Ansatz war, das Problem als Graphen abzubilden, in dem die
 anzuschliessenden St\"{a}dte als Knoten, und die Distanzen zwischen ihnen
 als Kanten repr\"{a}sentiert wurden. Das Elektrifizierungsproblem
 besteht somit darin, alle Knoten so zu verbinden, dass die
-Gesamtl\"{a}nge der Kanten so kurz wie m\"{o}glich bleibt.
+Gesamtl\"{a}nge der Kanten so kurz wie m\"{o}glich bleibt. Eine solche
+Verbindung wird \textbf{minimal aufspannender Baum} oder kurz
+\textbf{minimaler Spannbaum} genannt.
 
 Bor\r{u}vka's L\"{o}sung, die er 1926 publizierte, gilt als der erste
 Algorithmus zur Konstruktion eines minimalen Spannbaums, und als einer
@@ -162,8 +171,15 @@ $E = \{\mathsf{(A, B), (A, D), (C, D), (A, E)}\}$.
 Wenn in einem Graphen $G(V,E)$ eine Folge von Knoten $v_0, v_1,
 \ldots, v_n \in V$ existiert, die von Kanten $e_i = (v_i, v_i+1) \in
 E$ verbunden werden, dann existiert ein \textbf{Weg} von $v_0$ nach
-$v_n$. Falls solch ein Weg f\"{u}r \emph{jedes} Knotenpaar $v_0, v_n
+$v_n$. 
+
+Falls ein Weg f\"{u}r \emph{jedes} Knotenpaar $v_0, v_n
 \in V$ existiert, nennen wir den Graphen \textbf{zusammenh\"{a}ngend}.
+
+Ein Weg $v_0\cdots{v_1}\cdots\ldots\cdots{v_0}$, der von einem Knoten
+$v_0$ wieder auf diese selbst zur\"{u}ckf\"{u}hrt, heisst
+\textbf{geschlossen}. Ein \textbf{zyklischer} Graph besteht aus einen
+geschlossenen Weg, der alle Knoten und alle Kanten enth\"{a}lt.
 
 \begin{exercise}
 \textcolor{red}{Irgendwelche Ideen?}
@@ -186,7 +202,7 @@ Abschnitt \ref{Beschreibung} ?
 \end{exercise}
 \begin{exercise}
 \textbf{FAKULTATIV} Wie viele Untergraphen $\mathcal{U}_n$ hat ein
-vollst\"{a}ndig verkn\"{u}pfter Graph 
+\emph{vollst\"{a}ndiger} Graph 
 \[ 
 G(V = \{v_1, v_2, \ldots, v_n\}, E = \{(v_a, v_b) | v_a, v_b \in V,
 v_a \neq v_b\}) ?
@@ -217,8 +233,68 @@ f\"{u}r eine Reise.
 
  In der weiteren Diskussion werden wir hier nur noch an \textbf{Kantengewichteten} Graphen interessiert sein.
 
+\section{L\"{o}sungen}
+
+\textcolor{red}{To Be Completed}
+
+\section{Kapiteltest}
+
+\textcolor{red}{To Be Completed}
+
 \chapter{B\"{a}ume}
+
+\section{Was ist ein Baum?}
+
+Als \textbf{Baum} bezeichnet man einen Graphen, der
+\emph{zusammenh\"{a}ngend} ist und \emph{keinen geschlossenen Weg}
+enth\"{a}lt. Eine Menge von B\"{a}umen, die keine gemeinsamen Knoten
+haben, bezeichnet man (anschaulicherweise) als \textbf{Wald}.
+
+\textcolor{red}{Aufgaben: Baeume identifizieren}
+
+\begin{proof}
+Ein Baum mit $n$ Knoten hat exakt $n-1$ Kanten.
+
+\bigskip\noindent\textbf{Beweis:} 
+\begin{itemize}
+\item Ein Baum mit $1$ Knoten kann keine Kanten haben.
+\item In einem Baum mit $n$ Knoten sucht man sich einen beliebigen Knoten
+aus, folgt einer beliebigen Kante, und beim n\"{a}chsten Knoten sucht
+man sich eine andere Kante aus.
+\item Weil der Baum ja keinen geschlossenen
+Weg enth\"{a}lt, landet man irgendwann in einem Knoten, der von nur
+$1$ Kante erreicht wird. 
+\item Wenn man diesen Knoten und seine Kante aus
+dem Baum entfernt, erh\"{a}lt man einen Baum mit $n-1$ Knoten, und
+durch Induktion l\"{a}sst sich sehen, dass der Satz gilt.
+\end{itemize}
+\end{proof}
+
+\section{Spannb\"{a}ume}
+
+F\"ur jeden zusammenh\"{a}ngenden Graphen $G(V,E)$ kann man einen oder mehrere
+\textbf{aufspannende B\"{a}ume} konstruieren, die aus allen Knoten $V$ des
+Graphen und einer Untermenge der Kanten $E$ bestehen.
+
+\textcolor{red}{Aufgaben: Alle Baeume fast vollstaendiger 4-Graph}
+
+\section{Minimale Spannb\"{a}ume}
+
+\textcolor{red}{Aufgaben}
+
+\section{L\"{o}sungen}
+\textcolor{red}{To Be Completed}
+\section{Kapiteltest}
+\textcolor{red}{To Be Completed}
+
 \chapter{Algorithmen}
 \section{Der Algorithmus von Kruskal}
+\textcolor{red}{To Be Completed}
 \section{Der Algorithmus von Prim}
+\textcolor{red}{To Be Completed}
+\section{L\"{o}sungen}
+\textcolor{red}{To Be Completed}
+\section{Kapiteltest}
+\textcolor{red}{To Be Completed}
+
 \end{document}
