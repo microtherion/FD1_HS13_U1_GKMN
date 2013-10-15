@@ -16,7 +16,10 @@
 \theorempostwork{\nopagebreak\hrule\leavevmode}
 \newtheorem{proof}{Satz}[section]
 \renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}
-
+\newcommand{\algostep}[2]{\parbox{4cm}{\scalebox{0.5}{\includegraphics{#1}}}
+  \hfill
+  \parbox{7cm}{#2}
+}
 \title{Minimale Spannb\"{a}ume}
 \author{Gabriel Katz\\ Matthias Neeracher}
 
@@ -378,7 +381,27 @@ sukzessive verbunden wird, bis ein einziger minimaler Spannbaum
 \end{enumerate}
 \end{enumerate}
 
-\begin{proof}\label{primproof}Der Algorithmus von Kruskal konstruiert
+\newpage
+Hier soll ein einfaches Beispiel graphisch illustriert werden:
+
+\algostep{Demo.pdf}{Der Anfangszustand, $E' = \{\}$}
+\algostep{DemoKruskal1.pdf}{Schritt $1$: Eine der beiden Kanten mit Gewicht $5$
+  (egal welche) wurde hinzugef\"ugt: $E' = \{(A,D)\}$}
+\algostep{DemoKruskal2.pdf}{Schritt $2$: Die n\"{a}chstk\"{u}rzere
+  Kante wurde hinzugef\"ugt: $E' = \{(A,D), (C,E)\}$}
+\algostep{DemoKruskal3.pdf}{Schritt $4$: Nachdem zwei weitere Kanten
+  hinzugef\"ugt wurden, wird jetzt klar, dass die Kante $(B,C)$ nie
+  mehr hinzugef\"ugt werden wird, weil sie mit $(B,E)$ und $(C,E)$
+  einen geschlossenen Weg bilden w\"{u}rde. $E' = \{(A,D), (B,E),
+  (C,E), (D,F)\}$}
+
+\newpage
+\begin{exercise}
+F\"{u}hren Sie den Algorithmus von Kruskal im vorstehenden Beispiel zu
+Ende, bis der minimale Spannbaum konstruiert ist.
+\end{exercise}
+
+\begin{proof}\label{kruskproof}Der Algorithmus von Kruskal konstruiert
   einen minimalen Spannbaum.
 
 \textcolor{red}{Beweis ist etwas komplex. Wollen wir ihn?}
@@ -415,6 +438,24 @@ Kantengewicht aus.
   V_B+\{v_i\}$, $E_B \gets E_B+\{e_{min}\}$.
 \end{enumerate}
 \end{enumerate}
+
+\newpage
+Auch hier werden wir das gleiche Beispiel illustrieren:
+
+\algostep{DemoPrim1.pdf}{Der Anfangszustand, $V_B = \{A\}$ (beliebige
+  Wahl), $E_B = \{\}$. M\"{o}gliche Erweiterungskanten sind $(A,B)$
+  und $(A,D)$; letztere hat das kleinere Kantengewicht.}
+\algostep{DemoPrim2.pdf}{Schritt $1$: $(A,D)$ bzw. $D$ wurden
+  hinzugef\"{u}gt. $V_B = \{A,D\}, E_B=\{(A,D)\}$. Nun ist $(D,F)$ die
+  beste Erweiterungskante.}
+\algostep{DemoPrim3.pdf}{Schritt $2$: $(D,F)$ bzw. $F$ wurden 
+ hinzugef\"{u}gt. $V_B = \{A,D,F\}, E_B=\{(A,D), (D,F)\}$. Nun kommt
+ endlich $(A,B)$ als Erweiterungskante zum Zug.}
+
+\begin{exercise}
+F\"{u}hren Sie den Algorithmus von Prim im vorstehenden Beispiel zu
+Ende, bis der minimale Spannbaum konstruiert ist.
+\end{exercise}
 
 \begin{proof}\label{primproof}Der Algorithmus von Prim konstruiert
   einen minimalen Spannbaum.
