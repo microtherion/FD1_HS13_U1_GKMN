@@ -204,7 +204,7 @@ Abschnitt~\ref{Beschreibung} ?
 \textbf{FAKULTATIV} Wie viele Untergraphen $\mathcal{U}_n$ hat ein
 \emph{vollst\"{a}ndiger} Graph 
 \[ 
-G(V = \{v_1, v_2, \ldots, v_n\}, E = \{(v_a, v_b) | v_a, v_b \in V,
+G(V = \{v_1, v_2, \ldots, v_n\}, E = \{(v_a, v_b) \mid v_a, v_b \in V,
 v_a \neq v_b\}) ?
 \] 
 Finden Sie eine rekursive Definition $\mathcal{U}_n = f(\mathcal{U}_{n-1})$.
@@ -220,6 +220,7 @@ z.B. Distanz oder Flugkosten darstellen, die Knotengewichte
 z.B. Hotelkosten.
 
 \begin{exercise}
+\label{travel}
 Der folgende Graph zeigt Flug- und Hotelkosten, sowie Reisedistanzen
 f\"{u}r eine Reise.
 
@@ -256,7 +257,7 @@ haben, bezeichnet man (anschaulicherweise) als \textbf{Wald}.
 \begin{proof}
 Ein Baum mit $n$ Knoten hat exakt $n-1$ Kanten.
 
-\bigskip\noindent\textbf{Beweis:} Ein Baum mit $1$~Knoten kann keine Kanten haben.
+\bigskip\noindent\textsc{Beweis:} Ein Baum mit $1$~Knoten kann keine Kanten haben.
 In einem Baum mit $n$~Knoten sucht man sich einen beliebigen Knoten
 aus, folgt einer beliebigen Kante, und beim n\"{a}chsten Knoten sucht
 man sich eine andere Kante aus.
@@ -303,9 +304,56 @@ Spannb\"{a}ume minimal!
 \textcolor{red}{To Be Completed}
 
 \chapter{Algorithmen}
-\section{Der Algorithmus von Kruskal}
-\textcolor{red}{To Be Completed}
+
+Wie findet man denn nun einen minimalen Spannbaum in einem
+nicht-trivialen Graphen? In diesem Kapitel werden wir zwei
+verschiedene Algorithmen kennenlernen, die dies bewerkstelligen.
+
+\section{Gierige Algorithmen}
+
+Ein Algorithmus wird \textbf{gierig} (bzw. das Englische Aequivalent
+\textbf{greedy}) genannt, wenn er in jedem Schritt einen \emph{lokal
+  optimalen} Folgezustand w\"{a}hlt. In Reiseproblem, das in
+Aufgabe~\ref{travel} besprochen wurde, w\"{u}rde ein gieriger
+Algorithmus z.B. in jedem Schritt den k\"{u}rzesten oder den
+billigsten Flug aus der gegenw\"{a}rtigen Stadt in eine noch nicht
+besuchte Stadt w\"{a}hlen.
+
+Gierige Algorithmen sind oft einfach zu verstehen und schnell, aber
+sie l\"{o}sen viele Probleme nicht optimal: In unserem Beispiel
+w\"{u}rde der Algorithmus zwar den billigsten Weg finden, aber im
+allgemeinen Fall ist das nicht garantiert, und der Algorithmus
+w\"{u}rde hier die falsche L\"{o}sung f\"{u}r den k\"{u}rzesten Weg
+finden.
+
+Gl\"{u}cklicherweise ist das Finden eines minimalen Spannbaums eines
+der Probleme, bei denen gierige Algorithmen ein optimales Resultat
+garantieren k\"{o}nnen:
+
+\begin{proof}Es sei $G(V,E)$ ein kantenbewerteter
+  zusammenh\"{a}ngender Graph. $U$ sei eine Teilmenge der Knoten $V$ und
+  $e_{min}$ die Kante mit dem kleinsten Gewicht in der Kantenmenge
+  $\{e=(u,v) \mid e\in E, u\in U, v\in (V\!\setminus\!U) \}$. Dann existiert ein
+  minimaler Spannbaum von $G$, der $e_{min}$ enth\"{a}lt.
+
+\bigskip\noindent\textsc{Beweis:} Nehmen wir das Gegenteil an: $e_{min}$
+liegt in \emph{keinem} minimalen Spannbaum von $G$. Wenn wir dann $B$,
+einen beliebigen minimalen Spannbaum von $G$, nehmen und $e_{min}$ in $B$
+einf\"{u}gen, erh\"{a}lt man einen geschlossenen Weg $W$ in $B$, der
+$e_{min}$ enth\"{a}lt. Da $W$ Knoten sowohl aus $U$ als auch aus
+$V\!\setminus\!U$ enth\"{a}lt, muss $W$ eine andere Kante $(u', v')$
+enthalten, in der $u' \in U, v'\in (V\!\setminus\!U)$ sind. Wenn man
+dann $(u',v')$ aus $B$ entfernt, bleibt der entstehende Baum $B'$ ein Spannbaum, und da nach
+Definition das Gewicht von $e_{min}$ nicht gr\"{o}sser sein kann als
+das von $(u',v')$, kann auch das Gewicht von $B'$ nicht
+gr\"{o}sser sein als das von $B$: $B'$ muss ebenfalls ein minimaler
+Spannbaum sein, und da $B'$ $e_{min}$ enth\"{a}lt, ist die
+Gegenannahme widerlegt.
+\end{proof} 
+
 \section{Der Algorithmus von Prim}
+\textcolor{red}{To Be Completed}
+\section{Der Algorithmus von Kruskal}
 \textcolor{red}{To Be Completed}
 \section{L\"{o}sungen}
 \textcolor{red}{To Be Completed}
