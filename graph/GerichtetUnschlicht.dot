@@ -4,5 +4,5 @@ digraph Gerichtet {
       C -> D
       C -> E
       E -> B
-      B -> E
+      E -> B
 }

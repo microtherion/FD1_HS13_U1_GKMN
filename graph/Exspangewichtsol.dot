@@ -1,0 +1,12 @@
+graph Exspangewicht {
+      graph [layout="neato"]
+      A [pos="0,1"]
+      B [pos="0.1,0"]
+      C [pos="2,1"]
+      D [pos="1,1"]
+      A -- B [label="4", penwidth=3]
+      A -- D [label="3", penwidth=3]
+      B -- C [label="1", penwidth=3]
+      B -- D [label="7"]
+      C -- D [label="6"]
+}

@@ -1,0 +1,9 @@
+graph Baum {
+      A -- B
+      A -- D
+      C -- D
+      A -- E
+      B -- F
+      F -- A
+      D -- G
+}

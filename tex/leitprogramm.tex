@@ -1,5 +1,7 @@
 \documentclass[12pt,a4paper]{report}
 
+\setlength{\topmargin}{0 cm}
+% \setlength{\footskip}{3mm}
 \usepackage{times}
 \usepackage[german]{babel}
 \usepackage{graphics}
@@ -111,7 +113,7 @@ beschr\"{a}nken wir uns auf \textbf{schlichte} Graphen, in denen keine
 Kanten einen Knoten mit sich selbst verbinden, und zwischen zwei
 Knoten nicht mehr als eine Kante existiert.
 
-\begin{exercise}
+\begin{exercise}\label{exgerichtet}
 Welche dieser vier Graphen sind gerichtet, welche ungerichtet? Welche
 sind schlicht?
 
@@ -161,7 +163,7 @@ Wie zu beobachten ist, ist die Adjazenzmatrix bei einem ungerichteten
 Graphen immer symmetrisch.
 \end{description}
 
-\begin{exercise}
+\begin{exercise}\label{exrep}
 \begin{itemize}
 \item Zeichnen Sie einen ungerichteten Graphen $G(V,E)$ mit Knoten 
 $V = \{\mathsf{A,B,C,D,E}\}$ und Kanten 
@@ -195,7 +197,7 @@ Ein Graph $U(W,F)$ ist ein \textbf{Untergraph} eines Graphen $G(V,E)$
 wenn seine Knotenmenge $W$ eine Untermenge der Knotenmenge $V$ ist und
 seine Kantenmenge $F$ eine Untermenge der Kantenmenge $E$.
 
-\begin{exercise}
+\begin{exercise}\label{exunter}
 Welche der folgenden drei Graphen sind Untergraphen des Graphen in
 Abschnitt~\ref{Beschreibung} ?
 
@@ -223,25 +225,58 @@ eines Graphen mit \textbf{Gewichten} versehen. Die Kantengewichte k\"{o}nnen
 z.B. Distanz oder Flugkosten darstellen, die Knotengewichte
 z.B. Hotelkosten.
 
-\begin{exercise}
-\label{travel}
+ In der weiteren Diskussion werden wir hier nur noch an \textbf{Kantengewichteten} Graphen interessiert sein.
+
+\begin{exercise}\label{extravel}
 Der folgende Graph zeigt Flug- und Hotelkosten, sowie Reisedistanzen
 f\"{u}r eine Reise.
 
 \scalebox{0.5}{\includegraphics{Travel.pdf}}
 
-\begin{itemize}
+\begin{enumerate}
 \item Was ist die \emph{k\"{u}rzeste} Route zwischen Z\"{u}rich und
     Sydney?
 \item Was ist die \emph{billigste} Route?
-\end{itemize}
+\end{enumerate}
 \end{exercise}
 
- In der weiteren Diskussion werden wir hier nur noch an \textbf{Kantengewichteten} Graphen interessiert sein.
-
+\newpage
 \section{L\"{o}sungen}
 
-\textcolor{red}{To Be Completed}
+\begin{description}
+\item[Aufgabe~\ref{exgerichtet}] \hfill \\[0cm]
+\begin{enumerate}
+\item Ungerichtet, nicht schlicht weil $C$
+  mit sich selbst verbunden ist. 
+\item Gerichtet und schlicht. 
+\item Ungerichtet
+  und schlicht. 
+\item Gerichtet, nicht schlicht weil zwischen $B$ und $E$
+  zwei Kanten existieren.
+\end{enumerate}
+\item[Aufgabe~\ref{exrep}] \hfill \\[0cm]
+\algostep{Exrep.pdf}{
+\begin{displaymath}
+\left( 
+\begin{array}{ccccc}
+0 & 1 & 0 & 1 & 1 \\
+1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 \\
+1 & 0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 & 0 
+\end{array}
+\right)
+\end{displaymath}}
+\item[Aufgabe~\ref{exunter}] Graphen 1 und 3 (Ein Untergraph muss
+  \emph{nicht} notwendig zusammenh\"{a}ngend sein). Graph 2
+  enth\"{a}lt eine Kante $(A,C)$ die im urspr\"{u}nglichen Graphen
+  nicht existiert. 
+\item[Aufgabe~\ref{extravel}]\hfill\linebreak
+\begin{enumerate}
+\item Z\"{u}rich---Singapur---Sydney ($16589$ km)
+\item Z\"{u}rich---Moskau---Ulan Bator---Sydney (Fr. 3400.-)
+\end{enumerate}
+\end{description}
 
 \section{Kapiteltest}
 
@@ -256,7 +291,16 @@ Als \textbf{Baum} bezeichnet man einen Graphen, der
 enth\"{a}lt. Eine Menge von B\"{a}umen, die keine gemeinsamen Knoten
 haben, bezeichnet man (anschaulicherweise) als \textbf{Wald}.
 
-\textcolor{red}{Aufgaben: Baeume identifizieren}
+\begin{exercise}\label{exbaum}
+Welche der folgenden drei Graphen sind B\"{a}ume? ``Reparieren'' Sie die
+anderen Graphen durch Hinzuf\"{u}gen bzw. Weglassen von Kanten, damit
+sie ebenfalls zu B\"{a}umen werden.
+
+\scalebox{0.4}{\includegraphics{BaumLoch.pdf}}
+\scalebox{0.4}{\includegraphics{Baum.pdf}}
+\scalebox{0.4}{\includegraphics{BaumKreis.pdf}}
+
+\end{exercise}
 
 \begin{proof}
 Ein Baum mit $n$ Knoten hat exakt $n-1$ Kanten.
@@ -279,7 +323,10 @@ F\"ur jeden zusammenh\"{a}ngenden Graphen $G(V,E)$ kann man einen oder mehrere
 \textbf{Spannb\"{a}ume} konstruieren, die aus \emph{allen Knoten} $V$ des
 Graphen und einer \emph{Untermenge der Kanten} $E$ bestehen.
 
-\textcolor{red}{Aufgaben: Alle aufspannenden Baeume fast vollstaendiger 4-Graph}
+\begin{exercise}\label{exspan}
+Z\"{a}hlen Sie alle m\"{o}glichen Spannb\"{a}ume dieses Graphen auf:\\*
+\scalebox{0.5}{\includegraphics{Exspan.pdf}}
+\end{exercise}
 
 \section{Minimale Spannb\"{a}ume}
 
@@ -289,7 +336,10 @@ zur\"{u}ckdenken, k\"{o}nnen wir dieses auch auf B\"{a}ume
 anwenden. Das \textbf{Gewicht} eines Baumes l\"{a}sst sich dann als
 Summe der Kantengewichte des Baumes definieren.
 
-\textcolor{red}{Aufgabe: Gewicht}
+\begin{exercise}\label{exgewicht}
+Bestimmen Sie das Gewicht dieses Baumes:\\*
+\scalebox{0.5}{\includegraphics{Exgewicht.pdf}}
+\end{exercise}
 
 Somit k\"{o}nnen wir nun den zentralen Begriff dieses Textes
 definieren: Ein Spannbaum $B$ eines Graphen $G$ ist ein
@@ -300,10 +350,28 @@ Ein Graph kann ohne weiteres mehrere minimale Spannb\"{a}ume haben:
 Wenn z.B. alle Kantengewichte identisch sind, sind \emph{alle}
 Spannb\"{a}ume minimal!
 
-\textcolor{red}{Aufgaben}
+
+\begin{exercise}\label{exspangewicht}
+Finden Sie den minimalen Spannbaum dieses Graphen:
+
+\scalebox{0.5}{\includegraphics{Exspangewicht.pdf}}
+\end{exercise}
 
 \section{L\"{o}sungen}
-\textcolor{red}{To Be Completed}
+
+\begin{description}
+\item[Aufgabe~\ref{exbaum}] Der mittlere Graph war bereits ein Baum.\\*
+\scalebox{0.6}{\includegraphics{BaumLochFix.pdf}}
+\scalebox{0.6}{\includegraphics{BaumKreisFix.pdf}}
+\item[Aufgabe~\ref{exspan}] $\{(A,B), (A,D), (B,C)\}$, $\{(A,B), (A,D),
+  (D,C)\}$, $\{(A,B), (B,D), (D,C)\}$, $\{(A,D), (D,B), (B,C)\}$, $\{(A,B),
+  (B,C), (C,D)\}$, $\{(A,D), (D,C), (C,B)\}$
+\item[Aufgabe~\ref{exgewicht}] 15
+\item[Aufgabe~\ref{exspangewicht}]\hfill\\*
+\scalebox{0.5}{\includegraphics{Exspangewichtsol.pdf}}
+
+\end{description}
+
 \section{Kapiteltest}
 \textcolor{red}{To Be Completed}
 
@@ -318,7 +386,7 @@ verschiedene Algorithmen kennenlernen, die dies bewerkstelligen.
 Ein Algorithmus wird \textbf{gierig} (bzw. das Englische Aequivalent
 \textbf{greedy}) genannt, wenn er in jedem Schritt einen \emph{lokal
   optimalen} Folgezustand w\"{a}hlt. In Reiseproblem, das in
-Aufgabe~\ref{travel} besprochen wurde, w\"{u}rde ein gieriger
+Aufgabe~\ref{extravel} besprochen wurde, w\"{u}rde ein gieriger
 Algorithmus z.B. in jedem Schritt den k\"{u}rzesten oder den
 billigsten Flug aus der gegenw\"{a}rtigen Stadt in eine noch nicht
 besuchte Stadt w\"{a}hlen.
@@ -396,7 +464,7 @@ Hier soll ein einfaches Beispiel graphisch illustriert werden:
   (C,E), (D,F)\}$}
 
 \newpage
-\begin{exercise}
+\begin{exercise}\label{exkruskal}
 F\"{u}hren Sie den Algorithmus von Kruskal im vorstehenden Beispiel zu
 Ende, bis der minimale Spannbaum konstruiert ist.
 \end{exercise}
@@ -452,7 +520,7 @@ Auch hier werden wir das gleiche Beispiel illustrieren:
  hinzugef\"{u}gt. $V_B = \{A,D,F\}, E_B=\{(A,D), (D,F)\}$. Nun kommt
  endlich $(A,B)$ als Erweiterungskante zum Zug.}
 
-\begin{exercise}
+\begin{exercise}\label{exprim}
 F\"{u}hren Sie den Algorithmus von Prim im vorstehenden Beispiel zu
 Ende, bis der minimale Spannbaum konstruiert ist.
 \end{exercise}
@@ -489,7 +557,12 @@ kurz erw\"{a}hnt sein:
 \end{itemize}
 
 \section{L\"{o}sungen}
-\textcolor{red}{To Be Completed}
+
+Aufgaben~\ref{exkruskal} und~\ref{exprim} endenletztendlich beide mit
+dem gleichen minimalen Spannbaum:
+
+\scalebox{0.5}{\includegraphics{DemoResult.pdf}}
+
 \section{Kapiteltest}
 \textcolor{red}{To Be Completed}
 

@@ -1,0 +1,6 @@
+graph Exrep {
+      A -- B
+      A -- D
+      C -- D
+      A -- E
+}

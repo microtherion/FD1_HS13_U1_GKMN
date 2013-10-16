@@ -1,0 +1,8 @@
+graph Baum {
+      A -- B
+      C -- D
+      A -- E
+      B -- F
+      D -- G
+      D -- E [penwidth=3]
+}

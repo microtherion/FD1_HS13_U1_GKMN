@@ -1,0 +1,6 @@
+graph Exgewicht {
+    A -- B [label="3"]
+    A -- C [label="4"]
+    B -- D [label="3"]
+    B -- E [label="5"]
+}
