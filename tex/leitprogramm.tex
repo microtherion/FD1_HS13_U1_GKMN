@@ -472,8 +472,14 @@ Ende, bis der minimale Spannbaum konstruiert ist.
 \begin{proof}\label{kruskproof}Der Algorithmus von Kruskal konstruiert
   einen minimalen Spannbaum.
 
-\textcolor{red}{Beweis ist etwas komplex. Wollen wir ihn?}
-\end{proof}
+ \bigskip\noindent\textsc{Beweis:} Der Beweis besteht aus zwei Teilen. Zuerst zeigen wir, dass der Algorithmus von Kruskal einen Spannbaum produziert, danach, dass dieser Spannbaum minimal ist.
+ 
+ \begin{enumerate}
+\item \textbf{Spannbaum:} Angenommen, Graph $W=(V,E')$ ist das Resultat einer Ausf\"{u}hrung des Algorithmus von Kruskal auf dem Graphen $G=(V,E)$. Dann hat der Graph $W$ keinen geschlossenen Weg, da die Kanten im Algorithmus per Definition so gew\"{a}hlt werden, dass kein geschlossener Weg entsteht. Wenn wir beweisen k\"{o}nnen, dass Graph $W$ auch zusammenh\"{a}ngend ist, folgt daraus, dass $W$ ein Spannbaum ist. Um dies zu beweisen, nehmen wir an, dass $W$ aus zwei getrennten Komponenten $W_1$ und $W_2$ besteht. Da $G$ zusammenh\"{a}ngend ist, existiert in $G$ mindestens eine Kante von einem Knoten aus $W_1$ zu einem Knoten aus $W_2$. Dies heisst jedoch, dass der Algorithmus noch nicht fertig ist, da eine solche Kante noch nicht in $W$ liegt, und auch mit den Kanten von $E'$ keinen geschlossenen Weg bildet.
+\item \textbf{Minimalit\"{a}t:} Dieser Beweis folgt durch Induktion. Wir zeigen, dass f\"{u}r jedes $k$ zwischen 0 und der Anzahl Kanten des Spannbaums, der Graph $W_k=(V,E')$, den wir nach dem $k$-ten Schritt des Algorithmus erhalten, sich durch hinzuf\"{u}gen von Kanten zu einem minimalen Spannbaum erweitern l\"{a}sst. Da wir oben bewiesen haben, dass wir nach dem letzten Schritt des Algorithmus einen Spannbaum erhalten, w\"{u}rde dies bedeuten, dass der erhaltene Spannbaum minimal ist. Den Induktionsanfang setzen wir bei $W_0=(V,\{\})$. Dieser Graph ohne Kanten l\"{a}sst sich zu einem Minimalen Spannbaum erweitern, indem wir einfach alle Kanten eines minimalen Spannbaums hinzuf\"{u}gen. Im Satz~\ref{minimalkante} haben wir bewiesen, dass so ein minimaler Spannbaum existieren muss. F\"{u}r den Induktionsschritt nehmen wir an, dass $W_i=(V,E'_i)$ sich zu einem minimalen Spannbaum $T_i$ erweitern l\"{a}sst. Schauen wir jetzt an, was geschieht, wenn wir im $i+1$-ten Schritt $W$ um die Kante $e$ zu $W_{i+1} = W_i \cup \{e\} $ erweitern. Falls $e$ in $T_i$ vorkommt, l\"{a}sst sich auch $W_{i+1}$ zu $T_i$ erweitern, und wir sind fertig mit dem Induktionsschritt. Falls $e$ nicht in $T_i$ vorkommt, hat $T_i \cup \{e\}$ einen geschlossenen Weg. In diesem geschlossenen Weg existiert eine Kante $f \neq e$, welche in $W_i$ nicht vorkommt (Ansonsten w\"{u}rde $e$ mit $W_i$ einen geschlossenen Weg formen). Da $e$ und nicht $f$ im $i+1$-ten Schritt des Algorithmus ausgew\"{a}hlt wurde, muss das Kantengewicht von $e$ kleiner oder gleich dem Kantengewicht von $f$ sein. $T_i \cup \{e\} \setminus \{f\}$ ist somit ein Spannbaum mit einem h\"{o}chstens so hohen Kantengewicht wie $T_i$. Somit muss $T_i \cup \{e\} \setminus \{f\}$ auch ein minimaler Spannbaum sein. $W_{i+1} = W_i \cup \{e\} $ l\"{a}sst sich hinzuf\"{u}gen von Kanten zu $T_i \cup \{e\} \setminus \{f\}$ erweitern, also ist die Aussage bewiesen.
+\end{enumerate}
+
+ \end{proof}
 
 \section{Der Algorithmus von Prim}
 
