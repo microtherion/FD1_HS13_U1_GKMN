@@ -10,11 +10,11 @@
 \usepackage{ntheorem}
 \theoremstyle{break}
 \theorembodyfont{\normalfont}
-\theoremprework{\bigskip\hrule\leavevmode}
+\theoremprework{\bigskip\hrule\leavevmode\nopagebreak}
 \theorempostwork{\nopagebreak\hrule\leavevmode}
 \newtheorem{exercise}{Aufgabe}[section]
 \theoremstyle{plain}
-\theoremprework{\bigskip\hrule\leavevmode}
+\theoremprework{\bigskip\hrule\leavevmode\nopagebreak}
 \theorempostwork{\nopagebreak\hrule\leavevmode}
 \newtheorem{proof}{Satz}[section]
 \renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}
@@ -338,7 +338,7 @@ Summe der Kantengewichte des Baumes definieren.
 
 \begin{exercise}\label{exgewicht}
 Bestimmen Sie das Gewicht dieses Baumes:\\*
-\scalebox{0.5}{\includegraphics{Exgewicht.pdf}}
+\nopagebreak\scalebox{0.5}{\includegraphics{Exgewicht.pdf}}
 \end{exercise}
 
 Somit k\"{o}nnen wir nun den zentralen Begriff dieses Textes
@@ -428,7 +428,7 @@ Gegenannahme widerlegt.
 
 \section{Der Algorithmus von Kruskal}
 
-Der erste Algorithmus den wir behandeln wurde von dem
+Der erste Algorithmus, den wir behandeln, wurde von dem
 amerikanischen Mathematiker Joseph Kruskal entwickelt und erstmals
 1956 publiziert. Der minimale Spannbaum f\"{u}r den Graphen $G(V,E)$
 wird konstruiert, indem ein Wald $W(V, E')$ von minimalen B\"{a}umen
@@ -547,7 +547,7 @@ kurz erw\"{a}hnt sein:
   verwendeten Datenstrukturen ab, weil die Auswahl- und Testschritte
   (z.B. auf geschlossene Wege in Kruskal's Algorithmus, auf
   Mitgliedschaft von Knoten in Untergraphen in Prim's Algorithmus)
-  entscheidend auf geeignete Datenrepr\"{a}sentation angewiesen sind.
+  entscheidend auf eine effiziente Datenrepr\"{a}sentation angewiesen sind.
 \item In einer Studie von mehreren Implementierungen von Kruskal's und
   Prim's Algorithmus ist der Informatiker Donald
   E. Knuth\footnote{Donald E. Knuth, \emph{The Stanford GraphBase},
@@ -558,8 +558,8 @@ kurz erw\"{a}hnt sein:
 
 \section{L\"{o}sungen}
 
-Aufgaben~\ref{exkruskal} und~\ref{exprim} endenletztendlich beide mit
-dem gleichen minimalen Spannbaum:
+Aufgaben~\ref{exkruskal} und~\ref{exprim} konstruieren letztendlich beide
+den gleichen minimalen Spannbaum:
 
 \scalebox{0.5}{\includegraphics{DemoResult.pdf}}
 
