@@ -1,0 +1,6 @@
+graph Sub1 {
+      A -- B
+      B -- C
+      C -- A
+      E -- F
+}

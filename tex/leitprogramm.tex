@@ -167,30 +167,39 @@ Graphen immer symmetrisch.
 \begin{itemize}
 \item Zeichnen Sie einen ungerichteten Graphen $G(V,E)$ mit Knoten 
 $V = \{\mathsf{A,B,C,D,E}\}$ und Kanten 
-$E = \{\mathsf{(A, B), (A, D), (C, D), (A, E)}\}$.
+$E = \{\mathsf{\{A, B\}, \{A, D\}, \{C, D\}, \{A, E\}}\}$.
 \item Konstruieren sie die Adjazenzmatrix dieses Graphen.
 \end{itemize}
 \end{exercise}
 
 \section{Zusammenh\"{a}ngende Graphen}
 
-Wenn in einem Graphen $G(V,E)$ eine Folge von Knoten $v_0, v_1,
-\ldots, v_n \in V$ existiert, die von Kanten $e_i = (v_i, v_i+1) \in
+$G(V,E)$ eine Folge von Knoten $v_0, v_1,
+\ldots, v_n \in V$ existiert, die von Kanten $e_i = \{v_i, v_i+1\} \in
 E$ verbunden werden, dann existiert ein \textbf{Weg} von $v_0$ nach
 $v_n$. 
 
 Falls ein Weg f\"{u}r \emph{jedes} Knotenpaar $v_0, v_n
 \in V$ existiert, nennen wir den Graphen \textbf{zusammenh\"{a}ngend}.
 
+Ob ein Graph zusammenh\"{a}ngend ist, l\"{a}sst sich intuitiv in der grafischen 
+Darstellung eines Graphen recht einfach verstehen: Ein Graph
+ist zusammenh\"{a}ngend, wenn alle Knoten miteinander verbunden sind. Sind
+die Knoten nicht alle miteinander verbunden, so heissen die verbundenen Teile des 
+Graphen \textbf{Komponenten}.
+
 Ein Weg $v_0\cdots{v_1}\cdots\ldots\cdots{v_0}$, der von einem Knoten
 $v_0$ wieder auf diese selbst zur\"{u}ckf\"{u}hrt, heisst
-\textbf{geschlossen}. Ein \textbf{zyklischer} Graph besteht aus einen
-geschlossenen Weg, der alle Knoten und alle Kanten enth\"{a}lt.
+\textbf{geschlossen}.
 
 \begin{exercise}
-\textcolor{red}{Irgendwelche Ideen?}
-\end{exercise}
+Welcher der folgenden Graphen ist zusammenh\"{a}ngend? Markiere bei den nicht zusammenh\"{a}ngenden Graphen die
+gr\"{o}sste Komponente.
 
+\scalebox{0.4}{\includegraphics{ConnectedComponents1.pdf}}
+\scalebox{0.4}{\includegraphics{ConnectedComponents2.pdf}}
+\scalebox{0.4}{\includegraphics{ConnectedComponents3.pdf}}
+\end{exercise}
 \section{Untergraphen}
 
 Ein Graph $U(W,F)$ ist ein \textbf{Untergraph} eines Graphen $G(V,E)$
