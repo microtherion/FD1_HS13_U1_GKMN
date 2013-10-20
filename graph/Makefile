@@ -9,7 +9,8 @@ UNDIRECTED	= Ungerichtet UngerichtetUnschlicht Sub1 Sub2 Sub3 \
 	DemoPrim1 DemoPrim2 DemoPrim3 DemoResult \
 	Baum BaumKreis BaumKreisFix BaumLoch BaumLochFix \
 	Exrep Exspan Exgewicht Exspangewicht Exspangewichtsol \
-	ConnectedComponents1 ConnectedComponents2 ConnectedComponents3
+	ConnectedComponents1 ConnectedComponents2 ConnectedComponents3 \
+	FinalExercise1 FinalExercise2 Final1_1 Final1_2 Final2
 
 DIRECTED_pdf	= $(patsubst %,%.pdf,$(DIRECTED))
 $(DIRECTED_pdf) : %.pdf : %.dot
