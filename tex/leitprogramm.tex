@@ -192,7 +192,7 @@ Ein Weg $v_0\cdots{v_1}\cdots\ldots\cdots{v_0}$, der von einem Knoten
 $v_0$ wieder auf diese selbst zur\"{u}ckf\"{u}hrt, heisst
 \textbf{geschlossen}.
 
-\begin{exercise}
+\begin{exercise}\label{exverbund}
 Welcher der folgenden Graphen ist zusammenh\"{a}ngend? Markiere bei den nicht zusammenh\"{a}ngenden Graphen die
 gr\"{o}sste Komponente.
 
@@ -205,7 +205,8 @@ gr\"{o}sste Komponente.
 Ein Graph $U(W,F)$ ist ein \textbf{Untergraph} eines Graphen $G(V,E)$
 wenn seine Knotenmenge $W$ eine Untermenge der Knotenmenge $V$ ist und
 seine Kantenmenge $F$ eine Untermenge der Kantenmenge $E$.
-
+Ein Untergraph $U(W,F)$ eines Graphen $G$ ist \textbf{spannend}, 
+wenn $W=V$. Ein spannender Untergraph muss weder zusammenh\"{a}ngend sein, noch muss jeder Knoten mit einer Kante verbunden sein.
 \begin{exercise}\label{exunter}
 Welche der folgenden drei Graphen sind Untergraphen des Graphen in
 Abschnitt~\ref{Beschreibung} ?
@@ -215,14 +216,13 @@ Abschnitt~\ref{Beschreibung} ?
 \scalebox{0.4}{\includegraphics{Sub3.pdf}}
 
 \end{exercise}
-\begin{exercise}
-\textbf{FAKULTATIV} Wie viele Untergraphen $\mathcal{U}_n$ hat ein
-\emph{vollst\"{a}ndiger} Graph 
+\begin{exercise}\label{excompletesubgraph}
+\textbf{FAKULTATIV} Ein \emph{vollst\"{a}ndiger} Graph $K_n$ ist ein Graph mit $n$ Knoten, bei welchen jedes Knotenpaar mit einer Kante verbunden ist.
 \[ 
-G(V = \{v_1, v_2, \ldots, v_n\}, E = \{(v_a, v_b) \mid v_a, v_b \in V,
+K_n(V = \{v_1, v_2, \ldots, v_n\}, E = \{\{v_a, v_b\} \mid v_a, v_b \in V,
 v_a \neq v_b\}) ?
 \] 
-Finden Sie eine rekursive Definition $\mathcal{U}_n = f(\mathcal{U}_{n-1})$.
+Wie viele spannende Untergraphen hat $K_2$? Wieviele $K_3$? Finde eine Formel, um die Anzahl Kanten von $K_n$ zu berechnen.
 \end{exercise}
 
 \newpage
@@ -276,10 +276,20 @@ f\"{u}r eine Reise.
 \end{array}
 \right)
 \end{displaymath}}
+\item[Aufgabe~\ref{exverbund}] Graph 1 ist nicht verbunden. Die 
+grösste Komponente besteht aus den  Knoten $A$, $B$ und $C$.
+Graph 2 ist verbunden. Graph 3 ist nicht verbunden. Die 
+grösste Komponente besteht aus den  Knoten $A$, $B$, $C$ und $E$.
 \item[Aufgabe~\ref{exunter}] Graphen 1 und 3 (Ein Untergraph muss
   \emph{nicht} notwendig zusammenh\"{a}ngend sein). Graph 2
   enth\"{a}lt eine Kante $(A,C)$ die im urspr\"{u}nglichen Graphen
   nicht existiert. 
+\item[Aufgabe~\ref{excompletesubgraph}] 
+Ein kompletter Graph $K_n$ hat $n(n-1)/2$ Kanten. F\"{u}r jede Kante 
+wird die Anzahl der möglichen Subgraphen verdoppelt, da die Kante 
+entweder im Subgraphen vorkommen kann oder nicht. Somit hat $K_2$ $2$
+verschiedene Subgraphen, $K_3$ hat $8$ Subgraphen, und $K_n$ hat $2^{n(n-1)/2}$
+Kanten.
 \item[Aufgabe~\ref{extravel}]\hfill\linebreak
 \begin{enumerate}
 \item Z\"{u}rich---Singapur---Sydney ($16589$ km)
@@ -372,9 +382,8 @@ Finden Sie den minimalen Spannbaum dieses Graphen:
 \item[Aufgabe~\ref{exbaum}] Der mittlere Graph war bereits ein Baum.\\*
 \scalebox{0.6}{\includegraphics{BaumLochFix.pdf}}
 \scalebox{0.6}{\includegraphics{BaumKreisFix.pdf}}
-\item[Aufgabe~\ref{exspan}] $\{(A,B), (A,D), (B,C)\}$, $\{(A,B), (A,D),
-  (D,C)\}$, $\{(A,B), (B,D), (D,C)\}$, $\{(A,D), (D,B), (B,C)\}$, $\{(A,B),
-  (B,C), (C,D)\}$, $\{(A,D), (D,C), (C,B)\}$
+\item[Aufgabe~\ref{exspan}] $\{\{A,B\}, \{A,D\}, \{B,C\}\}$, $\{\{A,B\}, \{A,D\},
+ \{C,D\}\}$, $\{\{A,B\}, \{B,C\}, \{C,D\}\}$, $\{\{A,D\}, \{B,C\}, \{C,D\}\}$
 \item[Aufgabe~\ref{exgewicht}] 15
 \item[Aufgabe~\ref{exspangewicht}]\hfill\\*
 \scalebox{0.5}{\includegraphics{Exspangewichtsol.pdf}}
@@ -432,7 +441,6 @@ gr\"{o}sser sein als das von $B$: $B'$ muss ebenfalls ein minimaler
 Spannbaum sein, und da $B'$ $e_{min}$ enth\"{a}lt, ist die
 Gegenannahme widerlegt.
 
-\textcolor{red}{Wollen wir diesen Beweis?}
 \end{proof} 
 
 \section{Der Algorithmus von Kruskal}

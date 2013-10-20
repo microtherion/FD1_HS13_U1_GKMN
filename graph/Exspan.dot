@@ -7,6 +7,5 @@ graph Exspan {
       A -- B
       A -- D
       B -- C
-      B -- D
       C -- D
 }
