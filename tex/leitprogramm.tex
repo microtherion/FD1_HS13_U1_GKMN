@@ -41,7 +41,7 @@ Arbeitsweise damit erl\"{a}utert werden.
 Die folgenden Kapitel sind zur selbstst\"{a}ndigen Bearbeitung
 gedacht. Sie werden zuerst kurz Ihre Kenntnisse von ungerichteten
 Graphen nochmals auffrischen, lernen dann die Theorie von B\"{a}umen
-und gerichteten Graphen kennen, und lernen dann zwei verschiedene
+und gewichteten Graphen kennen, und lernen dann zwei verschiedene
 Algorithmen, um einen \emph{minimalen Spannbaum} zu finden.
  
 Wenn Sie einige dieser Begriffe jetzt noch nicht verstehen, macht das
@@ -174,7 +174,7 @@ $E = \{\mathsf{\{A, B\}, \{A, D\}, \{C, D\}, \{A, E\}}\}$.
 
 \section{Zusammenh\"{a}ngende Graphen}
 
-$G(V,E)$ eine Folge von Knoten $v_0, v_1,
+Wenn in einem Graphen $G(V,E)$ eine Folge von Knoten $v_0, v_1,
 \ldots, v_n \in V$ existiert, die von Kanten $e_i = \{v_i, v_i+1\} \in
 E$ verbunden werden, dann existiert ein \textbf{Weg} von $v_0$ nach
 $v_n$. 
@@ -182,14 +182,14 @@ $v_n$.
 Falls ein Weg f\"{u}r \emph{jedes} Knotenpaar $v_0, v_n
 \in V$ existiert, nennen wir den Graphen \textbf{zusammenh\"{a}ngend}.
 
-Ob ein Graph zusammenh\"{a}ngend ist, l\"{a}sst sich intuitiv in der grafischen 
-Darstellung eines Graphen recht einfach verstehen: Ein Graph
+Ob ein Graph zusammenh\"{a}ngend ist, l\"{a}sst sich intuitiv recht
+einfach in seiner grafischen Darstellung verstehen: Ein Graph
 ist zusammenh\"{a}ngend, wenn alle Knoten miteinander verbunden sind. Sind
 die Knoten nicht alle miteinander verbunden, so heissen die verbundenen Teile des 
 Graphen \textbf{Komponenten}.
 
 Ein Weg $v_0\cdots{v_1}\cdots\ldots\cdots{v_0}$, der von einem Knoten
-$v_0$ wieder auf diese selbst zur\"{u}ckf\"{u}hrt, heisst
+$v_0$ wieder auf diesen selbst zur\"{u}ckf\"{u}hrt, heisst
 \textbf{geschlossen}.
 
 \begin{exercise}\label{exverbund}
@@ -217,7 +217,7 @@ Abschnitt~\ref{Beschreibung} ?
 
 \end{exercise}
 \begin{exercise}\label{excompletesubgraph}
-\textbf{FAKULTATIV} Ein \emph{vollst\"{a}ndiger} Graph $K_n$ ist ein Graph mit $n$ Knoten, bei welchen jedes Knotenpaar mit einer Kante verbunden ist.
+\textbf{FAKULTATIV} Ein \emph{vollst\"{a}ndiger} Graph $K_n$ ist ein Graph mit $n$ Knoten, in welchem jedes Knotenpaar mit einer Kante verbunden ist.
 \[ 
 K_n(V = \{v_1, v_2, \ldots, v_n\}, E = \{\{v_a, v_b\} \mid v_a, v_b \in V,
 v_a \neq v_b\}) ?
@@ -289,7 +289,7 @@ Ein kompletter Graph $K_n$ hat $n(n-1)/2$ Kanten. F\"{u}r jede Kante
 wird die Anzahl der möglichen Subgraphen verdoppelt, da die Kante 
 entweder im Subgraphen vorkommen kann oder nicht. Somit hat $K_2$ $2$
 verschiedene Subgraphen, $K_3$ hat $8$ Subgraphen, und $K_n$ hat $2^{n(n-1)/2}$
-Kanten.
+Subgraphen.
 \item[Aufgabe~\ref{extravel}]\hfill\linebreak
 \begin{enumerate}
 \item Z\"{u}rich---Singapur---Sydney ($16589$ km)
@@ -492,8 +492,49 @@ Ende, bis der minimale Spannbaum konstruiert ist.
  \bigskip\noindent\textsc{Beweis:} Der Beweis besteht aus zwei Teilen. Zuerst zeigen wir, dass der Algorithmus von Kruskal einen Spannbaum produziert, danach, dass dieser Spannbaum minimal ist.
  
  \begin{enumerate}
-\item \textbf{Spannbaum:} Angenommen, Graph $W=(V,E')$ ist das Resultat einer Ausf\"{u}hrung des Algorithmus von Kruskal auf dem Graphen $G=(V,E)$. Dann hat der Graph $W$ keinen geschlossenen Weg, da die Kanten im Algorithmus per Definition so gew\"{a}hlt werden, dass kein geschlossener Weg entsteht. Wenn wir beweisen k\"{o}nnen, dass Graph $W$ auch zusammenh\"{a}ngend ist, folgt daraus, dass $W$ ein Spannbaum ist. Um dies zu beweisen, nehmen wir an, dass $W$ aus zwei getrennten Komponenten $W_1$ und $W_2$ besteht. Da $G$ zusammenh\"{a}ngend ist, existiert in $G$ mindestens eine Kante von einem Knoten aus $W_1$ zu einem Knoten aus $W_2$. Dies heisst jedoch, dass der Algorithmus noch nicht fertig ist, da eine solche Kante noch nicht in $W$ liegt, und auch mit den Kanten von $E'$ keinen geschlossenen Weg bildet.
-\item \textbf{Minimalit\"{a}t:} Dieser Beweis folgt durch Induktion. Wir zeigen, dass f\"{u}r jedes $k$ zwischen 0 und der Anzahl Kanten des Spannbaums, der Graph $W_k=(V,E')$, den wir nach dem $k$-ten Schritt des Algorithmus erhalten, sich durch hinzuf\"{u}gen von Kanten zu einem minimalen Spannbaum erweitern l\"{a}sst. Da wir oben bewiesen haben, dass wir nach dem letzten Schritt des Algorithmus einen Spannbaum erhalten, w\"{u}rde dies bedeuten, dass der erhaltene Spannbaum minimal ist. Den Induktionsanfang setzen wir bei $W_0=(V,\{\})$. Dieser Graph ohne Kanten l\"{a}sst sich zu einem Minimalen Spannbaum erweitern, indem wir einfach alle Kanten eines minimalen Spannbaums hinzuf\"{u}gen. Im Satz~\ref{minimalkante} haben wir bewiesen, dass so ein minimaler Spannbaum existieren muss. F\"{u}r den Induktionsschritt nehmen wir an, dass $W_i=(V,E'_i)$ sich zu einem minimalen Spannbaum $T_i$ erweitern l\"{a}sst. Schauen wir jetzt an, was geschieht, wenn wir im $i+1$-ten Schritt $W$ um die Kante $e$ zu $W_{i+1} = W_i \cup \{e\} $ erweitern. Falls $e$ in $T_i$ vorkommt, l\"{a}sst sich auch $W_{i+1}$ zu $T_i$ erweitern, und wir sind fertig mit dem Induktionsschritt. Falls $e$ nicht in $T_i$ vorkommt, hat $T_i \cup \{e\}$ einen geschlossenen Weg. In diesem geschlossenen Weg existiert eine Kante $f \neq e$, welche in $W_i$ nicht vorkommt (Ansonsten w\"{u}rde $e$ mit $W_i$ einen geschlossenen Weg formen). Da $e$ und nicht $f$ im $i+1$-ten Schritt des Algorithmus ausgew\"{a}hlt wurde, muss das Kantengewicht von $e$ kleiner oder gleich dem Kantengewicht von $f$ sein. $T_i \cup \{e\} \setminus \{f\}$ ist somit ein Spannbaum mit einem h\"{o}chstens so hohen Kantengewicht wie $T_i$. Somit muss $T_i \cup \{e\} \setminus \{f\}$ auch ein minimaler Spannbaum sein. $W_{i+1} = W_i \cup \{e\} $ l\"{a}sst sich hinzuf\"{u}gen von Kanten zu $T_i \cup \{e\} \setminus \{f\}$ erweitern, also ist die Aussage bewiesen.
+ \item \textbf{Spannbaum:} Angenommen, Graph $W=(V,E')$ ist das
+   Resultat einer Ausf\"{u}hrung des Algorithmus von Kruskal auf dem
+   Graphen $G=(V,E)$. Dann hat der Graph $W$ keinen geschlossenen Weg,
+   da die Kanten im Algorithmus per Definition so gew\"{a}hlt werden,
+   dass kein geschlossener Weg entsteht. Wenn wir beweisen k\"{o}nnen,
+   dass Graph $W$ auch zusammenh\"{a}ngend ist, folgt daraus, dass $W$
+   ein Spannbaum ist. Um dies zu beweisen, nehmen wir an, dass $W$ aus
+   zwei getrennten Komponenten $W_1$ und $W_2$ besteht. Da $G$
+   zusammenh\"{a}ngend ist, existiert in $G$ mindestens eine Kante von
+   einem Knoten aus $W_1$ zu einem Knoten aus $W_2$. Dies heisst
+   jedoch, dass der Algorithmus noch nicht fertig ist, da eine solche
+   Kante noch nicht in $W$ liegt, und auch mit den Kanten von $E'$
+   keinen geschlossenen Weg bildet.
+\item \textbf{Minimalit\"{a}t:} Dieser Beweis folgt durch
+  Induktion. Wir zeigen, dass f\"{u}r jedes $k$ zwischen 0 und der
+  Anzahl Kanten des Spannbaums, der Graph $W_k=(V,E')$, den wir nach
+  dem $k$-ten Schritt des Algorithmus erhalten, sich durch
+  hinzuf\"{u}gen von Kanten zu einem minimalen Spannbaum erweitern
+  l\"{a}sst. Da wir oben bewiesen haben, dass wir nach dem letzten
+  Schritt des Algorithmus einen Spannbaum erhalten, w\"{u}rde dies
+  bedeuten, dass der erhaltene Spannbaum minimal ist. Den
+  Induktionsanfang setzen wir bei $W_0=(V,\{\})$. Dieser Graph ohne
+  Kanten l\"{a}sst sich zu einem minimalen Spannbaum erweitern, indem
+  wir einfach alle Kanten eines minimalen Spannbaums
+  hinzuf\"{u}gen. Im Satz~\ref{minimalkante} haben wir bewiesen, dass
+  so ein minimaler Spannbaum existieren muss. F\"{u}r den
+  Induktionsschritt nehmen wir an, dass $W_i=(V,E'_i)$ sich zu einem
+  minimalen Spannbaum $T_i$ erweitern l\"{a}sst. Schauen wir jetzt an,
+  was geschieht, wenn wir im $i+1$-ten Schritt $W$ um die Kante $e$ zu
+  $W_{i+1} = W_i \cup \{e\} $ erweitern. Falls $e$ in $T_i$ vorkommt,
+  l\"{a}sst sich auch $W_{i+1}$ zu $T_i$ erweitern, und wir sind
+  fertig mit dem Induktionsschritt. Falls $e$ nicht in $T_i$ vorkommt,
+  hat $T_i \cup \{e\}$ einen geschlossenen Weg. In diesem
+  geschlossenen Weg existiert eine Kante $f \neq e$, welche in $W_i$
+  nicht vorkommt (Ansonsten w\"{u}rde $e$ mit $W_i$ einen
+  geschlossenen Weg formen). Da $e$ und nicht $f$ im $i+1$-ten Schritt
+  des Algorithmus ausgew\"{a}hlt wurde, muss das Kantengewicht von $e$
+  kleiner oder gleich dem Kantengewicht von $f$ sein. $T_i \cup \{e\}
+  \setminus \{f\}$ ist somit ein Spannbaum mit einem h\"{o}chstens so
+  hohen Kantengewicht wie $T_i$. Somit muss $T_i \cup \{e\} \setminus
+  \{f\}$ auch ein minimaler Spannbaum sein. $W_{i+1} = W_i \cup \{e\}
+  $ l\"{a}sst sich durch hinzuf\"{u}gen von Kanten zu $T_i \cup \{e\}
+  \setminus \{f\}$ erweitern, also ist die Aussage bewiesen.
 \end{enumerate}
 
  \end{proof}
@@ -562,16 +603,6 @@ der effizienteste ist. Leider w\"{u}rde eine umfassende Erforschung dieser
 Frage den Rahmen dieses Textes bei weitem sprengen, deshalb soll nur
 kurz erw\"{a}hnt sein:
 
-\begin{exercise}\label{exfinal1}
-Berechnen Sie den minimalen Spannb\"{a}ums f\"{u}r den folgenden Graphen.
-
-\scalebox{0.6}{\includegraphics{FinalExercise1.pdf}}
-\end{exercise}
-\begin{exercise}\label{exfinal2}
-Berechnen Sie den minimalen Spannb\"{a}ums f\"{u}r den folgenden Graphen.
-\scalebox{0.6}{\includegraphics{FinalExercise2.pdf}}
-\end{exercise}
-
 \begin{itemize}
 \item Da alle Algorithmen hier optimale L\"{o}sungen finden,
   unterscheidet sich die Qualit\"{a}t der Resultate nicht.
@@ -589,18 +620,32 @@ Berechnen Sie den minimalen Spannb\"{a}ums f\"{u}r den folgenden Graphen.
   wesentlich voneinander unterscheidet.
 \end{itemize}
 
+\begin{exercise}\label{exfinal1}
+Berechnen Sie die minimalen Spannb\"{a}ume f\"{u}r den folgenden
+Graphen.
+
+\scalebox{0.6}{\includegraphics{FinalExercise1.pdf}}
+\end{exercise}
+\begin{exercise}\label{exfinal2}
+Berechnen Sie den minimalen Spannbaum f\"{u}r den folgenden Graphen.
+
+\scalebox{0.6}{\includegraphics{FinalExercise2.pdf}}
+\end{exercise}
+
 \section{L\"{o}sungen}
 
-Aufgaben~\ref{exkruskal} und~\ref{exprim} konstruieren letztendlich beide
-den gleichen minimalen Spannbaum:
-\scalebox{0.5}{\includegraphics{DemoResult.pdf}}
-
 \begin{description}
-\item[Aufgabe~\ref{exfinal1}]
+\item[Aufgaben~\ref{exkruskal} und~\ref{exprim}] konstruieren letztendlich beide
+den gleichen minimalen Spannbaum:
+
+\scalebox{0.5}{\includegraphics{DemoResult.pdf}}
+\item[Aufgabe~\ref{exfinal1}]\hfill\\*
+
 \scalebox{0.5}{\includegraphics{Final1_1.pdf}}
 \scalebox{0.5}{\includegraphics{Final1_2.pdf}}
-\item[Aufgabe~\ref{exfinal2}]
-\scalebox{0.8}{\includegraphics{Final2.pdf}}
+\item[Aufgabe~\ref{exfinal2}]\hfill\\*
+
+\scalebox{0.6}{\includegraphics{Final2.pdf}}
 \end{description}
 \pagebreak
 
