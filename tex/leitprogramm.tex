@@ -563,7 +563,7 @@ sukzessive durch Hinzuf\"{u}gen minimaler Kanten erweitert:
   Anfangszustand f\"{u}r $B$: $V_B \gets \{v_0\}$, $E_B \gets \{\})$.
 \item Solange $V_B\neq V$:
 \begin{enumerate}
-\item W\"{a}hlen Sie unter den Kanten $\{e = (u,v)\mid u\in V_B, v\in
+\item \label{primsel} W\"{a}hlen Sie unter den Kanten $\{e = (u,v)\mid u\in V_B, v\in
   (V\!\setminus\!V_B)\}$ die Kante $e_i= (u_i,v_i)$ mit dem kleinsten
 Kantengewicht aus.
 \item F\"{u}gen Sie die Kante und ihren Endpunkt zu $B$ hinzu: $V_B \gets
@@ -592,7 +592,26 @@ Ende, bis der minimale Spannbaum konstruiert ist.
 \begin{proof}\label{primproof}Der Algorithmus von Prim konstruiert
   einen minimalen Spannbaum.
 
-\textcolor{red}{Beweis ist etwas komplex. Wollen wir ihn?}
+ \bigskip\noindent\textsc{Beweis:} Es ist leicht zu sehen, dass der
+ Algorithmus einen Spannbaum $T$ konstruiert: In jedem Schritt wird
+ $V_B$ um genau einen Knoten und $E_B$ um genau eine Kante
+ erweitert. Der Algorithmus konstruiert also einen Graphen mit $V_B =
+ V$ und $\textrm{(Anzahl Kanten)} = \textrm{(Anzahl Knoten)}-1$, was
+ der Definition eines Spannbaums entspricht.
+
+ Es bleibt noch zu zeigen, dass $T$ minimal ist: Wir wissen, dass
+ mindestens ein minimaler Spannbaum, nennen wir ihn $T'$, existieren
+ muss. Wenn $T' \neq T$, w\"{a}hlen wir die erste Kante $e_k = (u,v)$
+ aus Schritt~2.1 des Algorithmus aus, die nicht in $T'$
+ enthalten ist. Es muss also in $T'$ einen anderen Weg von $u$ nach
+ $v$ geben, und daraus w\"{a}hlen wir eine Kante $e' = (u',v'), u'
+ \in V_{B k}, v' \in (V\!\setminus\!V_{B k})$ aus. Das Gewicht von
+ $e'$ kann nicht kleiner sein als das von $e_k$, weil sonst im Schritt
+ $k$ die Kante $e'$ gew\"{a}hlt worden w\"{a}re. Wenn wir also $e'$
+ durch $e_k$ ersetzen, wird das Gewicht des resultierenden Baums nicht
+ gr\"{o}sser, und diese Ersetzungen k\"{o}nnen wiederholt werden, bis
+ $T' = T$.
+
 \end{proof}
 
 \section{Schlussbetrachtung: Wer Gewinnt?}
