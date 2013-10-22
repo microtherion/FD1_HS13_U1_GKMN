@@ -9,7 +9,11 @@ digraph C {
 	"Weg" -> "geschlossen";
 	"zusammenhängend" -> "Komponenten";	
 	"zusammenhängend" -> "Baum";
+	"zusammenhängend" -> "gewichtet" [style="invis"];
+	"zusammenhängend" -> "schlicht" [style="invis"];
 	"Graph" -> "gewichtet";
+	"Knoten" -> "knotengewichtet";
+	"Kante" -> "kantengewichtet";
 	"gewichtet" -> "knotengewichtet";
 	"gewichtet" -> "kantengewichtet";
 	"Knoten" -> "Untergraph";
@@ -19,6 +23,7 @@ digraph C {
 	"Baum" -> "Wald";
 	"Komponenten" -> "Wald";
 	"Baum" -> "Gewicht";
+	"Gewicht" [label="Baumgewicht"];
 	"Gewicht" -> "Minimaler Spannbaum";
 	"Spannbaum" -> "Minimaler Spannbaum";
 	"kantengewichtet" -> "Gewicht";
@@ -31,4 +36,9 @@ digraph C {
 	"gierig" -> "Prim";
 	"Hilfssatz" -> "Kruskal";
 	"Hilfssatz" -> "Prim";
+
+	subgraph clusterVorkenntnisse {
+		 graph [bgcolor="grey89"];
+		 "Graph"; "Knoten"; "Kante"; "gerichtet"; "ungerichtet"; "Weg"; "zusammenhängend"; "geschlossen"; "Untergraph";
+	}
 }
