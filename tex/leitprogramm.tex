@@ -509,14 +509,14 @@ Hier soll ein einfaches Beispiel graphisch illustriert werden:
 
 \algostep{Demo.pdf}{Der Anfangszustand, $E' = \{\}$}
 \algostep{DemoKruskal1.pdf}{Schritt $1$: Eine der beiden Kanten mit Gewicht $5$
-  (egal welche) wurde hinzugef\"ugt: $E' = \{(A,D)\}$}
+  (egal welche) wurde hinzugef\"ugt: $E' = \{\mathbf{(A,D)}\}$}
 \algostep{DemoKruskal2.pdf}{Schritt $2$: Die n\"{a}chstk\"{u}rzere
-  Kante wurde hinzugef\"ugt: $E' = \{(A,D), (C,E)\}$}
+  Kante wurde hinzugef\"ugt: $E' = \{(A,D), \mathbf{(C,E)}\}$}
 \algostep{DemoKruskal3.pdf}{Schritt $4$: Nachdem zwei weitere Kanten
   hinzugef\"ugt wurden, wird jetzt klar, dass die Kante $(B,C)$ nie
   mehr hinzugef\"ugt werden wird, weil sie mit $(B,E)$ und $(C,E)$
-  einen geschlossenen Weg bilden w\"{u}rde. $E' = \{(A,D), (B,E),
-  (C,E), (D,F)\}$}
+  einen geschlossenen Weg bilden w\"{u}rde. $E' = \{(A,D), \mathbf{(B,E)},
+  (C,E), \mathbf{(D,F)}\}$}
 
 \newpage
 \begin{exercise}\label{exkruskal}
@@ -544,11 +544,11 @@ Ende, bis der minimale Spannbaum konstruiert ist.
    Kante noch nicht in $W$ liegt, und auch mit den Kanten von $E'$
    keinen geschlossenen Weg bildet.
 \item \textbf{Minimalit\"{a}t:} Dieser Beweis folgt durch
-  Induktion. Wir zeigen, dass f\"{u}r jedes $k$ zwischen 0 und der
-  Anzahl Kanten des Spannbaums, der Graph $W_k=(V,E')$, den wir nach
-  dem $k$-ten Schritt des Algorithmus erhalten, sich durch
-  hinzuf\"{u}gen von Kanten zu einem minimalen Spannbaum erweitern
-  l\"{a}sst. Da wir oben bewiesen haben, dass wir nach dem letzten
+  Induktion. Wir betrachten jeden Schritt $k$ zwischen $0$ und der
+  Anzahl Kanten des Spannbaums. Wir zeigen dann, dass der Graph $W_k=(V,E')$, den wir nach
+  dem $k$-ten Schritt des Algorithmus erhalten, ein Subgraph eines
+  minimalen Spannbaums ist.
+  Da wir oben bewiesen haben, dass wir nach dem letzten
   Schritt des Algorithmus einen Spannbaum erhalten, w\"{u}rde dies
   bedeuten, dass der erhaltene Spannbaum minimal ist. Den
   Induktionsanfang setzen wir bei $W_0=(V,\{\})$. Dieser Graph ohne
@@ -556,22 +556,22 @@ Ende, bis der minimale Spannbaum konstruiert ist.
   wir einfach alle Kanten eines minimalen Spannbaums
   hinzuf\"{u}gen. Im Satz~\ref{minimalkante} haben wir bewiesen, dass
   so ein minimaler Spannbaum existieren muss. F\"{u}r den
-  Induktionsschritt nehmen wir an, dass $W_i=(V,E'_i)$ sich zu einem
-  minimalen Spannbaum $T_i$ erweitern l\"{a}sst. Schauen wir jetzt an,
-  was geschieht, wenn wir im $i+1$-ten Schritt $W$ um die Kante $e$ zu
-  $W_{i+1} = W_i \cup \{e\} $ erweitern. Falls $e$ in $T_i$ vorkommt,
-  l\"{a}sst sich auch $W_{i+1}$ zu $T_i$ erweitern, und wir sind
-  fertig mit dem Induktionsschritt. Falls $e$ nicht in $T_i$ vorkommt,
-  hat $T_i \cup \{e\}$ einen geschlossenen Weg. In diesem
-  geschlossenen Weg existiert eine Kante $f \neq e$, welche in $W_i$
-  nicht vorkommt (Ansonsten w\"{u}rde $e$ mit $W_i$ einen
-  geschlossenen Weg formen). Da $e$ und nicht $f$ im $i+1$-ten Schritt
-  des Algorithmus ausgew\"{a}hlt wurde, muss das Kantengewicht von $e$
-  kleiner oder gleich dem Kantengewicht von $f$ sein. $T_i \cup \{e\}
+  Induktionsschritt nehmen wir an, dass $W_k=(V,E'_k)$ sich zu einem
+  minimalen Spannbaum $T_k$ erweitern l\"{a}sst. Schauen wir jetzt an,
+  was geschieht, wenn wir im $k+1$-ten Schritt $W$ um die Kante $e_{k+1}$ zu
+  $W_{k+1} = W_k \cup \{e_{k+1}\} $ erweitern. Falls $e_{k+1}$ in $T_k$ vorkommt,
+  l\"{a}sst sich auch $W_{k+1}$ zu $T_k$ erweitern, und wir sind
+  fertig mit dem Induktionsschritt. Falls $e_{k+1}$ nicht in $T_k$ vorkommt,
+  hat $T_k \cup \{e_{k+1}\}$ einen geschlossenen Weg. In diesem
+  geschlossenen Weg existiert eine Kante $f \neq e_{k+1}$, welche in $W_k$
+  nicht vorkommt (Ansonsten w\"{u}rde $e_{k+1}$ mit $W_k$ einen
+  geschlossenen Weg formen). Da $e_{k+1}$ und nicht $f$ im $k+1$-ten Schritt
+  des Algorithmus ausgew\"{a}hlt wurde, muss das Kantengewicht von $e_{k+1}$
+  kleiner oder gleich dem Kantengewicht von $f$ sein. $T_k \cup \{e_{k+1}\}
   \setminus \{f\}$ ist somit ein Spannbaum mit einem h\"{o}chstens so
-  hohen Kantengewicht wie $T_i$. Somit muss $T_i \cup \{e\} \setminus
-  \{f\}$ auch ein minimaler Spannbaum sein. $W_{i+1} = W_i \cup \{e\}
-  $ l\"{a}sst sich durch hinzuf\"{u}gen von Kanten zu $T_i \cup \{e\}
+  hohen Kantengewicht wie $T_k$. Somit muss $T_k \cup \{e_{k+1}\} \setminus
+  \{f\}$ auch ein minimaler Spannbaum sein. $W_{k+1} = W_k \cup \{e_{k+1}\}
+  $ l\"{a}sst sich durch hinzuf\"{u}gen von Kanten zu $T_k \cup \{e_{k+1}\}
   \setminus \{f\}$ erweitern, also ist die Aussage bewiesen.
 \end{enumerate}
 
@@ -633,7 +633,8 @@ Ende, bis der minimale Spannbaum konstruiert ist.
  \bigskip\noindent\textsc{Beweis:} Es ist leicht zu sehen, dass der
  Algorithmus einen Spannbaum $T$ konstruiert: In jedem Schritt wird
  $V_B$ um genau einen Knoten und $E_B$ um genau eine Kante
- erweitert. Der Algorithmus konstruiert also einen Graphen mit $V_B =
+ erweitert, die den Knoten mit dem bestehenden Graphen verbindet. Der
+ Algorithmus konstruiert also einen zusammenh\"{a}ngenden Graphen mit $V_B =
  V$ und $\textrm{(Anzahl Kanten)} = \textrm{(Anzahl Knoten)}-1$, was
  der Definition eines Spannbaums entspricht.
 
@@ -642,8 +643,10 @@ Ende, bis der minimale Spannbaum konstruiert ist.
  muss. Wenn $T' \neq T$, w\"{a}hlen wir die erste Kante $e_k = (u,v)$
  aus Schritt~2.1 des Algorithmus aus, die nicht in $T'$
  enthalten ist. Es muss also in $T'$ einen anderen Weg von $u$ nach
- $v$ geben, und daraus w\"{a}hlen wir eine Kante $e' = (u',v'), u'
- \in V_{B k}, v' \in (V\!\setminus\!V_{B k})$ aus. Das Gewicht von
+ $v$ geben, und daraus w\"{a}hlen wir eine Kante aus, die die bereits
+ in vorherigen Schritten gew\"{a}hlten Knoten $V_B^{k-1}$ mit den noch
+ nicht gew\"{a}hlten Knoten verbindet: $e' = (u',v'), u'
+ \in V_B^{k-1}, v' \in (V\!\setminus\!V_B^{k=1})$. Das Gewicht von
  $e'$ kann nicht kleiner sein als das von $e_k$, weil sonst im Schritt
  $k$ die Kante $e'$ gew\"{a}hlt worden w\"{a}re. Wenn wir also $e'$
  durch $e_k$ ersetzen, wird das Gewicht des resultierenden Baums nicht
