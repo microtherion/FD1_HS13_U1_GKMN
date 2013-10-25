@@ -1,0 +1,10 @@
+graph {
+      A -- B[style="invis"];
+      B -- C;
+      C -- D;
+      A -- E;
+      E -- F[style="invis"];
+      F -- D;
+      E -- C;
+      B -- F[style="invis"];
+}
