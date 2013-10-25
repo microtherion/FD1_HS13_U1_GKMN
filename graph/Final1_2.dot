@@ -2,8 +2,11 @@ graph Demo {
       node [height=0.25,width=0.25,fixedsize=true]
       A -- B [label="4"]
       A -- E [label="8"]
+      B -- E [label="10", style="invis"]
       B -- D [label="3"]
       B -- C [label="5"]
+      C -- F [label="8", style="invis"]
       E -- F [label="8"]
       E -- G [label="2"]
+      F -- G [label="11", style="invis"] 
 }

@@ -1,9 +1,14 @@
 graph Demo {
       node [height=0.25,width=0.25,fixedsize=true]
+      A -- B [label="8", style="invis"]
       A -- D [label="4"]
+      B -- C [label="8", style="invis"]
+      B -- D [label="12", style="invis"]
       B -- F [label="6"]
       C -- F [label="5"]
+      D -- E [label="15", style="invis"]
       D -- F [label="7"]
       E -- G [label="9"]
       E -- F [label="1"]
+      F -- G [label="11", style="invis"]
 }
