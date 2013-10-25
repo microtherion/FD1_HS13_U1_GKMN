@@ -565,13 +565,12 @@ Ende, bis der minimale Spannbaum konstruiert ist.
   Da wir oben bewiesen haben, dass wir nach dem letzten
   Schritt des Algorithmus einen Spannbaum erhalten, w\"{u}rde dies
   bedeuten, dass der erhaltene Spannbaum minimal ist. Den
-  Induktionsanfang setzen wir bei $W_0=(V,\{\})$. Dieser Graph ohne
-  Kanten l\"{a}sst sich zu einem minimalen Spannbaum erweitern, indem
-  wir einfach alle Kanten eines minimalen Spannbaums
-  hinzuf\"{u}gen. Im Satz~\ref{minimalkante} haben wir bewiesen, dass
-  so ein minimaler Spannbaum existieren muss. F\"{u}r den
-  Induktionsschritt nehmen wir an, dass $W_k=(V,E'_k)$ sich zu einem
-  minimalen Spannbaum $T_k$ erweitern l\"{a}sst. Schauen wir jetzt an,
+  Induktionsanfang setzen wir bei $W_0=(V,\{\})$. Dieser Graph ist
+  offensichtlich ein Subgraph eines minimalen Spannbaums, da er
+  mit dem minimalen Spannbaum knotengleich ist, und die Kantenmenge
+  von $W_0$ leer ist, und somit Teilmenge jeder beliebigen Kantenmenge. F\"{u}r den
+  Induktionsschritt nehmen wir an, dass $W_k=(V,E'_k)$ ein Subgraph des 
+  minimalen Spannbaum $T_k$ ist. Schauen wir jetzt an,
   was geschieht, wenn wir im $k+1$-ten Schritt $W$ um die Kante $e_{k+1}$ zu
   $W_{k+1} = W_k \cup \{e_{k+1}\} $ erweitern. Falls $e_{k+1}$ in $T_k$ vorkommt,
   l\"{a}sst sich auch $W_{k+1}$ zu $T_k$ erweitern, und wir sind
@@ -583,10 +582,10 @@ Ende, bis der minimale Spannbaum konstruiert ist.
   des Algorithmus ausgew\"{a}hlt wurde, muss das Kantengewicht von $e_{k+1}$
   kleiner oder gleich dem Kantengewicht von $f$ sein. $T_k \cup \{e_{k+1}\}
   \setminus \{f\}$ ist somit ein Spannbaum mit einem h\"{o}chstens so
-  hohen Kantengewicht wie $T_k$. Somit muss $T_k \cup \{e_{k+1}\} \setminus
-  \{f\}$ auch ein minimaler Spannbaum sein. $W_{k+1} = W_k \cup \{e_{k+1}\}
-  $ l\"{a}sst sich durch hinzuf\"{u}gen von Kanten zu $T_k \cup \{e_{k+1}\}
-  \setminus \{f\}$ erweitern, also ist die Aussage bewiesen.
+  hohen Kantengewicht wie $T_k$. Also muss $T_k \cup \{e_{k+1}\} \setminus
+  \{f\}$ auch ein minimaler Spannbaum sein. Da $W_{k+1} = W_k \cup \{e_{k+1}\}
+  $ ein Subgraph von $T_k \cup \{e_{k+1}\}
+  \setminus \{f\}$ ist, haben wir die Aussage bewiesen.
 \end{enumerate}
 
  \end{proof}
