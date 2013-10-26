@@ -200,6 +200,8 @@ gr\"{o}sste Komponente.
 \scalebox{0.4}{\includegraphics{ConnectedComponents2.pdf}}
 \scalebox{0.4}{\includegraphics{ConnectedComponents3.pdf}}
 \end{exercise}
+
+\newpage
 \section{Untergraphen}
 
 Ein Graph $U(W,F)$ ist ein \textbf{Untergraph} eines Graphen $G(V,E)$
@@ -359,6 +361,7 @@ sie ebenfalls zu B\"{a}umen werden.
 
 \end{exercise}
 
+\newpage
 \begin{proof}
 Ein Baum mit $n$ Knoten hat exakt $n-1$ Kanten.
 
@@ -385,6 +388,7 @@ Z\"{a}hlen Sie alle m\"{o}glichen Spannb\"{a}ume dieses Graphen auf:\\*
 \scalebox{0.5}{\includegraphics{Exspan.pdf}}
 \end{exercise}
 
+\newpage
 \section{Minimale Spannb\"{a}ume}
 
 Wenn wir jetzt wieder an das in Kapitel~\ref{gewichtet}
@@ -428,21 +432,22 @@ Finden Sie den minimalen Spannbaum dieses Graphen:
 
 \end{description}
 
+\newpage
 \section{Kapiteltest}
 \begin{exercise}
 Gegeben sei folgender Graph $G$:
 
-\scalebox{0.6}{\includegraphics{KapiteltestSubgraph.pdf}}\\*
+\scalebox{0.5}{\includegraphics{KapiteltestSubgraph.pdf}}\\*
 Welche der folgenden Graphen sind B\"{a}ume, welche sind Spannb\"{a}ume von $G$?
 
-\scalebox{0.6}{\includegraphics{KapiteltestSubgraph1.pdf}}
-\scalebox{0.6}{\includegraphics{KapiteltestSubgraph2.pdf}}
-\scalebox{0.6}{\includegraphics{KapiteltestSubgraph3.pdf}}
+\scalebox{0.5}{\includegraphics{KapiteltestSubgraph1.pdf}}
+\scalebox{0.5}{\includegraphics{KapiteltestSubgraph2.pdf}}
+\scalebox{0.5}{\includegraphics{KapiteltestSubgraph3.pdf}}
 \end{exercise}
 \begin{exercise}
 Zeichne alle minimalen Spannb\"{a}ume dieses Graphen auf:
 
-\scalebox{0.6}{\includegraphics{KapiteltestMST.pdf}}
+\scalebox{0.5}{\includegraphics{KapiteltestMST.pdf}}
 \end{exercise}
 
 \chapter{Algorithmen}
@@ -570,7 +575,7 @@ sukzessive durch Hinzuf\"{u}gen minimaler Kanten erweitert:
   (V\!\setminus\!V_B)\}$ die Kante $e_i= \{u_i,v_i\}$ mit dem kleinsten
 Kantengewicht aus.
 \item F\"{u}gen Sie die Kante und ihren Endpunkt zu $B$ hinzu: $V_B \gets
-  V_B+\{v_i\}$, $E_B \gets E_B+\{e_{min}\}$.
+  V_B+\{v_i\}$, $E_B \gets E_B+\{e_i\}$.
 \end{enumerate}
 \end{enumerate}
 
@@ -595,6 +600,7 @@ F\"{u}hren Sie den Algorithmus von Prim im vorstehenden Beispiel zu
 Ende, bis der minimale Spannbaum konstruiert ist.
 \end{exercise}
 
+\newpage
 \section{Schlussbetrachtung: Wer Gewinnt?}
 
 Wenn mehrere verschiedene Algorithmen zur L\"{o}sung eines Problems
@@ -620,6 +626,7 @@ kurz erw\"{a}hnt sein:
   wesentlich voneinander unterscheidet.
 \end{itemize}
 
+\newpage
 \begin{exercise}\label{exfinal1}
 Berechnen Sie die minimalen Spannb\"{a}ume f\"{u}r den folgenden
 Graphen.
@@ -632,6 +639,7 @@ Berechnen Sie den minimalen Spannbaum f\"{u}r den folgenden Graphen.
 \scalebox{0.6}{\includegraphics{FinalExercise2.pdf}}
 \end{exercise}
 
+\newpage
 \section{L\"{o}sungen}
 
 \begin{description}
@@ -786,6 +794,7 @@ SIR & 156 &  94 & 148 &  65 &  80 & 176 & 116 & 203 & 126 & 101 &  62 &  77 & 10
 
  \end{proof}
 
+\newpage
 \section{Algorithmus von Prim}
 
 \begin{proof}\label{primproof}Der Algorithmus von Prim konstruiert
