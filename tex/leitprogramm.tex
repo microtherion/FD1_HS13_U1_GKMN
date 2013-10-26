@@ -282,7 +282,7 @@ Graph 2 ist verbunden. Graph 3 ist nicht verbunden. Die
 grösste Komponente besteht aus den  Knoten $A$, $B$, $C$ und $E$.
 \item[Aufgabe~\ref{exunter}] Graphen 1 und 3 (Ein Untergraph muss
   \emph{nicht} notwendig zusammenh\"{a}ngend sein). Graph 2
-  enth\"{a}lt eine Kante $(A,C)$ die im urspr\"{u}nglichen Graphen
+  enth\"{a}lt eine Kante $\{A,C\}$ die im urspr\"{u}nglichen Graphen
   nicht existiert. 
 \item[Aufgabe~\ref{excompletesubgraph}] 
 Ein kompletter Graph $K_n$ hat $n(n-1)/2$ Kanten. F\"{u}r jede Kante 
@@ -292,7 +292,7 @@ verschiedene Subgraphen, $K_3$ hat $8$ Subgraphen, und $K_n$ hat $2^{n(n-1)/2}$
 Subgraphen.
 \item[Aufgabe~\ref{extravel}]\hfill\linebreak
 \begin{enumerate}
-\item Z\"{u}rich---Singapur---Sydney ($16589$ km)
+\item Z\"{u}rich---Singapur---Sydney (16589 km)
 \item Z\"{u}rich---Moskau---Ulan Bator---Sydney (Fr. 3400.-)
 \end{enumerate}
 \end{description}
@@ -476,7 +476,7 @@ garantieren k\"{o}nnen:
   Es sei $G(V,E)$ ein kantenbewerteter
   zusammenh\"{a}ngender Graph. $U$ sei eine Teilmenge der Knoten $V$ und
   $e_{min}$ die Kante mit dem kleinsten Gewicht in der Kantenmenge
-  $\{e=(u,v) \mid e\in E, u\in U, v\in (V\!\setminus\!U) \}$. Dann existiert ein
+  $\{e=\{u,v\} \mid e\in E, u\in U, v\in (V\!\setminus\!U) \}$. Dann existiert ein
   minimaler Spannbaum von $G$, der $e_{min}$ enth\"{a}lt.
 
  \bigskip\noindent\textsc{Beweis:} Nehmen wir das Gegenteil an: $e_{min}$
@@ -484,11 +484,11 @@ liegt in \emph{keinem} minimalen Spannbaum von $G$. Wenn wir dann $B$,
 einen beliebigen minimalen Spannbaum von $G$, nehmen und $e_{min}$ in $B$
 einf\"{u}gen, erh\"{a}lt man einen geschlossenen Weg $W$ in $B$, der
 $e_{min}$ enth\"{a}lt. Da $W$ Knoten sowohl aus $U$ als auch aus
-$V\!\setminus\!U$ enth\"{a}lt, muss $W$ eine andere Kante $(u', v')$
+$V\!\setminus\!U$ enth\"{a}lt, muss $W$ eine andere Kante $\{u', v'\}$
 enthalten, in der $u' \in U, v'\in (V\!\setminus\!U)$ sind. Wenn man
-dann $(u',v')$ aus $B$ entfernt, bleibt der entstehende Baum $B'$ ein Spannbaum, und da nach
+dann $\{u',v'\}$ aus $B$ entfernt, bleibt der entstehende Baum $B'$ ein Spannbaum, und da nach
 Definition das Gewicht von $e_{min}$ nicht gr\"{o}sser sein kann als
-das von $(u',v')$, kann auch das Gewicht von $B'$ nicht
+das von $\{u',v'\}$, kann auch das Gewicht von $B'$ nicht
 gr\"{o}sser sein als das von $B$: $B'$ muss ebenfalls ein minimaler
 Spannbaum sein, und da $B'$ $e_{min}$ enth\"{a}lt, ist die
 Gegenannahme widerlegt.
@@ -523,14 +523,14 @@ Hier soll ein einfaches Beispiel graphisch illustriert werden:
 
 \algostep{Demo.pdf}{Der Anfangszustand, $E' = \{\}$}
 \algostep{DemoKruskal1.pdf}{Schritt $1$: Eine der beiden Kanten mit Gewicht $5$
-  (egal welche) wurde hinzugef\"ugt: $E' = \{\mathbf{(A,D)}\}$}
+  (egal welche) wurde hinzugef\"ugt: $E' = \{\mathbf{\{A,D\}}\}$}
 \algostep{DemoKruskal2.pdf}{Schritt $2$: Die n\"{a}chstk\"{u}rzere
-  Kante wurde hinzugef\"ugt: $E' = \{(A,D), \mathbf{(C,E)}\}$}
+  Kante wurde hinzugef\"ugt: $E' = \{\{A,D\}, \mathbf{\{C,E\}}\}$}
 \algostep{DemoKruskal3.pdf}{Schritt $4$: Nachdem zwei weitere Kanten
-  hinzugef\"ugt wurden, wird jetzt klar, dass die Kante $(B,C)$ nie
-  mehr hinzugef\"ugt werden wird, weil sie mit $(B,E)$ und $(C,E)$
-  einen geschlossenen Weg bilden w\"{u}rde. $E' = \{(A,D), \mathbf{(B,E)},
-  (C,E), \mathbf{(D,F)}\}$}
+  hinzugef\"ugt wurden, wird jetzt klar, dass die Kante $\{B,C\}$ nie
+  mehr hinzugef\"ugt werden wird, weil sie mit $\{B,E\}$ und $\{C,E\}$
+  einen geschlossenen Weg bilden w\"{u}rde. $E' = \{\{A,D\}, \mathbf{\{B,E\}},
+  \{C,E\}, \mathbf{\{D,F\}}\}$}
 
 \newpage
 \begin{exercise}\label{exkruskal}
@@ -614,8 +614,8 @@ sukzessive durch Hinzuf\"{u}gen minimaler Kanten erweitert:
   Anfangszustand f\"{u}r $B$: $V_B \gets \{v_0\}$, $E_B \gets \{\})$.
 \item Solange $V_B\neq V$:
 \begin{enumerate}
-\item \label{primsel} W\"{a}hlen Sie unter den Kanten $\{e = (u,v)\mid u\in V_B, v\in
-  (V\!\setminus\!V_B)\}$ die Kante $e_i= (u_i,v_i)$ mit dem kleinsten
+\item \label{primsel} W\"{a}hlen Sie unter den Kanten $\{e = \{u,v\}\mid u\in V_B, v\in
+  (V\!\setminus\!V_B)\}$ die Kante $e_i= \{u_i,v_i\}$ mit dem kleinsten
 Kantengewicht aus.
 \item F\"{u}gen Sie die Kante und ihren Endpunkt zu $B$ hinzu: $V_B \gets
   V_B+\{v_i\}$, $E_B \gets E_B+\{e_{min}\}$.
@@ -626,14 +626,14 @@ Kantengewicht aus.
 Auch hier werden wir das gleiche Beispiel illustrieren:
 
 \algostep{DemoPrim1.pdf}{Der Anfangszustand, $V_B = \{A\}$ (beliebige
-  Wahl), $E_B = \{\}$. M\"{o}gliche Erweiterungskanten sind $(A,B)$
-  und $(A,D)$; letztere hat das kleinere Kantengewicht.}
-\algostep{DemoPrim2.pdf}{Schritt $1$: $(A,D)$ bzw. $D$ wurden
-  hinzugef\"{u}gt. $V_B = \{A,D\}, E_B=\{(A,D)\}$. Nun ist $(D,F)$ die
+  Wahl), $E_B = \{\}$. M\"{o}gliche Erweiterungskanten sind $\{A,B\}$
+  und $\{A,D\}$; letztere hat das kleinere Kantengewicht.}
+\algostep{DemoPrim2.pdf}{Schritt $1$: $\{A,D\}$ bzw. $D$ wurden
+  hinzugef\"{u}gt. $V_B = \{A,D\}, E_B=\{\{A,D\}\}$. Nun ist $\{D,F\}$ die
   beste Erweiterungskante.}
-\algostep{DemoPrim3.pdf}{Schritt $2$: $(D,F)$ bzw. $F$ wurden 
- hinzugef\"{u}gt. $V_B = \{A,D,F\}, E_B=\{(A,D), (D,F)\}$. Nun kommt
- endlich $(A,B)$ als Erweiterungskante zum Zug.}
+\algostep{DemoPrim3.pdf}{Schritt $2$: $\{D,F\}$ bzw. $F$ wurden 
+ hinzugef\"{u}gt. $V_B = \{A,D,F\}, E_B=\{\{A,D\}, \{D,F\}\}$. Nun kommt
+ endlich $\{A,B\}$ als Erweiterungskante zum Zug.}
 
 \begin{exercise}\label{exprim}
 F\"{u}hren Sie den Algorithmus von Prim im vorstehenden Beispiel zu
@@ -653,13 +653,13 @@ Ende, bis der minimale Spannbaum konstruiert ist.
 
  Es bleibt noch zu zeigen, dass $T$ minimal ist: Wir wissen, dass
  mindestens ein minimaler Spannbaum, nennen wir ihn $T'$, existieren
- muss. Wenn $T' \neq T$, w\"{a}hlen wir die erste Kante $e_k = (u,v)$
+ muss. Wenn $T' \neq T$, w\"{a}hlen wir die erste Kante $e_k = \{u,v\}$
  aus Schritt~2.1 des Algorithmus aus, die nicht in $T'$
  enthalten ist. Es muss also in $T'$ einen anderen Weg von $u$ nach
  $v$ geben, und daraus w\"{a}hlen wir eine Kante aus, die die bereits
  in vorherigen Schritten gew\"{a}hlten Knoten $V_B^{k-1}$ mit den noch
- nicht gew\"{a}hlten Knoten verbindet: $e' = (u',v'), u'
- \in V_B^{k-1}, v' \in (V\!\setminus\!V_B^{k=1})$. Das Gewicht von
+ nicht gew\"{a}hlten Knoten verbindet: $e' = \{u',v'\}, u'
+ \in V_B^{k-1}, v' \in (V\!\setminus\!V_B^{k-1})$. Das Gewicht von
  $e'$ kann nicht kleiner sein als das von $e_k$, weil sonst im Schritt
  $k$ die Kante $e'$ gew\"{a}hlt worden w\"{a}re. Wenn wir also $e'$
  durch $e_k$ ersetzen, wird das Gewicht des resultierenden Baums nicht
