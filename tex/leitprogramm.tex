@@ -518,6 +518,10 @@ sukzessive verbunden wird, bis ein einziger minimaler Spannbaum
 \end{enumerate}
 \end{enumerate}
 
+FAKULTATIV: Der Beweis des Algorithmus von Kruskal ist etwas
+schwieriger als die anderen Beweise, die wir in diesem Text diskutiert
+haben. Sie k\"{o}nnen ihn im Abschnitt~\ref{kruskproof} finden.
+
 \newpage
 Hier soll ein einfaches Beispiel graphisch illustriert werden:
 
@@ -537,58 +541,6 @@ Hier soll ein einfaches Beispiel graphisch illustriert werden:
 F\"{u}hren Sie den Algorithmus von Kruskal im vorstehenden Beispiel zu
 Ende, bis der minimale Spannbaum konstruiert ist.
 \end{exercise}
-
-\begin{proof}\label{kruskproof}Der Algorithmus von Kruskal konstruiert
-  einen minimalen Spannbaum.
-
- \bigskip\noindent\textsc{Beweis:} Der Beweis besteht aus zwei Teilen. Zuerst zeigen wir, dass der Algorithmus von Kruskal einen Spannbaum produziert, danach, dass dieser Spannbaum minimal ist.
- 
- \begin{enumerate}
- \item \textbf{Spannbaum:} Angenommen, Graph $W=(V,E')$ ist das
-   Resultat einer Ausf\"{u}hrung des Algorithmus von Kruskal auf dem
-   Graphen $G=(V,E)$. Dann hat der Graph $W$ keinen geschlossenen Weg,
-   da die Kanten im Algorithmus per Definition so gew\"{a}hlt werden,
-   dass kein geschlossener Weg entsteht. Wenn wir beweisen k\"{o}nnen,
-   dass Graph $W$ auch zusammenh\"{a}ngend ist, folgt daraus, dass $W$
-   ein Spannbaum ist. Um dies zu beweisen, nehmen wir an, dass $W$ aus
-   zwei getrennten Komponenten $W_1$ und $W_2$ besteht. Da $G$
-   zusammenh\"{a}ngend ist, existiert in $G$ mindestens eine Kante von
-   einem Knoten aus $W_1$ zu einem Knoten aus $W_2$. Dies heisst
-   jedoch, dass der Algorithmus noch nicht fertig ist, da eine solche
-   Kante noch nicht in $W$ liegt, und auch mit den Kanten von $E'$
-   keinen geschlossenen Weg bildet.
-\item \textbf{Minimalit\"{a}t:} Dieser Beweis folgt durch
-  Induktion. Wir betrachten jeden Schritt $k$ zwischen $0$ und der
-  Anzahl Kanten des Spannbaums. Wir zeigen dann, dass der Graph $W_k=(V,E')$, den wir nach
-  dem $k$-ten Schritt des Algorithmus erhalten, ein Subgraph eines
-  minimalen Spannbaums ist.
-  Da wir oben bewiesen haben, dass wir nach dem letzten
-  Schritt des Algorithmus einen Spannbaum erhalten, w\"{u}rde dies
-  bedeuten, dass der erhaltene Spannbaum minimal ist. Den
-  Induktionsanfang setzen wir bei $W_0=(V,\{\})$. Dieser Graph ist
-  offensichtlich ein Subgraph eines minimalen Spannbaums, da er
-  mit dem minimalen Spannbaum knotengleich ist, und die Kantenmenge
-  von $W_0$ leer ist, und somit Teilmenge jeder beliebigen Kantenmenge. F\"{u}r den
-  Induktionsschritt nehmen wir an, dass $W_k=(V,E'_k)$ ein Subgraph des 
-  minimalen Spannbaum $T_k$ ist. Schauen wir jetzt an,
-  was geschieht, wenn wir im $k+1$-ten Schritt $W$ um die Kante $e_{k+1}$ zu
-  $W_{k+1} = W_k \cup \{e_{k+1}\} $ erweitern. Falls $e_{k+1}$ in $T_k$ vorkommt,
-  l\"{a}sst sich auch $W_{k+1}$ zu $T_k$ erweitern, und wir sind
-  fertig mit dem Induktionsschritt. Falls $e_{k+1}$ nicht in $T_k$ vorkommt,
-  hat $T_k \cup \{e_{k+1}\}$ einen geschlossenen Weg. In diesem
-  geschlossenen Weg existiert eine Kante $f \neq e_{k+1}$, welche in $W_k$
-  nicht vorkommt (Ansonsten w\"{u}rde $e_{k+1}$ mit $W_k$ einen
-  geschlossenen Weg formen). Da $e_{k+1}$ und nicht $f$ im $k+1$-ten Schritt
-  des Algorithmus ausgew\"{a}hlt wurde, muss das Kantengewicht von $e_{k+1}$
-  kleiner oder gleich dem Kantengewicht von $f$ sein. $T_k \cup \{e_{k+1}\}
-  \setminus \{f\}$ ist somit ein Spannbaum mit einem h\"{o}chstens so
-  hohen Kantengewicht wie $T_k$. Also muss $T_k \cup \{e_{k+1}\} \setminus
-  \{f\}$ auch ein minimaler Spannbaum sein. Da $W_{k+1} = W_k \cup \{e_{k+1}\}
-  $ ein Subgraph von $T_k \cup \{e_{k+1}\}
-  \setminus \{f\}$ ist, haben wir die Aussage bewiesen.
-\end{enumerate}
-
- \end{proof}
 
 \section{Der Algorithmus von Prim}
 
@@ -622,6 +574,9 @@ Kantengewicht aus.
 \end{enumerate}
 \end{enumerate}
 
+FAKULTATIV: Auch beim Algorithmus von Prim ist der Beweis etwas
+kompliziert. Sie k\"{o}nnen ihn im Abschnitt~\ref{primproof} finden.
+
 \newpage
 Auch hier werden wir das gleiche Beispiel illustrieren:
 
@@ -639,34 +594,6 @@ Auch hier werden wir das gleiche Beispiel illustrieren:
 F\"{u}hren Sie den Algorithmus von Prim im vorstehenden Beispiel zu
 Ende, bis der minimale Spannbaum konstruiert ist.
 \end{exercise}
-
-\begin{proof}\label{primproof}Der Algorithmus von Prim konstruiert
-  einen minimalen Spannbaum.
-
- \bigskip\noindent\textsc{Beweis:} Es ist leicht zu sehen, dass der
- Algorithmus einen Spannbaum $T$ konstruiert: In jedem Schritt wird
- $V_B$ um genau einen Knoten und $E_B$ um genau eine Kante
- erweitert, die den Knoten mit dem bestehenden Graphen verbindet. Der
- Algorithmus konstruiert also einen zusammenh\"{a}ngenden Graphen mit $V_B =
- V$ und $\textrm{(Anzahl Kanten)} = \textrm{(Anzahl Knoten)}-1$, was
- der Definition eines Spannbaums entspricht.
-
- Es bleibt noch zu zeigen, dass $T$ minimal ist: Wir wissen, dass
- mindestens ein minimaler Spannbaum, nennen wir ihn $T'$, existieren
- muss. Wenn $T' \neq T$, w\"{a}hlen wir die erste Kante $e_k = \{u,v\}$
- aus Schritt~2.1 des Algorithmus aus, die nicht in $T'$
- enthalten ist. Es muss also in $T'$ einen anderen Weg von $u$ nach
- $v$ geben, und daraus w\"{a}hlen wir eine Kante aus, die die bereits
- in vorherigen Schritten gew\"{a}hlten Knoten $V_B^{k-1}$ mit den noch
- nicht gew\"{a}hlten Knoten verbindet: $e' = \{u',v'\}, u'
- \in V_B^{k-1}, v' \in (V\!\setminus\!V_B^{k-1})$. Das Gewicht von
- $e'$ kann nicht kleiner sein als das von $e_k$, weil sonst im Schritt
- $k$ die Kante $e'$ gew\"{a}hlt worden w\"{a}re. Wenn wir also $e'$
- durch $e_k$ ersetzen, wird das Gewicht des resultierenden Baums nicht
- gr\"{o}sser, und diese Ersetzungen k\"{o}nnen wiederholt werden, bis
- $T' = T$.
-
-\end{proof}
 
 \section{Schlussbetrachtung: Wer Gewinnt?}
 
@@ -800,5 +727,93 @@ USR &  14 & 234 &  88 & 184 & 107 &  17 &  46 &  50 & 150 & 114 & 106 & 110 & 14
 SIR & 156 &  94 & 148 &  65 &  80 & 176 & 116 & 203 & 126 & 101 &  62 &  77 & 105 & 189 &  66 & 180 &  91 &  98 & 161 & \\
 \hline\end{tabular}
 \end{sideways}
+
+\appendix
+
+\chapter{Beweise}
+
+\section{Algorithmus von Kruskal}
+
+\begin{proof}\label{kruskproof}Der Algorithmus von Kruskal konstruiert
+  einen minimalen Spannbaum.
+
+ \bigskip\noindent\textsc{Beweis:} Der Beweis besteht aus zwei Teilen. Zuerst zeigen wir, dass der Algorithmus von Kruskal einen Spannbaum produziert, danach, dass dieser Spannbaum minimal ist.
+ 
+ \begin{enumerate}
+ \item \textbf{Spannbaum:} Angenommen, Graph $W=(V,E')$ ist das
+   Resultat einer Ausf\"{u}hrung des Algorithmus von Kruskal auf dem
+   Graphen $G=(V,E)$. Dann hat der Graph $W$ keinen geschlossenen Weg,
+   da die Kanten im Algorithmus per Definition so gew\"{a}hlt werden,
+   dass kein geschlossener Weg entsteht. Wenn wir beweisen k\"{o}nnen,
+   dass Graph $W$ auch zusammenh\"{a}ngend ist, folgt daraus, dass $W$
+   ein Spannbaum ist. Um dies zu beweisen, nehmen wir an, dass $W$ aus
+   zwei getrennten Komponenten $W_1$ und $W_2$ besteht. Da $G$
+   zusammenh\"{a}ngend ist, existiert in $G$ mindestens eine Kante von
+   einem Knoten aus $W_1$ zu einem Knoten aus $W_2$. Dies heisst
+   jedoch, dass der Algorithmus noch nicht fertig ist, da eine solche
+   Kante noch nicht in $W$ liegt, und auch mit den Kanten von $E'$
+   keinen geschlossenen Weg bildet.
+\item \textbf{Minimalit\"{a}t:} Dieser Beweis folgt durch
+  Induktion. Wir betrachten jeden Schritt $k$ zwischen $0$ und der
+  Anzahl Kanten des Spannbaums. Wir zeigen dann, dass der Graph $W_k=(V,E')$, den wir nach
+  dem $k$-ten Schritt des Algorithmus erhalten, ein Subgraph eines
+  minimalen Spannbaums ist.
+  Da wir oben bewiesen haben, dass wir nach dem letzten
+  Schritt des Algorithmus einen Spannbaum erhalten, w\"{u}rde dies
+  bedeuten, dass der erhaltene Spannbaum minimal ist. Den
+  Induktionsanfang setzen wir bei $W_0=(V,\{\})$. Dieser Graph ist
+  offensichtlich ein Subgraph eines minimalen Spannbaums, da er
+  mit dem minimalen Spannbaum knotengleich ist, und die Kantenmenge
+  von $W_0$ leer ist, und somit Teilmenge jeder beliebigen Kantenmenge. F\"{u}r den
+  Induktionsschritt nehmen wir an, dass $W_k=(V,E'_k)$ ein Subgraph des 
+  minimalen Spannbaum $T_k$ ist. Schauen wir jetzt an,
+  was geschieht, wenn wir im $k+1$-ten Schritt $W$ um die Kante $e_{k+1}$ zu
+  $W_{k+1} = W_k \cup \{e_{k+1}\} $ erweitern. Falls $e_{k+1}$ in $T_k$ vorkommt,
+  l\"{a}sst sich auch $W_{k+1}$ zu $T_k$ erweitern, und wir sind
+  fertig mit dem Induktionsschritt. Falls $e_{k+1}$ nicht in $T_k$ vorkommt,
+  hat $T_k \cup \{e_{k+1}\}$ einen geschlossenen Weg. In diesem
+  geschlossenen Weg existiert eine Kante $f \neq e_{k+1}$, welche in $W_k$
+  nicht vorkommt (Ansonsten w\"{u}rde $e_{k+1}$ mit $W_k$ einen
+  geschlossenen Weg formen). Da $e_{k+1}$ und nicht $f$ im $k+1$-ten Schritt
+  des Algorithmus ausgew\"{a}hlt wurde, muss das Kantengewicht von $e_{k+1}$
+  kleiner oder gleich dem Kantengewicht von $f$ sein. $T_k \cup \{e_{k+1}\}
+  \setminus \{f\}$ ist somit ein Spannbaum mit einem h\"{o}chstens so
+  hohen Kantengewicht wie $T_k$. Also muss $T_k \cup \{e_{k+1}\} \setminus
+  \{f\}$ auch ein minimaler Spannbaum sein. Da $W_{k+1} = W_k \cup \{e_{k+1}\}
+  $ ein Subgraph von $T_k \cup \{e_{k+1}\}
+  \setminus \{f\}$ ist, haben wir die Aussage bewiesen.
+\end{enumerate}
+
+ \end{proof}
+
+\section{Algorithmus von Prim}
+
+\begin{proof}\label{primproof}Der Algorithmus von Prim konstruiert
+  einen minimalen Spannbaum.
+
+ \bigskip\noindent\textsc{Beweis:} Es ist leicht zu sehen, dass der
+ Algorithmus einen Spannbaum $T$ konstruiert: In jedem Schritt wird
+ $V_B$ um genau einen Knoten und $E_B$ um genau eine Kante
+ erweitert, die den Knoten mit dem bestehenden Graphen verbindet. Der
+ Algorithmus konstruiert also einen zusammenh\"{a}ngenden Graphen mit $V_B =
+ V$ und $\textrm{(Anzahl Kanten)} = \textrm{(Anzahl Knoten)}-1$, was
+ der Definition eines Spannbaums entspricht.
+
+ Es bleibt noch zu zeigen, dass $T$ minimal ist: Wir wissen, dass
+ mindestens ein minimaler Spannbaum, nennen wir ihn $T'$, existieren
+ muss. Wenn $T' \neq T$, w\"{a}hlen wir die erste Kante $e_k = \{u,v\}$
+ aus Schritt~2.1 des Algorithmus aus, die nicht in $T'$
+ enthalten ist. Es muss also in $T'$ einen anderen Weg von $u$ nach
+ $v$ geben, und daraus w\"{a}hlen wir eine Kante aus, die die bereits
+ in vorherigen Schritten gew\"{a}hlten Knoten $V_B^{k-1}$ mit den noch
+ nicht gew\"{a}hlten Knoten verbindet: $e' = \{u',v'\}, u'
+ \in V_B^{k-1}, v' \in (V\!\setminus\!V_B^{k-1})$. Das Gewicht von
+ $e'$ kann nicht kleiner sein als das von $e_k$, weil sonst im Schritt
+ $k$ die Kante $e'$ gew\"{a}hlt worden w\"{a}re. Wenn wir also $e'$
+ durch $e_k$ ersetzen, wird das Gewicht des resultierenden Baums nicht
+ gr\"{o}sser, und diese Ersetzungen k\"{o}nnen wiederholt werden, bis
+ $T' = T$.
+
+\end{proof}
 
 \end{document}
