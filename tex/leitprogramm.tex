@@ -2,21 +2,24 @@
 
 \setlength{\topmargin}{0 cm}
 \usepackage{times}
+\usepackage{float}
 \usepackage{rotating}
 \usepackage[german]{babel}
 \usepackage{graphics}
 \graphicspath{ {../img/} {../graph/img/} }
 \usepackage{color}
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage{ntheorem}
 \theoremstyle{break}
 \theorembodyfont{\normalfont}
 \theoremprework{\bigskip\hrule\leavevmode\nopagebreak}
 \theorempostwork{\nopagebreak\hrule\leavevmode}
-\newtheorem{exercise}{Aufgabe}[section]
+\newtheorem{exercise}{Aufgabe}[chapter]
 \theoremstyle{plain}
 \theoremprework{\bigskip\hrule\leavevmode\nopagebreak}
 \theorempostwork{\nopagebreak\hrule\leavevmode}
-\newtheorem{proof}{Satz}[section]
+\newtheorem{proof}{Satz}[chapter]
 \renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}
 \newcommand{\algostep}[2]{\parbox{4cm}{\scalebox{0.5}{\includegraphics{#1}}}
   \hfill
@@ -30,11 +33,44 @@
 \tableofcontents
 \chapter{Einleitung}
 
+\section{Worum geht es hier?}
+
+In den fr\"uhen 20er Jahren besch\"aftigte sich der 
+Mathematiker Otakar Bor\r{u}vka mit dem Problem, ein Gebiet (40
+St\"{a}dte in S\"{u}d-M\"{a}hren) m\"{o}glichst effizient mit 
+Elektrizit\"{a}t zu erschliessen.
+
+\begin{figure}[h!]
+\resizebox{!}{4cm}{\includegraphics{BoruvkaPoints.pdf}}
+\resizebox{!}{4cm}{\includegraphics{BoruvkaTree.pdf}}
+\caption{Elektrische Erschliessung von S\"{u}d-M\"{a}hren.\protect\footnotemark}
+\end{figure}
+
+\footnotetext{ 
+Otakar  Bor\r{u}vka, \emph{O jist\'{e}m probl\'{e}mu minim\'{a}ln\'{i}m} (\"{U}ber ein
+  gewisses Minimalisierungsproblem). \\
+Zitiert aus: J. Ne\v{s}et\v{r}il,
+  E. Milkov\'{a}, H. Ne\v{s}et\v{r}ilov\'{a}, \emph{Otakar Bor\r{u}vka
+    on minimum spanning tree problem: translation of both the 1926
+    papers, comments, history.}, Discrete Mathematics 233 (2001)}
+Sein Ansatz war, das Problem als \textbf{Graphen} abzubilden, in dem die
+anzuschliessenden St\"{a}dte als \textbf{Knoten}, und die Distanzen zwischen ihnen
+als \textbf{Kanten} repr\"{a}sentiert wurden. Das Elektrifizierungsproblem
+besteht somit darin, alle Knoten so zu verbinden, dass die
+Gesamtl\"{a}nge der Kanten so kurz wie m\"{o}glich bleibt. Eine solche
+Verbindung wird \textbf{minimal aufspannender Baum} oder kurz
+\textbf{minimaler Spannbaum} genannt.
+
+Bor\r{u}vka's L\"{o}sung, die er 1926 publizierte, gilt als der erste
+Algorithmus zur Konstruktion eines minimalen Spannbaums, und als einer
+der ersten Optimierungs-Algorithmen. Weil sowohl
+die Problemstellung als auch die verwendeten Algorithmen interessant
+und einigermassen leicht verst\"{a}ndlich sind, werden wir uns jetzt diesem Problem widmen.
 \section{Wie kann hier gearbeitet werden?}
 
 Dieser Text wird Sie mit einem wichtigen algorithmischen Problem
 bekannt machen: dem Finden eines minimalen Spannbaums. Im n\"{a}chsten
-Unterkapitel finden Sie eine Einf\"{u}hrung in das Thema, doch bevor
+Abschnitt finden Sie eine Einf\"{u}hrung in das Thema, doch bevor
 Sie loslegen, soll Ihnen hier noch kurz der Aufbau des Textes und die
 Arbeitsweise damit erl\"{a}utert werden.
 
@@ -60,40 +96,6 @@ Unterkapitel ist dann der Kapiteltest, den Sie bearbeiten und mit
 Ihrer Lehrperson besprechen sollten.
 
 \newpage
-\section{Worum geht es hier?}
-
-In den fr\"uhen 20er Jahren besch\"aftigte sich der 
-Mathematiker Otakar Bor\r{u}vka mit dem Problem, ein Gebiet (40
-St\"{a}dte in S\"{u}d-M\"{a}hren) m\"{o}glichst effizient mit 
-Elektrizit\"{a}t zu erschliessen.
-
-\begin{figure}[h!]
-\resizebox{!}{4cm}{\includegraphics{BoruvkaPoints.pdf}}
-\resizebox{!}{4cm}{\includegraphics{BoruvkaTree.pdf}}
-\caption{Elektrische Erschliessung von S\"{u}d-M\"{a}hren.\protect\footnotemark}
-\end{figure}
-
-\footnotetext{ 
-Otakar  Bor\r{u}vka, \emph{O jist\'{e}m probl\'{e}mu minim\'{a}ln\'{i}m} (\"{U}ber ein
-  gewisses Minimalisierungsproblem). \\
-Zitiert aus: J. Ne\v{s}et\v{r}il,
-  E. Milkov\'{a}, H. Ne\v{s}et\v{r}ilov\'{a}, \emph{Otakar Bor\r{u}vka
-    on minimum spanning tree problem: translation of both the 1926
-    papers, comments, history.}, Discrete Mathematics 233 (2001)}
-Sein Ansatz war, das Problem als Graphen abzubilden, in dem die
-anzuschliessenden St\"{a}dte als Knoten, und die Distanzen zwischen ihnen
-als Kanten repr\"{a}sentiert wurden. Das Elektrifizierungsproblem
-besteht somit darin, alle Knoten so zu verbinden, dass die
-Gesamtl\"{a}nge der Kanten so kurz wie m\"{o}glich bleibt. Eine solche
-Verbindung wird \textbf{minimal aufspannender Baum} oder kurz
-\textbf{minimaler Spannbaum} genannt.
-
-Bor\r{u}vka's L\"{o}sung, die er 1926 publizierte, gilt als der erste
-Algorithmus zur Konstruktion eines minimalen Spannbaums, und als einer
-der ersten Optimierungs-Algorithmen. Weil sowohl
-die Problemstellung als auch die verwendeten Algorithmen interessant
-und einigermassen leicht verst\"{a}ndlich sind, werden wir uns jetzt diesem Problem widmen.
-
 \chapter{Graphen}
 \label{graphs}
 
@@ -109,18 +111,22 @@ Richtung.
 In diesem Text befassen wir uns aber nur mit
 \textbf{ungerichteten} Graphen, in welchen die Knotenpaare ungeordnet
 und somit die Knoten symmetrisch verbunden sind.  Des weiteren
-beschr\"{a}nken wir uns auf \textbf{schlichte} Graphen, in denen keine
+beschr\"{a}nken wir uns auf \textbf{einfache} Graphen, in denen keine
 Kanten einen Knoten mit sich selbst verbinden, und zwischen zwei
 Knoten nicht mehr als eine Kante existiert.
 
 \begin{exercise}\label{exgerichtet}
 Welche dieser vier Graphen sind gerichtet, welche ungerichtet? Welche
-sind schlicht?
-
+sind einfach?
+\begin{figure}[H]
+\centerline{
 \scalebox{0.4}{\includegraphics{UngerichtetUnschlicht.pdf}}
 \scalebox{0.4}{\includegraphics{Gerichtet.pdf}}
 \scalebox{0.4}{\includegraphics{Ungerichtet.pdf}}
 \scalebox{0.4}{\includegraphics{GerichtetUnschlicht.pdf}}
+}
+\caption{Welche der Graphen ist gerichtet? Welche einfach?}
+\end{figure}
 \end{exercise}
 
 \section{Beschreibung von Graphen}
@@ -130,8 +136,13 @@ sind schlicht?
 \begin{description}
 \item[Grafisch] indem die Knoten und Kanten aufgezeichnet werden:
 
+\begin{figure}[H]
+\centerline{
 \scalebox{0.5}{\includegraphics{Ungerichtet.pdf}}
-
+}
+\caption{Grafische Darstellung eines Graphs}
+\label{fig:GrafischeDarstellung}
+\end{figure}
 gerade bei kleineren Graphen ist diese Darstellung f\"{u}r Menschen am
 Einfachsten zu verstehen, aber sie ist z.B. f\"{u}r
 Computerverarbeitung nicht besonders gut geeignet.
@@ -174,8 +185,8 @@ $E = \{\mathsf{\{A, B\}, \{A, D\}, \{C, D\}, \{A, E\}}\}$.
 
 \section{Zusammenh\"{a}ngende Graphen}
 
-Wenn in einem Graphen $G(V,E)$ eine Folge von Knoten $v_0, v_1,
-\ldots, v_n \in V$ existiert, die von Kanten $e_i = \{v_i, v_{i+1}\} \in
+Wenn in einem Graphen $G(V,E)$ eine Folge von Knoten $(v_0, v_1,
+\ldots, v_n)$, $v_i \in V$ existiert, die von Kanten $e_i = \{v_i, v_{i+1}\} \in
 E$ verbunden werden, dann existiert ein \textbf{Weg} von $v_0$ nach
 $v_n$. 
 
@@ -188,7 +199,7 @@ ist zusammenh\"{a}ngend, wenn alle Knoten miteinander verbunden sind. Sind
 die Knoten nicht alle miteinander verbunden, so heissen die verbundenen Teile des 
 Graphen \textbf{Komponenten}.
 
-Ein Weg $v_0\cdots{v_1}\cdots\ldots\cdots{v_0}$, der von einem Knoten
+Ein Weg $v_0,v_1,\ldots,v_n,{v_0}$, der von einem Knoten
 $v_0$ wieder auf diesen selbst zur\"{u}ckf\"{u}hrt, heisst
 \textbf{geschlossen}.
 
@@ -196,35 +207,65 @@ $v_0$ wieder auf diesen selbst zur\"{u}ckf\"{u}hrt, heisst
 Welcher der folgenden Graphen ist zusammenh\"{a}ngend? Markiere bei den nicht zusammenh\"{a}ngenden Graphen die
 gr\"{o}sste Komponente.
 
+\begin{figure}[H]
+\begin{subfigure}[b]{0.3\textwidth}
 \scalebox{0.4}{\includegraphics{ConnectedComponents1.pdf}}
+\caption{}
+\end{subfigure}
+\begin{subfigure}[b]{0.3\textwidth}
 \scalebox{0.4}{\includegraphics{ConnectedComponents2.pdf}}
+\caption{}
+\end{subfigure}
+\begin{subfigure}[b]{0.3\textwidth}
 \scalebox{0.4}{\includegraphics{ConnectedComponents3.pdf}}
+\caption{}
+\end{subfigure}
+
+\caption{Welcher Graph ist zusammenh\"{a}ngend?}
+\end{figure}
+
 \end{exercise}
 
 \newpage
-\section{Untergraphen}
+\section{Teilgraphen}
 
-Ein Graph $U(W,F)$ ist ein \textbf{Untergraph} eines Graphen $G(V,E)$
-wenn seine Knotenmenge $W$ eine Untermenge der Knotenmenge $V$ ist und
-seine Kantenmenge $F$ eine Untermenge der Kantenmenge $E$.
-Ein Untergraph $U(W,F)$ eines Graphen $G$ ist \textbf{spannend}, 
-wenn $W=V$. Ein spannender Untergraph muss weder zusammenh\"{a}ngend sein, noch muss jeder Knoten mit einer Kante verbunden sein.
+Ein Graph $U(W,F)$ ist ein \textbf{Teilgraph} eines Graphen $G(V,E)$
+wenn seine Knotenmenge $W$ eine Teilmenge der Knotenmenge $V$ ist und
+seine Kantenmenge $F$ eine Teilmenge der Kantenmenge $E$.
+Ein Teilgraph $U(W,F)$ eines Graphen $G$ ist \textbf{aufspannend}, 
+wenn $W=V$. Ein aufspannender Teilgraph muss weder zusammenh\"{a}ngend sein, noch muss jeder Knoten mit einer Kante verbunden sein.
 \begin{exercise}\label{exunter}
-Welche der folgenden drei Graphen sind Untergraphen des Graphen in
-Abschnitt~\ref{Beschreibung} ?
+Welche der folgenden drei Graphen sind Teilgraphen des Graphen aus
+Abbildung~\ref{fig:GrafischeDarstellung}?
 
+\begin{figure}[H]
+\begin{subfigure}[b]{0.3\textwidth}
 \scalebox{0.4}{\includegraphics{Sub1.pdf}}
+\caption{}
+\end{subfigure}
+\begin{subfigure}[b]{0.3\textwidth}
 \scalebox{0.4}{\includegraphics{Sub2.pdf}}
+\caption{}
+\end{subfigure}
+\begin{subfigure}[b]{0.3\textwidth}
 \scalebox{0.4}{\includegraphics{Sub3.pdf}}
+\caption{}
+\end{subfigure}
+
+\caption{Welche Graphen sind Teilgraphen?}
+\end{figure}
 
 \end{exercise}
 \begin{exercise}\label{excompletesubgraph}
-\textbf{FAKULTATIV} Ein \emph{vollst\"{a}ndiger} Graph $K_n$ ist ein Graph mit $n$ Knoten, in welchem jedes Knotenpaar mit einer Kante verbunden ist.
+Ein \emph{vollst\"{a}ndiger} Graph $K_n$ ist ein Graph mit $n$ Knoten, in welchem jedes Knotenpaar mit einer Kante verbunden ist.
 \[ 
 K_n(V = \{v_1, v_2, \ldots, v_n\}, E = \{\{v_a, v_b\} \mid v_a, v_b \in V,
-v_a \neq v_b\}) ?
+v_a \neq v_b\})
 \] 
-Wie viele spannende Untergraphen hat $K_2$? Wieviele $K_3$? Finde eine Formel, um die Anzahl Kanten von $K_n$ zu berechnen.
+\begin{itemize}
+\item Finde eine Formel für die Anzahl Kanten in $K_n$
+\item \textbf{(FAKULTATIV)} Wie viele aufspannende Teilgraphen hat $K_2$? Wieviele $K_3$? Finde eine Formel, um die Anzahl Kanten von $K_n$ zu berechnen.
+\end{itemize}
 \end{exercise}
 
 \newpage
@@ -233,23 +274,26 @@ Wie viele spannende Untergraphen hat $K_2$? Wieviele $K_3$? Finde eine Formel, u
 
 In vielen praktischen Anwendungen sind die Knoten und/oder Kanten
 eines Graphen mit \textbf{Gewichten} versehen. Die Kantengewichte k\"{o}nnen
-z.B. Distanz oder Flugkosten darstellen, die Knotengewichte
+z.B. Distanzen oder Flugkosten darstellen, die Knotengewichte
 z.B. Hotelkosten.
-
- In der weiteren Diskussion werden wir hier nur noch an \textbf{Kantengewichteten} Graphen interessiert sein.
 
 \begin{exercise}\label{extravel}
 Der folgende Graph zeigt Flug- und Hotelkosten, sowie Reisedistanzen
-f\"{u}r eine Reise.
-
+f\"{u}r eine Reise. Wir nehmen an, dass der Reisende bei jedem Zwischenhalt eine Nacht in einem Hotel \"{u}bernachten muss.
+\begin{figure}[H]
+\centerline{
 \scalebox{0.5}{\includegraphics{Travel.pdf}}
-
+}
+\caption{Flug- und Hotelkosten und Reisedistanzen}
+\end{figure}
 \begin{enumerate}
 \item Was ist die \emph{k\"{u}rzeste} Route zwischen Z\"{u}rich und
     Sydney?
-\item Was ist die \emph{billigste} Route?
+\item Was ist die \emph{billigste} Route, wenn man die Hotelkosten bei jeder Zwischenlandung berücksichtigt?
 \end{enumerate}
 \end{exercise}
+
+In der weiteren Diskussion werden wir hier nur noch an \textbf{Kantengewichteten} Graphen interessiert sein.
 
 \newpage
 \section{L\"{o}sungen}
@@ -278,20 +322,20 @@ f\"{u}r eine Reise.
 \end{array}
 \right)
 \end{displaymath}}
-\item[Aufgabe~\ref{exverbund}] Graph 1 ist nicht verbunden. Die 
-grösste Komponente besteht aus den  Knoten $A$, $B$ und $C$.
-Graph 2 ist verbunden. Graph 3 ist nicht verbunden. Die 
-grösste Komponente besteht aus den  Knoten $A$, $B$, $C$ und $E$.
-\item[Aufgabe~\ref{exunter}] Graphen 1 und 3 (Ein Untergraph muss
-  \emph{nicht} notwendig zusammenh\"{a}ngend sein). Graph 2
+\item[Aufgabe~\ref{exverbund}] Graph (a) ist nicht verbunden. Die 
+gr\"{o}sste Komponente besteht aus den  Knoten $A$, $B$ und $C$.
+Graph (b) ist zusammenh\"{a}ngend. Graph (c) ist nicht zusammenh\"{a}ngend. Die 
+gr\"{ö}sste Komponente besteht aus den  Knoten $A$, $B$, $C$ und $E$.
+\item[Aufgabe~\ref{exunter}] Graphen (a) und (c) sind Teilgraphen (Ein Teilgraph muss
+  \emph{nicht} notwendig zusammenh\"{a}ngend sein). Graph (b)
   enth\"{a}lt eine Kante $\{A,C\}$ die im urspr\"{u}nglichen Graphen
   nicht existiert. 
 \item[Aufgabe~\ref{excompletesubgraph}] 
 Ein kompletter Graph $K_n$ hat $n(n-1)/2$ Kanten. F\"{u}r jede Kante 
-wird die Anzahl der möglichen Subgraphen verdoppelt, da die Kante 
-entweder im Subgraphen vorkommen kann oder nicht. Somit hat $K_2$ $2$
-verschiedene Subgraphen, $K_3$ hat $8$ Subgraphen, und $K_n$ hat $2^{n(n-1)/2}$
-Subgraphen.
+wird die Anzahl der m\"{o}glichen Teilgraphen verdoppelt, da die Kante 
+entweder im Teilgraphen vorkommen kann oder nicht. Somit hat $K_2$ zwei
+verschiedene Teilgraphen, $K_3$ hat acht Teilgraphen, und $K_n$ hat $2^{n(n-1)/2}$ spannende
+Teilgraphen.
 \item[Aufgabe~\ref{extravel}]\hfill\linebreak
 \begin{enumerate}
 \item Z\"{u}rich---Singapur---Sydney (16589 km)
@@ -302,7 +346,7 @@ Subgraphen.
 \section{Kapiteltest}
 
 \begin{exercise}
-Gegeben sei die Adjazenzmatrix 
+Gegeben sei die Adjazenzmatrix für einen Graphen $G$.
 
 \begin{displaymath}
 A(G) = \left(
@@ -319,7 +363,7 @@ A(G) = \left(
 \end{displaymath}
 
 \begin{enumerate}
-\item Zeichnen Sie den Graphen auf (verwenden Sie $A..Z$ als
+\item Zeichnen Sie den Graphen auf (verwenden Sie $A..G$ als
   Knotennamen).
 \item Stellen Sie den Graphen in Mengennotation dar.
 \item Aus welchen Komponenten besteht der Graph?
@@ -335,7 +379,7 @@ Gegeben sei der folgende Graph:
 \begin{enumerate}
 \item Welcher Weg von $A$ nach $D$ weist die kleinste Summe von
   Kantengewichten auf?
-\item Welcher geschlossene Weg im Graphen weist die kleinste Summe von
+\item Welcher geschlossene nichtleere Weg im Graphen weist die kleinste Summe von
   Kantengewichten auf?
 \end{enumerate}
 
@@ -381,7 +425,7 @@ durch Induktion l\"{a}sst sich sehen, dass der Satz gilt.
 
 F\"ur jeden zusammenh\"{a}ngenden Graphen $G(V,E)$ kann man einen oder mehrere
 \textbf{Spannb\"{a}ume} konstruieren, die aus \emph{allen Knoten} $V$ des
-Graphen und einer \emph{Untermenge der Kanten} $E$ bestehen.
+Graphen und einer \emph{Teilmenge der Kanten} $E$ bestehen.
 
 \begin{exercise}\label{exspan}
 Z\"{a}hlen Sie alle m\"{o}glichen Spannb\"{a}ume dieses Graphen auf:\\*
@@ -616,7 +660,7 @@ kurz erw\"{a}hnt sein:
   h\"{a}ngt deren Laufzeit- und Speichereffizienz enorm von den
   verwendeten Datenstrukturen ab, weil die Auswahl- und Testschritte
   (z.B. auf geschlossene Wege in Kruskal's Algorithmus, auf
-  Mitgliedschaft von Knoten in Untergraphen in Prim's Algorithmus)
+  Mitgliedschaft von Knoten in Teilgraphen in Prim's Algorithmus)
   entscheidend auf eine effiziente Datenrepr\"{a}sentation angewiesen sind.
 \item In einer Studie von mehreren Implementierungen von Kruskal's und
   Prim's Algorithmus ist der Informatiker Donald
@@ -764,16 +808,16 @@ SIR & 156 &  94 & 148 &  65 &  80 & 176 & 116 & 203 & 126 & 101 &  62 &  77 & 10
 \item \textbf{Minimalit\"{a}t:} Dieser Beweis folgt durch
   Induktion. Wir betrachten jeden Schritt $k$ zwischen $0$ und der
   Anzahl Kanten des Spannbaums. Wir zeigen dann, dass der Graph $W_k=(V,E')$, den wir nach
-  dem $k$-ten Schritt des Algorithmus erhalten, ein Subgraph eines
+  dem $k$-ten Schritt des Algorithmus erhalten, ein Teilgraph eines
   minimalen Spannbaums ist.
   Da wir oben bewiesen haben, dass wir nach dem letzten
   Schritt des Algorithmus einen Spannbaum erhalten, w\"{u}rde dies
   bedeuten, dass der erhaltene Spannbaum minimal ist. Den
   Induktionsanfang setzen wir bei $W_0=(V,\{\})$. Dieser Graph ist
-  offensichtlich ein Subgraph eines minimalen Spannbaums, da er
+  offensichtlich ein Teilgraph eines minimalen Spannbaums, da er
   mit dem minimalen Spannbaum knotengleich ist, und die Kantenmenge
   von $W_0$ leer ist, und somit Teilmenge jeder beliebigen Kantenmenge. F\"{u}r den
-  Induktionsschritt nehmen wir an, dass $W_k=(V,E'_k)$ ein Subgraph des 
+  Induktionsschritt nehmen wir an, dass $W_k=(V,E'_k)$ ein Teilgraph des 
   minimalen Spannbaum $T_k$ ist. Schauen wir jetzt an,
   was geschieht, wenn wir im $k+1$-ten Schritt $W$ um die Kante $e_{k+1}$ zu
   $W_{k+1} = W_k \cup \{e_{k+1}\} $ erweitern. Falls $e_{k+1}$ in $T_k$ vorkommt,
@@ -788,7 +832,7 @@ SIR & 156 &  94 & 148 &  65 &  80 & 176 & 116 & 203 & 126 & 101 &  62 &  77 & 10
   \setminus \{f\}$ ist somit ein Spannbaum mit einem h\"{o}chstens so
   hohen Kantengewicht wie $T_k$. Also muss $T_k \cup \{e_{k+1}\} \setminus
   \{f\}$ auch ein minimaler Spannbaum sein. Da $W_{k+1} = W_k \cup \{e_{k+1}\}
-  $ ein Subgraph von $T_k \cup \{e_{k+1}\}
+  $ ein Teilgraph von $T_k \cup \{e_{k+1}\}
   \setminus \{f\}$ ist, haben wir die Aussage bewiesen.
 \end{enumerate}
 
