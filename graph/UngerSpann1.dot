@@ -1,0 +1,7 @@
+graph Ungerichtet {
+      A -- B
+      B -- C  [style="invis"]
+      C -- D
+      C -- E
+      B -- E
+}
