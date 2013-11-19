@@ -3,4 +3,7 @@ graph Exgewicht {
     A -- C [label="4"]
     B -- D [label="3"]
     B -- E [label="5"]
+    E -- F [label="2"]
+    A -- G [label="1"]
+    G -- H [label="7"]
 }
