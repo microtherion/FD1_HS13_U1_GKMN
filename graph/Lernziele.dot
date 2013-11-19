@@ -1,7 +1,6 @@
 digraph C {
 	"Graph" -> "Knoten";
 	"Graph" -> "Kante";
-	"Graph" -> "schlicht";
 	"Graph" -> "gerichtet";
 	"Graph" -> "ungerichtet";
 	"Graph" -> "Weg";
@@ -10,15 +9,14 @@ digraph C {
 	"zusammenhängend" -> "Komponenten";	
 	"zusammenhängend" -> "Baum";
 	"zusammenhängend" -> "gewichtet" [style="invis"];
-	"zusammenhängend" -> "schlicht" [style="invis"];
 	"Graph" -> "gewichtet";
 	"Knoten" -> "knotengewichtet";
 	"Kante" -> "kantengewichtet";
 	"gewichtet" -> "knotengewichtet";
 	"gewichtet" -> "kantengewichtet";
-	"Knoten" -> "Untergraph";
-	"Kante" -> "Untergraph";
-	"Untergraph" -> "Baum";
+	"Knoten" -> "Teilgraph";
+	"Kante" -> "Teilgraph";
+	"Teilgraph" -> "Baum";
 	"Baum" -> "Spannbaum";
 	"Baum" -> "Wald";
 	"Komponenten" -> "Wald";
@@ -29,16 +27,18 @@ digraph C {
 	"kantengewichtet" -> "Gewicht";
 	"Minimaler Spannbaum" -> "Hilfssatz";
 	"geschlossen" -> "Hilfssatz";
+	"Indirekte Beweise" -> "Hilfssatz";
 	"Hilfssatz" [label="Existenzbeweis"];
 	"Minimaler Spannbaum" -> "gierig";
 	"gierig" [label="Gierige Algorithmen"];
 	"gierig" -> "Kruskal";
+	"Wald" -> "Kruskal";
 	"gierig" -> "Prim";
 	"Hilfssatz" -> "Kruskal";
 	"Hilfssatz" -> "Prim";
 
 	subgraph clusterVorkenntnisse {
 		 graph [bgcolor="grey89"];
-		 "Graph"; "Knoten"; "Kante"; "gerichtet"; "ungerichtet"; "Weg"; "zusammenhängend"; "geschlossen"; "Untergraph";
+		 "Graph"; "Knoten"; "Kante"; "gerichtet"; "ungerichtet"; "Weg"; "zusammenhängend"; "geschlossen"; "Teilgraph"; "Indirekte Beweise"
 	}
 }
