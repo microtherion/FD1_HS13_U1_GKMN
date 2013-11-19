@@ -1,0 +1,17 @@
+graph Wald {
+      A -- B;
+      B -- C;
+      B -- D;
+      D -- E;
+
+      F -- G;
+      H -- G;
+      G -- I;
+      I -- J;
+
+      K -- L;
+      K -- M;
+      K -- N;
+      M -- O;
+      N -- P;
+}

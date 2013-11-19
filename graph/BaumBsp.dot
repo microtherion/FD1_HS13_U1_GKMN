@@ -1,0 +1,6 @@
+graph Baum {
+      A -- B;
+      B -- C;
+      B -- D;
+      D -- E;
+}
