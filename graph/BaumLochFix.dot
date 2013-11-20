@@ -4,5 +4,5 @@ graph Baum {
       A -- E
       B -- F
       D -- G
-      D -- E [penwidth=3]
+      D -- E [penwidth=3,label="hinzufügen"]
 }

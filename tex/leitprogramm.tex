@@ -510,13 +510,35 @@ Finden Sie den minimalen Spannbaum dieses Graphen:
 \section{L\"{o}sungen}
 
 \begin{description}
-\item[Aufgabe~\ref{exbaum}] Der mittlere Graph war bereits ein Baum.\\*
+\item[Aufgabe~\ref{exbaum}] Der mittlere Graph war bereits ein
+  Baum.\\*
+
+\begin{figure}[h!]
+\begin{subfigure}[b]{0.5\textwidth}
 \scalebox{0.6}{\includegraphics{BaumLochFix.pdf}}
+\caption{war nicht zusammenh\"{a}ngend}
+\end{subfigure}
+\stepcounter{subfigure}
+\begin{subfigure}[b]{0.5\textwidth}
 \scalebox{0.6}{\includegraphics{BaumKreisFix.pdf}}
-\item[Aufgabe~\ref{exspan}] $\{\{A,B\}, \{A,D\}, \{B,C\}\}$, $\{\{A,B\}, \{A,D\},
- \{C,D\}\}$, $\{\{A,B\}, \{B,C\}, \{C,D\}\}$, $\{\{A,D\}, \{B,C\}, \{C,D\}\}$
+\caption{hatte einen geschlossenen Pfad}
+\end{subfigure}
+\end{figure}
+
+\item[Aufgabe~\ref{exspan}] Wenn man eine der vier Kanten $\{\{A,B\},
+  \{A,D\}, \{B,C\}, \{C,D\}\}$ entfernt, erh\"{a}lt man je einen
+  Spannbaum. Somit sind die vier m\"{o}glichen Spannb\"{a}ume:
+
+\begin{itemize}
+\item $\{\{A,B\}, \{A,D\}, \{B,C\}\}$
+\item $\{\{A,B\}, \{A,D\}, \{C,D\}\}$
+\item $\{\{A,B\}, \{B,C\}, \{C,D\}\}$
+\item $\{\{A,D\}, \{B,C\}, \{C,D\}\}$
+\end{itemize}
+
 \item[Aufgabe~\ref{exgewicht}] 25
-\item[Aufgabe~\ref{exspangewicht}]\hfill\\*
+\item[Aufgabe~\ref{exspangewicht}] Der minimale Spannbaum hat das
+  Gewicht 8:\\*
 \scalebox{0.5}{\includegraphics{Exspangewichtsol.pdf}}
 
 \end{description}
