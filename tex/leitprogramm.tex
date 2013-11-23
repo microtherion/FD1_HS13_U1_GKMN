@@ -357,7 +357,7 @@ Teilgraphen.
 
 \section{Kapiteltest}
 
-\begin{exercise}
+\begin{exercise}\label{test1adjacency}
 Gegeben sei die Adjazenzmatrix für einen Graphen $G$.
 
 \begin{displaymath}
@@ -383,7 +383,7 @@ A(G) = \left(
 
 \end{exercise}
 
-\begin{exercise}
+\begin{exercise}\label{test1weights}
 Gegeben sei der folgende Graph:
 
 \scalebox{0.5}{\includegraphics{SubWegGewicht.pdf}}
@@ -396,6 +396,29 @@ Gegeben sei der folgende Graph:
 \end{enumerate}
 
 \end{exercise}
+
+\section{L\"{o}sung zum Kapiteltest}
+\begin{description}
+\item[Aufgabe~\ref{test1adjacency}] \hfill \\[0cm]
+\begin{enumerate}
+\item 
+\begin{figure}[H]
+\centerline{
+\scalebox{0.5}{\includegraphics{kapiteltest1.pdf}}
+}
+\end{figure}
+
+\item $G = (V,E)$, $V = \{A, B, C, D, E\}$, $E=\{ \{A, B\}, \{B, D\},\{D, E\},\{F, G\}\}$.
+\item Der Graph besteht aus drei Komponenten. Die Knoten $A$,$B$,$D$ und $E$ und die Kanten dazwischen bildet 
+eine Komponente, Knoten $C$ ist die zweite Komponente, und $F$ und $G$ mit der Kante dazwischen bildet die dritte Komponente.
+\end{enumerate}
+
+\item[Aufgabe~\ref{test1weights}] \hfill \\[0cm]
+\begin{enumerate}
+\item $A, E, C, D$ hat eine Kantengewichtsumme von nur $7$.
+\item $A, B, C, E, A$ hat eine Kantengewichtsumme von $13$.
+\end{enumerate}
+\end{description}
 
 \chapter{B\"{a}ume}
 

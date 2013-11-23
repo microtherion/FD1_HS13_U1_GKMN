@@ -1,0 +1,9 @@
+graph Exspangewicht {
+      graph [layout="neato"]
+      
+      A -- B 
+      C
+      B -- D 
+      D -- E 
+      F -- G
+}
