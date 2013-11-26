@@ -4,9 +4,9 @@ graph Exspan {
       B [pos="0.1,0"]
       C [pos="2,1"]
       D [pos="1,1"]
-      A -- B
-      A -- D
-      B -- C 
+      A -- B [label="1"]
+      A -- D [label="2"]
+      B -- C [label="3"]
       B -- D [style="invis"]
-      C -- D
+      C -- D [label="3"]
 }

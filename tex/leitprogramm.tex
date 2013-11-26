@@ -477,7 +477,7 @@ $G(V,E)$ ist ein Baum, der \emph{alle Knoten} $V$ des
 Graphen und eine \emph{Teilmenge der Kanten} $E$ enth\"{a}lt. Jeder
 zusammenh\"{a}ngende Graph hat somit einen oder mehrere Spannb\"{a}ume.
 
-\begin{figure}[h1]
+\begin{figure}[h!]
 \begin{subfigure}[b]{0.24\textwidth}
 \scalebox{0.4}{\includegraphics{Ungerichtet.pdf}}
 \caption{}
@@ -513,7 +513,7 @@ Summe der Kantengewichte des Baumes definieren.
 
 \begin{exercise}\label{exgewicht}
 Bestimmen Sie das Gewicht dieses Baumes:\\*
-\nopagebreak\scalebox{0.5}{\includegraphics{Exgewicht.pdf}}
+\nopagebreak\scalebox{0.4}{\includegraphics{Exgewicht.pdf}}
 \end{exercise}
 
 Somit k\"{o}nnen wir nun den zentralen Begriff dieses Textes
@@ -521,31 +521,43 @@ definieren: Ein Spannbaum $B$ eines Graphen $G$ ist ein
 \textbf{minimaler Spannbaum} von $G$ wenn kein Spannbaum von $G$
 existiert, dessen Gewicht kleiner als das Gewicht von $B$ ist.
 
-Ein Graph kann ohne weiteres mehrere minimale Spannb\"{a}ume haben:
-Wenn z.B. alle Kantengewichte identisch sind, sind \emph{alle}
-Spannb\"{a}ume minimal!
-
-
 \begin{exercise}\label{exspangewicht}
-Finden Sie den minimalen Spannbaum dieses Graphen:
+Finden Sie den minimalen Spannbaum dieser Graphen:
 
-\scalebox{0.5}{\includegraphics{Exspangewicht.pdf}}
+\begin{figure}[h!]
+\begin{subfigure}[b]{0.3\textwidth}
+\scalebox{0.6}{\includegraphics{Exspangewicht.pdf}}
+\caption{}
+\end{subfigure}
+\begin{subfigure}[b]{0.3\textwidth}
+\scalebox{0.6}{\includegraphics{Exspan_w1.pdf}}
+\caption{}
+\end{subfigure}
+\begin{subfigure}[b]{0.3\textwidth}
+\scalebox{0.6}{\includegraphics{Exspan_w2.pdf}}
+\caption{}
+\end{subfigure}
+\end{figure}
+
+(F\"{u}r Aufgaben (b) und (c) k\"{o}nnen sie die Aufz\"{a}hlung der
+Spannb\"{a}ume in Aufgabe~\ref{exspan} als Hilfsmittel verwenden.)
 \end{exercise}
 
+\newpage
 \section{L\"{o}sungen}
 
 \begin{description}
-\item[Aufgabe~\ref{exbaum}] Der mittlere Graph war bereits ein
+\item[Aufgabe~\ref{exbaum}] Der mittlere Graph (b) war bereits ein
   Baum.\\*
-
 \begin{figure}[h!]
+\setcounter{subfigure}{0}
 \begin{subfigure}[b]{0.5\textwidth}
-\scalebox{0.6}{\includegraphics{BaumLochFix.pdf}}
+\scalebox{0.45}{\includegraphics{BaumLochFix.pdf}}
 \caption{war nicht zusammenh\"{a}ngend}
 \end{subfigure}
 \stepcounter{subfigure}
 \begin{subfigure}[b]{0.5\textwidth}
-\scalebox{0.6}{\includegraphics{BaumKreisFix.pdf}}
+\scalebox{0.45}{\includegraphics{BaumKreisFix.pdf}}
 \caption{hatte einen geschlossenen Pfad}
 \end{subfigure}
 \end{figure}
@@ -578,10 +590,28 @@ $n-1$~Kanten enth\"{a}lt.
 \end{itemize}
 
 \item[Aufgabe~\ref{exgewicht}] 25
-\item[Aufgabe~\ref{exspangewicht}] Der minimale Spannbaum hat das
+\item[Aufgabe~\ref{exspangewicht}] 
+(a) Der minimale Spannbaum hat das
   Gewicht 8:\\*
 \scalebox{0.5}{\includegraphics{Exspangewichtsol.pdf}}
 
+(b) Es existieren zwei minimale Spannb\"{a}ume mit Gewicht 6:
+\begin{itemize}
+\item $\{\{A,B\}, \{A,D\}, \{B,C\}\}$
+\item $\{\{A,B\}, \{A,D\}, \{C,D\}\}$
+\end{itemize}
+
+(c) Alle vier Spannb\"{a}ume sind minimal, mit Gewicht 4:
+\begin{itemize}
+\item $\{\{A,B\}, \{A,D\}, \{B,C\}\}$
+\item $\{\{A,B\}, \{A,D\}, \{C,D\}\}$
+\item $\{\{A,B\}, \{B,C\}, \{C,D\}\}$
+\item $\{\{A,D\}, \{B,C\}, \{C,D\}\}$
+\end{itemize}
+
+Wir sehen, dass ein Graph ohne weiteres mehrere minimale
+Spannb\"{a}ume haben kann. Wenn alle Kantengewichte identisch 
+sind, sind \emph{alle} Spannb\"{a}ume minimal!
 \end{description}
 
 \newpage
