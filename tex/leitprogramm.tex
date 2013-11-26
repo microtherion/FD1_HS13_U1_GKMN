@@ -465,20 +465,10 @@ Kanten so um, dass sie ebenfalls zu B\"{a}umen werden.
 \end{exercise}
 
 \newpage
-\begin{proof}
-Ein Baum mit $n$ Knoten hat exakt $n-1$ Kanten.
-
-\bigskip\noindent\textsc{Beweis:} Ein Baum mit $1$~Knoten kann keine Kanten haben.
-In einem Baum mit $n$~Knoten sucht man sich einen beliebigen Knoten
-aus, folgt einer beliebigen Kante, und beim n\"{a}chsten Knoten sucht
-man sich eine andere Kante aus.
-Weil der Baum ja keinen geschlossenen
-Weg enth\"{a}lt, landet man irgendwann in einem Knoten, der von nur
-$1$~Kante erreicht wird. 
-Wenn man diesen Knoten und seine Kante aus
-dem Baum entfernt, erh\"{a}lt man einen Baum mit $n-1$~Knoten, und
-durch Induktion l\"{a}sst sich sehen, dass der Satz gilt.
-\end{proof}
+\begin{exercise}\label{exvertnode}
+Welche Aussage l\"{a}sst sich \"{u}ber die Anzahl Kanten eines Baums
+mit $n$ Knoten machen?
+\end{exercise}
 
 \section{Spannb\"{a}ume}
 
@@ -560,6 +550,22 @@ Finden Sie den minimalen Spannbaum dieses Graphen:
 \end{subfigure}
 \end{figure}
 
+\item[Aufgabe~\ref{exvertnode}] 
+Ein Baum mit $1$~Knoten kann keine Kanten haben. Wenn man nun zu 
+einem bestehenden Baum einen weiteren Knoten hinzuf\"{u}gt, ben\"{o}tigt
+man eine weitere Kante, um diesen Knoten mit dem Rest des Baums zu
+verbinden. Folglich hat ein Baum mit $n$~Knoten \emph{mindestens}
+$n-1$~Kanten.
+
+In einem Baum $B = (E,V)$ mit $n$~Knoten~$E$ und $n-1$~Kanten~$V$ besteht aber
+definitionsgem\"{a}ss bereits ein Weg zwischen jedem Knotenpaar 
+$\{A,B\}\in V$. Wenn man dann eine weitere Kante
+$\{A,B\}$~hinzuf\"{u}gt, erh\"{a}lt man folglich einen geschlossenen
+Weg, der $A$~und $B$ enth\"{a}lt, und der entstehende Graph ist kein
+Baum mehr!
+
+Somit sehen wir, dass ein Baum mit $n$~Knoten \emph{exakt}
+$n-1$~Kanten enth\"{a}lt.
 \item[Aufgabe~\ref{exspan}] Wenn man eine der vier Kanten $\{\{A,B\},
   \{A,D\}, \{B,C\}, \{C,D\}\}$ entfernt, erh\"{a}lt man je einen
   Spannbaum. Somit sind die vier m\"{o}glichen Spannb\"{a}ume:
