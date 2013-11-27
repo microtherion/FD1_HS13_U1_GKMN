@@ -98,7 +98,15 @@ Ihrer Lehrperson besprechen sollten.
 \newpage
 \chapter{Graphen}
 \label{graphs}
-In diesem Kapitel frischen wir unsere Kenntnisse zur Graphentheorie auf. Zuerst repetieren wir, was ein Graph \"{u}berhaupt ist und wie er dargestellt werden kann. Danach betrachten wir zwei Konzepte, n\"{a}mlich zusammen\"{a}ngende Graphen und Teilgraphen, welche f\"{u}r die n\"{a}chsten Kapitel wichtig sind. Am Ende des Kapitels behandeln wir noch die gewichteten Graphen. Leser, welche sich bereits in all diesen Themen sattelfest f\"{u}hlen, k\"{o}nnen dieses Kapitel \"{u}berspringen.   
+In diesem Kapitel frischen wir unsere Kenntnisse zur Graphentheorie
+auf. Zuerst repetieren wir, was ein Graph \"{u}berhaupt ist und wie er
+dargestellt werden kann. Danach betrachten wir zwei Konzepte,
+n\"{a}mlich zusammenh\"{a}ngende Graphen und Teilgraphen, welche
+f\"{u}r die n\"{a}chsten Kapitel wichtig sind. Am Ende des Kapitels
+behandeln wir noch die gewichteten Graphen. Wenn Sie sich bereits
+in all diesen Themen sattelfest f\"{u}hlen, k\"{o}nnen Sie direkt den
+Kapiteltest in Abschnitt~\ref{graphchaptest} in Angriff nehmen.
+
 \section{Rekapitulation: Was ist ein Graph?}
 
 Ein \textbf{Graph} $G(V,E)$ besteht aus einer Menge von
@@ -355,10 +363,10 @@ Teilgraphen.
 \end{enumerate}
 \end{description}
 
-\section{Kapiteltest}
+\section{Kapiteltest}\label{graphchaptest}
 
 \begin{exercise}\label{test1adjacency}
-Gegeben sei die Adjazenzmatrix für einen Graphen $G$.
+Gegeben sei die Adjazenzmatrix f\"{u}r einen Graphen $G$.
 
 \begin{displaymath}
 A(G) = \left(
@@ -569,9 +577,9 @@ man eine weitere Kante, um diesen Knoten mit dem Rest des Baums zu
 verbinden. Folglich hat ein Baum mit $n$~Knoten \emph{mindestens}
 $n-1$~Kanten.
 
-In einem Baum $B = (E,V)$ mit $n$~Knoten~$E$ und $n-1$~Kanten~$V$ besteht aber
+In einem Baum $B(V,E)$ mit $n$~Knoten~$V$ und $n-1$~Kanten~$E$ besteht aber
 definitionsgem\"{a}ss bereits ein Weg zwischen jedem Knotenpaar 
-$\{A,B\}\in V$. Wenn man dann eine weitere Kante
+$\{A,B\}\in E$. Wenn man dann eine weitere Kante
 $\{A,B\}$~hinzuf\"{u}gt, erh\"{a}lt man folglich einen geschlossenen
 Weg, der $A$~und $B$ enth\"{a}lt, und der entstehende Graph ist kein
 Baum mehr!
@@ -668,8 +676,7 @@ Zeichne alle minimalen Spannb\"{a}ume dieses Graphen auf:
 \chapter{Algorithmen zur Bestimmung von minimalen Spannb\"{a}umen}
 
 Wie findet man denn nun einen minimalen Spannbaum in einem
-Graphen, der nicht so einfach ist, dass die L\"{o}sung ziemlich
-offensichtlich ist? In diesem Kapitel werden wir zwei
+Graphen, der etwas gr\"{o}sser ist? In diesem Kapitel werden wir zwei
 verschiedene Algorithmen kennenlernen, die einen minimalen Spannbaum
 in einer Folge von \"{u}bersichtlichen Schritten bestimmen. Beide
 dieser Algorithmen geh\"{o}ren der Familie der \emph{gierigen}
@@ -754,9 +761,9 @@ Hier soll ein einfaches Beispiel graphisch illustriert werden:
 \algostep{Demo.pdf}{Der Anfangszustand. Jeder Knoten bildet einen
   eigenen Spannbaum.}
 \algostep{DemoKruskal1.pdf}{Schritt $1$: Eine der beiden Kanten mit Gewicht $5$
-  (egal welche, da beide minimal sind) wird hinzugef\"ugt. $A$, $D$, und die verbindende
+  (egal welche, da beide minimal sind) wird hinzugef\"{u}gt. $A$, $D$, und die verbindende
   Kante bilden somit einen Spannbaum, w\"{a}hrend die anderen Knoten
-  immer noch eigene Spannb\{a}ume bilden.
+  immer noch eigene Spannb\"{a}ume bilden.}
 \algostep{DemoKruskal2.pdf}{Schritt $2$: Die k\"{u}rzeste verbleibende
   Kante (die ebenfalls das Gewicht $5$ hat) wird hinzugef\"ugt.}
 \algostep{DemoKruskal3.pdf}{Schritt $3$: Nachdem zwei weitere Kanten
@@ -954,7 +961,8 @@ sicher gute Dienste leisten wird.
 \item Bestimmen Sie mit Hilfe eines der
 beiden Algorithmen, die Sie nun kennen, den minimalen Spannbaum
 f\"{u}r entweder die ersten 10 der St\"{a}dte, oder (fakultativ)
-f\"{u}r alle 20 St\"{a}dte.
+f\"{u}r alle 20 St\"{a}dte (Es ist nicht n\"{o}tig, das Resultat
+aufzuzeichnen, eine Mengendarstellung der Verbindungen gen\"{u}gt).
 \item Wieviel km Glasfaserkabel m\"{u}ssen Sie bestellen?
 \end{enumerate}
 
