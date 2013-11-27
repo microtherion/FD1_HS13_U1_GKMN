@@ -313,7 +313,8 @@ keine Kosten aufgef\"{u}hrt.
 \end{enumerate}
 \end{exercise}
 
-In der weiteren Diskussion werden wir hier nur noch an \textbf{Kantengewichteten} Graphen interessiert sein.
+In der weiteren Diskussion werden wir hier nur noch an
+\textbf{Kantengewichteten} Graphen interessiert sein. 
 
 \newpage
 \section{L\"{o}sungen}
@@ -715,10 +716,11 @@ Z\"{u}rich--Singapur--Sydney k\"{u}rzer ist.
 
 Gl\"{u}cklicherweise ist das Finden eines minimalen Spannbaums eines
 der Probleme, bei denen gierige Algorithmen ein optimales Resultat
-garantieren k\"{o}nnen. Wir k\"{o}nnen n\"{a}mlich zeigen, dass wir,
-wenn wir einen minimalen Spannbaum f\"{u}r einen \emph{Teil} des
-Graphen um die minimale Kante erweitern, die vom Spannbaum zu einem
-neuen Knoten f\"{u}hrt, das Resultat immer zu einem Spannbaum f\"{u}r
+garantieren k\"{o}nnen. Wenn wir n\"{a}mlich einen minimalen Spannbaum 
+f\"{u}r einen \emph{Teil} des Graphen nehmen und diesen um die 
+\textbf{minimale Kante}\footnote{d.h. die Kante mit dem kleinsten Gewicht}
+erweitern, die zu einem Knoten ausserhalb dieses Spannbaums f\"{u}hrt, 
+k\"{o}nnen wir zeigen, dass wir das Resultat immer zu einem Spannbaum f\"{u}r
 den \emph{ganzen} Graphen erweitern k\"{o}nnen:
 
 \begin{proof}\label{minimalkante}
