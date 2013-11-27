@@ -7,10 +7,11 @@
 \usepackage[german]{babel}
 \usepackage{graphics}
 \graphicspath{ {../img/} {../graph/img/} }
-\usepackage{color}
+\usepackage[table,dvipsnames]{xcolor}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{ntheorem}
+\usepackage{pifont}
 \theoremstyle{break}
 \theorembodyfont{\normalfont}
 \theoremprework{\bigskip\hrule\leavevmode\nopagebreak}
@@ -26,6 +27,17 @@
   \parbox{7cm}{#2}
   \vskip -5mm
 }
+\newcommand{\ucl}{\ding{56}}
+\newcommand{\ign}{\rowcolor[gray]{0.5}}
+\newcommand{\usd}[1]{{\cellcolor{SkyBlue}#1}}
+\newcommand{\sel}[1]{{\cellcolor{LimeGreen}#1}}
+\newcommand{\byp}[1]{{\cellcolor{LimeGreen!10}#1}}
+\newcommand{\matrixstep}[2]{\noindent\parbox{6cm}{\scriptsize #1}
+  \hfill
+  \parbox{7cm}{\small #2}
+  \vskip 2mm
+}
+
 \title{Minimale Spannb\"{a}ume}
 \author{Gabriel Katz\\ Matthias Neeracher}
 
@@ -902,6 +914,105 @@ Ende, bis der minimale Spannbaum konstruiert ist.
 \end{exercise}
 
 \newpage
+\section{Der Algorithmus von Prim f\"{u}r eine Adjazenzmatrix}
+
+Der Algorithmus von Prim ist auch besonders gut geeignet, auf Papier einen
+minimalen Spannbaum f\"{u}r einen Graphen in
+Adjazenzmatrix-Darstellung zu konstruieren. Probieren wir das gleich
+nochmals mit dem vorherigen Beispiel aus.
+
+\vskip 5mm\matrixstep{
+\begin{tabular}{|l|r|r|r|r|r|r|r|}\hline
+   &   &   &   &   &   &   &   \\ \hline
+   & A & B & C & D & E & F & G \\ \hline
+A &   & 7 &   & 5 &   &    &    \\
+B & 7 &   & 8 & 9 & 7 &   &   \\
+C &   & 8 &   &   & 5 &   &   \\
+D & 5 & 9 &   &   &15 & 6 &   \\
+E &   & 7 & 5 &15 &   & 8 & 9 \\
+F &   &   &   & 6 & 8 &   &11 \\
+G &   &   &   &   & 9 &11 & \\ 
+\hline
+\end{tabular}}{
+Konstruieren Sie die Adjazenzmatrix f\"{u}r ihren Graphen, indem Sie
+f\"{u}r jede Kante das Kantengewicht in die entsprechenden Zellen
+eintragen (Da die Matrix symmetrisch ist, w\"{a}re es der Einfachheit
+halber auch m\"{o}glich, dies z.B. nur f\"{u}r die linke untere
+H\"{a}lfte der Matrix zu tun).
+}
+\matrixstep{
+\begin{tabular}{|l|r|r|r|r|r|r|r|}\hline
+   & \ucl &   &   &   &   &   &   \\ \hline
+   & A & B & C & D & E & F & G \\ \hline
+\ign A &   & 7 &   & 5 &   &    &    \\
+B & 7 &   & 8 & 9 & 7 &   &   \\
+C &   & 8 &   &   & 5 &   &   \\
+D & 5 & 9 &   &   &15 & 6 &   \\
+E &   & 7 & 5 &15 &   & 8 & 9 \\
+F &   &   &   & 6 & 8 &   &11 \\
+G &   &   &   &   & 9 &11 & \\ 
+\hline
+\end{tabular}}{
+W\"{a}hlen Sie dann einen beliebigen Knoten, z.B. $A$ aus. Markieren
+Sie die Spalte dieses Knotens, um sich zu merken, dass $A$
+jetzt zum Spannbaum geh\"{o}rt, und schraffieren Sie die Zeile des Knotens, um
+anzuzeigen, dass keine Verbindungen nach $A$ mehr gemacht werden m\"{u}ssen.
+}
+\matrixstep{
+\begin{tabular}{|l|r|r|r|r|r|r|r|}\hline
+   & \ucl &   &   &   &   &   &   \\ \hline
+   & A & B & C & D & E & F & G \\ \hline
+\ign A &   & 7 &   & 5 &   &    &    \\
+B & \byp{7} &   & 8 & 9 & 7 &   &   \\
+C &   & 8 &   &   & 5 &   &   \\
+D & \sel{5} & 9 &   &   &15 & 6 &   \\
+E &   & 7 & 5 &15 &   & 8 & 9 \\
+F &   &   &   & 6 & 8 &   &11 \\
+G &   &   &   &   & 9 &11 & \\ 
+\hline
+\end{tabular}}{
+Suchen Sie nun in allen markierten Spalten nach dem kleinsten
+Gewicht. Sie finden die Kante $\{A,D\}$.
+}
+\matrixstep{
+\begin{tabular}{|l|r|r|r|r|r|r|r|}\hline
+   & \ucl &   &   & \ucl  &   &   &   \\ \hline
+   & A & B & C & D & E & F & G \\ \hline
+\ign A &   & 7 &   & \usd{5} &   &    &    \\
+B & 7 &   & 8 & 9 & 7 &   &   \\
+C &   & 8 &   &   & 5 &   &   \\
+\ign D & \usd{5} & 9 &   &   &15 & 6 &   \\
+E &   & 7 & 5 &15 &   & 8 & 9 \\
+F &   &   &   & 6 & 8 &   &11 \\
+G &   &   &   &   & 9 &11 & \\ 
+\hline
+\end{tabular}}{
+Merken Sie sich diese Kante, markieren Sie die Spalte des neu
+verbundenen Knotens $D$ und schraffieren Sie dessen Zeile.
+}
+\matrixstep{
+\begin{tabular}{|l|r|r|r|r|r|r|r|}\hline
+   & \ucl &   &   & \ucl  &   &   &   \\ \hline
+   & A & B & C & D & E & F & G \\ \hline
+\ign A &   & 7 &   & \usd{5} &   &    &    \\
+B & \byp{7} &   & 8 & \byp{9} & 7 &   &   \\
+C &   & 8 &   &   & 5 &   &   \\
+\ign D & \usd{5} & 9 &   &   &15 & 6 &   \\
+E &   & 7 & 5 &\byp{15} &   & 8 & 9 \\
+F &   &   &   & \sel{6} & 8 &   &11 \\
+G &   &   &   &   & 9 &11 & \\ 
+\hline
+\end{tabular}}{
+Suchen Sie erneut in allen markierten Spalten nach dem kleinsten
+Gewicht. Sie finden die Kante $\{D,F\}$.
+}
+
+\pagebreak
+\begin{exercise}\label{exprimadj}
+F\"{u}hren Sie auch diese Form des Algorithmus zu
+Ende, bis der minimale Spannbaum konstruiert ist.
+\end{exercise}
+
 \section{Schlussbetrachtung: Wer Gewinnt?}
 
 Wenn mehrere verschiedene Algorithmen zur L\"{o}sung eines Problems
@@ -948,12 +1059,29 @@ Berechnen Sie den minimalen Spannbaum f\"{u}r den folgenden Graphen.
 den gleichen minimalen Spannbaum:
 
 \scalebox{0.5}{\includegraphics{DemoResult.pdf}}
+\item[Aufgabe~\ref{exprimadj}] konstruiert den gleichen Spannbaum, als
+  Adjazenzmatrix:
+
+\begin{tabular}{|l|r|r|r|r|r|r|r|}\hline
+   & \ucl & \ucl  & \ucl & \ucl & \ucl & \ucl   & \ucl \\ \hline
+   & A & B & C & D & E & F & G \\ \hline
+\ign A &   & \usd{7} &   & \usd{5} &   &    &    \\
+\ign B & \usd{7} &   & 8 & 9 & \usd{7} &   &   \\
+\ign C &   & 8 &   &   & \usd{5} &   &   \\
+\ign D & \usd{5} & 9 &   &   &15 & \usd{6} &   \\
+\ign E &   & \usd{7} & \usd{5} &15 &   & 8 & \usd{9} \\
+\ign F &   &   &   & \usd{6} & 8 &   &11 \\
+\ign G &   &   &   &   & \usd{9} &11 & \\ 
+\hline
+\end{tabular}
+
 \item[Aufgabe~\ref{exfinal1}]Es gibt zwei verschiedene minimale
   Spannb\"{a}ume, da Knoten $F$ mit zwei Kanten mit identischem
   Gewicht erreicht werden kann.\\*
 
 \scalebox{0.5}{\includegraphics{Final1_1.pdf}}
 \scalebox{0.5}{\includegraphics{Final1_2.pdf}}
+\pagebreak
 \item[Aufgabe~\ref{exfinal2}]\hfill\\*
 
 \scalebox{0.6}{\includegraphics{Final2.pdf}}
