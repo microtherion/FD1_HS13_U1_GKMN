@@ -827,6 +827,7 @@ FAKULTATIV: Der Beweis des Algorithmus von Kruskal ist etwas
 schwieriger als die anderen Beweise, die wir in diesem Text diskutiert
 haben. Sie k\"{o}nnen ihn im Abschnitt~\ref{kruskproof} finden.
 
+\newpage
 \section{Der Algorithmus von Prim}
 
 Viele Optimierungsprobleme k\"{o}nnen auf viele verschiedene Arten
@@ -842,9 +843,29 @@ Algorithmus auch unter anderen Namen, z.B. \emph{Prim-Dijkstra
   Algorithmus} oder \emph{Algorithmus von Jarnik, Prim, und Dijkstra}
 bekannt).
 
-Der Algorithmus von Prim konstruiert einen minimalen Spannbaum f\"{u}r
-den zusammenh\"{a}ngenden Graphen $G(V,E)$ indem er einen bestehenden Baum $B(V_B,E_B)$
-sukzessive durch Hinzuf\"{u}gen minimaler Kanten erweitert:
+Die Grundidee des Algorithmus von Prim ist, dass man, von einem
+Ausgangspunkt ausgehend, in jedem Schritt die minimale Kante
+hinzuf\"{u}gt, die den bestehenden Spannbaum um einen weiteren Knoten
+erweitert:
+
+\algostep{DemoSmall.pdf}{Beginnen wir nochmals mit dem schon bekannten
+  Beispiel und w\"{a}hlen wir Knoten $A$ als Ausgangspunkt und
+  trivialen Spannbaum.}
+\algostep{DemoSmallPrim1.pdf}{Die einzige Kante, die diesen Spannbaum
+  erweitert, ist $\{A, B\}$.}
+\algostep{DemoSmallPrim2.pdf}{Nun haben wir zwei M\"{o}glichkeiten zur
+  Erweiterung und w\"{a}hlen davon die minimale Kante $\{B,C\}$.}
+\algostep{DemoSmallPrim3.pdf}{Erneut haben wir zwei M\"{o}glichkeiten
+  zur Erweiterung, und diesmal ist die minimale Kante $\{B,D\}$.}
+\algostep{DemoSmallPrim4.pdf}{Damit haben wir unseren minimalen
+  Spannbaum vollendet.}
+
+\newpage 
+Mathematisch etwas pr\"{a}ziser ausgedr\"{u}ckt, konstruiert
+der Algorithmus von Prim einen minimalen Spannbaum f\"{u}r den
+zusammenh\"{a}ngenden Graphen $G(V,E)$ indem er einen bestehenden Baum
+$B(V_B,E_B)$ sukzessive durch Hinzuf\"{u}gen minimaler Kanten
+erweitert:
 
 \begin{enumerate}
 \item W\"{a}hlen Sie einen beliebigen Knoten $v_0\in V$ als
@@ -863,7 +884,7 @@ FAKULTATIV: Auch beim Algorithmus von Prim ist der Beweis etwas
 kompliziert. Sie k\"{o}nnen ihn im Abschnitt~\ref{primproof} finden.
 
 \newpage
-Auch hier werden wir das gleiche Beispiel illustrieren:
+Um das nochmals an unserem etwas gr\"{o}sseren Beispiel zu illustrieren:
 
 \algostep{DemoPrim1.pdf}{Der Anfangszustand, $V_B = \{A\}$ (beliebige
   Wahl), $E_B = \{\}$. M\"{o}gliche Erweiterungskanten sind $\{A,B\}$
