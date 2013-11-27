@@ -616,21 +616,54 @@ sind, sind \emph{alle} Spannb\"{a}ume minimal!
 
 \newpage
 \section{Kapiteltest}
-\begin{exercise}
+\begin{exercise}\label{kapspan}
 Gegeben sei folgender Graph $G$:
 
 \scalebox{0.5}{\includegraphics{KapiteltestSubgraph.pdf}}\\*
 Welche der folgenden Graphen sind B\"{a}ume, welche sind Spannb\"{a}ume von $G$?
 
+\begin{figure}[h!]
+\setcounter{subfigure}{0}
+\begin{subfigure}[b]{0.3\textwidth}
 \scalebox{0.5}{\includegraphics{KapiteltestSubgraph1.pdf}}
+\caption{}
+\end{subfigure}
+\begin{subfigure}[b]{0.3\textwidth}
 \scalebox{0.5}{\includegraphics{KapiteltestSubgraph2.pdf}}
+\caption{}
+\end{subfigure}
+\begin{subfigure}[b]{0.3\textwidth}
 \scalebox{0.5}{\includegraphics{KapiteltestSubgraph3.pdf}}
+\caption{}
+\end{subfigure}
+\end{figure}
 \end{exercise}
-\begin{exercise}
+\begin{exercise}\label{kapspanmin}
 Zeichne alle minimalen Spannb\"{a}ume dieses Graphen auf:
 
 \scalebox{0.5}{\includegraphics{KapiteltestMST.pdf}}
 \end{exercise}
+
+\section{L\"{o}sung zum Kapiteltest}
+\begin{description}
+\item[Aufgabe~\ref{kapspan}] (a)~ist ein Baum, aber \emph{kein}
+  Spannbaum von $G$, weil die Kante~$\{B,E\}$ nicht in $G$ enthalten
+  ist. (b)~ist ein Spannbaum von $G$. (c)~ist kein
+  Baum, weil ein geschlossener Weg existiert.
+\item[Aufgabe~\ref{kapspanmin}] \hfill\\*
+
+\begin{figure}[h!]
+\setcounter{subfigure}{0}
+\begin{subfigure}[b]{0.5\textwidth}
+\scalebox{0.5}{\includegraphics{KapiteltestMST_s1.pdf}}
+\caption{}
+\end{subfigure}
+\begin{subfigure}[b]{0.5\textwidth}
+\scalebox{0.5}{\includegraphics{KapiteltestMST_s2.pdf}}
+\caption{}
+\end{subfigure}
+\end{figure}
+\end{description}
 
 \chapter{Algorithmen zur Bestimmung von minimalen Spannb\"{a}umen}
 
