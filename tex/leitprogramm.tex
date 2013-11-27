@@ -754,15 +754,15 @@ Hier soll ein einfaches Beispiel graphisch illustriert werden:
 \algostep{Demo.pdf}{Der Anfangszustand. Jeder Knoten bildet einen
   eigenen Spannbaum.}
 \algostep{DemoKruskal1.pdf}{Schritt $1$: Eine der beiden Kanten mit Gewicht $5$
-  (egal welche, da beide minimal sind) wurde hinzugef\"ugt. $A$, $D$, und die verbindende
+  (egal welche, da beide minimal sind) wird hinzugef\"ugt. $A$, $D$, und die verbindende
   Kante bilden somit einen Spannbaum, w\"{a}hrend die anderen Knoten
   immer noch eigene Spannb\{a}ume bilden.
 \algostep{DemoKruskal2.pdf}{Schritt $2$: Die k\"{u}rzeste verbleibende
-  Kante (die ebenfalls das Gewicht $5$ hat) wurde hinzugef\"ugt.}
+  Kante (die ebenfalls das Gewicht $5$ hat) wird hinzugef\"ugt.}
 \algostep{DemoKruskal3.pdf}{Schritt $3$: Nachdem zwei weitere Kanten
   hinzugef\"ugt wurden, wird jetzt klar, dass die Kante $\{B,C\}$ nie
   mehr hinzugef\"ugt werden wird, weil sie mit $\{B,E\}$ und $\{C,E\}$
-  einen geschlossenen Weg bilden w\"{u}rde. Es verbleiben die drei
+  einen geschlossenen Weg bilden w\"{u}rde. Wir haben nun drei
   Spannb\"{a}ume, die die Knoten $\{A, D, F\}$, $\{B, C, E\}$ und
   $\{G\}$ verkn\"{u}pfen.}
 
@@ -803,7 +803,7 @@ haben. Sie k\"{o}nnen ihn im Abschnitt~\ref{kruskproof} finden.
 
 Viele Optimierungsprobleme k\"{o}nnen auf viele verschiedene Arten
 gel\"{o}st werden. Auch f\"{u}r das minimale Spannbaumproblem gibt es
-viele Algorithmen, und wir wollen deshalb noch einen zweiten
+viele Algorithmen. Wir wollen deshalb noch einen zweiten
 Algorithmus vorstellen, um einen anderen Ansatz zu zeigen.
 
 Dieser Algorithmus wurde bereits 1930 von dem Mathematiker
@@ -820,7 +820,7 @@ sukzessive durch Hinzuf\"{u}gen minimaler Kanten erweitert:
 
 \begin{enumerate}
 \item W\"{a}hlen Sie einen beliebigen Knoten $v_0\in V$ als
-  Anfangszustand f\"{u}r $B$: $V_B \gets \{v_0\}$, $E_B \gets \{\})$.
+  Anfangszustand f\"{u}r $B$: $V_B \gets \{v_0\}$, $E_B \gets \{\}$.
 \item Solange $V_B\neq V$:
 \begin{enumerate}
 \item \label{primsel} W\"{a}hlen Sie unter den Kanten $\{e = \{u,v\}\mid u\in V_B, v\in
