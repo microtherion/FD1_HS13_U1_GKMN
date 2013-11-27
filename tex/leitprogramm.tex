@@ -21,9 +21,10 @@
 \theorempostwork{\nopagebreak\hrule\leavevmode}
 \newtheorem{proof}{Satz}[chapter]
 \renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}
-\newcommand{\algostep}[2]{\parbox{4cm}{\scalebox{0.5}{\includegraphics{#1}}}
+\newcommand{\algostep}[2]{\noindent\parbox{4cm}{\scalebox{0.5}{\includegraphics{#1}}}
   \hfill
   \parbox{7cm}{#2}
+  \vskip -5mm
 }
 \title{Minimale Spannb\"{a}ume}
 \author{Gabriel Katz\\ Matthias Neeracher}
@@ -748,17 +749,35 @@ Gegenannahme widerlegt.
 Somit wissen wir, dass jeder gierige Algorithmus, der in jedem Schritt eine
 solche minimale Kante ausw\"{a}hlt, zu einem minimalen Spannbaum f\"{u}hrt.
 
+\newpage
 \section{Der Algorithmus von Kruskal}
 
 Der erste Algorithmus, den wir behandeln, wurde von dem
 amerikanischen Mathematiker Joseph Kruskal entwickelt und erstmals
-1956 publiziert. In diesem Algorithmus wird zun\"{a}chst jeder Knoten
-als separater Spannbaum betrachtet, und diese B\"{a}ume werden dann
-sukzessive verbunden, bis ein einziger minimaler Spannbaum
-\"ubrigbleibt.
+1956 publiziert. Die Grundidee in diesem Algorithmus ist, dass man in
+jedem Schritt die minimale \emph{n\"{u}tzliche} Kante
+ausw\"{a}hlt:
+
+\algostep{DemoSmall.pdf}{Schauen wir uns diesen einfachen Graphen
+an.}
+\algostep{DemoSmallKruskal1.pdf}{Die minimale Kante ist $\{B, C\}$.}
+\algostep{DemoSmallKruskal2.pdf}{Nachdem wir diese ausgew\"{a}hlt
+  haben, ist die minimale verbleibende Kante $\{B,D\}$.}
+\algostep{DemoSmallKruskal3.pdf}{Nun w\"{a}re die minimale
+  verbleibende Kante ja eigentlich $\{C,D\}$. Wenn wir diese aber auch
+ausw\"{a}hlen w\"{u}rden, h\"{a}tten wir aber einen geschlossenen Weg
+$B$--$C$--$D$--$B$. Die Kante ist also nicht in unserem Sinn
+n\"{u}tzlich, und wir d\"{u}rfen sie nicht verwenden.}
+\algostep{DemoSmallKruskal4.pdf}{Somit verbleibt als minimale
+  n\"{u}tzliche Kante $\{A,B\}$, und damit haben wir unseren minimalen
+  Spannbaum vollendet.}
 
 \newpage
-Hier soll ein einfaches Beispiel graphisch illustriert werden:
+Wenn wir uns das Vorgehen an einem etwas gr\"{o}sseren Beispiel
+ansehen, sehen wir, dass zun\"{a}chst jeder Knoten
+als separater Spannbaum betrachtet wird, und diese B\"{a}ume dann
+sukzessive verbunden werden, bis ein einziger minimaler Spannbaum
+\"ubrigbleibt:
 
 \algostep{Demo.pdf}{Der Anfangszustand. Jeder Knoten bildet einen
   eigenen Spannbaum.}
@@ -770,7 +789,7 @@ Hier soll ein einfaches Beispiel graphisch illustriert werden:
   Kante (die ebenfalls das Gewicht $5$ hat) wird hinzugef\"ugt.}
 \algostep{DemoKruskal3.pdf}{Schritt $3$: Nachdem zwei weitere Kanten
   hinzugef\"ugt wurden, wird jetzt klar, dass die Kante $\{B,C\}$ nie
-  mehr hinzugef\"ugt werden wird, weil sie mit $\{B,E\}$ und $\{C,E\}$
+  mehr n\"{u}tzlich sein wird, weil sie mit $\{B,E\}$ und $\{C,E\}$
   einen geschlossenen Weg bilden w\"{u}rde. Wir haben nun drei
   Spannb\"{a}ume, die die Knoten $\{A, D, F\}$, $\{B, C, E\}$ und
   $\{G\}$ verkn\"{u}pfen.}

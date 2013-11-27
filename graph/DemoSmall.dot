@@ -1,0 +1,7 @@
+graph DemoSmall {
+      node [height=0.25,width=0.25,fixedsize=true]
+      A -- B [label="5"]
+      B -- C [label="2"]
+      B -- D [label="3"]
+      C -- D [label="4"]
+}

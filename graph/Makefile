@@ -14,7 +14,8 @@ UNDIRECTED	= Ungerichtet UngerichtetUnschlicht Sub1 Sub2 Sub3 \
 	KapiteltestSubgraph KapiteltestSubgraph1 KapiteltestSubgraph2\
 	KapiteltestSubgraph3 KapiteltestMST BaumBsp WaldBsp \
 	UngerSpann1 UngerSpann2 UngerSpann3 Kapiteltest1 \
-	Exspan_w1 Exspan_w2 KapiteltestMST_s1 KapiteltestMST_s2
+	Exspan_w1 Exspan_w2 KapiteltestMST_s1 KapiteltestMST_s2 \
+	DemoSmall DemoSmallKruskal1 DemoSmallKruskal2 DemoSmallKruskal3 DemoSmallKruskal4
 PLOT            = Cities Cities10
 
 DIRECTED_pdf	= $(patsubst %,%.pdf,$(DIRECTED))
