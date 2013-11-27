@@ -1,0 +1,47 @@
+#!/usr/bin/ruby
+
+CITY = {}
+CITIES = []
+ARGF.each do |line|
+   fields = line.split
+   CITY[fields[2]] = [fields[4].to_f, fields[6].to_f]
+  CITIES << fields[2]
+end
+
+puts <<END
+using Graphs
+
+g = graph(ExVertex, ExEdge{ExVertex})
+
+END
+
+CITIES.each do |city|
+  puts %Q|add_vertex!(g, "#{city}")|
+end
+
+puts <<END
+
+vs = g.vertices
+n  = length(vs)
+wt = zeros(int(n*(n-1)/2))
+
+END
+
+wx = 1
+CITIES.each_index do |i|
+  ci = CITY[CITIES[i]]
+  CITIES.each_index do |j|
+    if i < j
+      cj     = CITY[CITIES[j]]
+      puts %Q|add_edge!(g, vs[#{i+1}], vs[#{j+1}])|
+      puts %Q|wt[#{wx}] = #{"%.0f" % (Math.hypot(ci[0]-cj[0], ci[1]-cj[1]) / 1000.0)}|
+      wx += 1
+    end
+  end
+end
+
+puts <<END
+
+re, rw = kruskal_minimum_spantree(g, wt)
+END
+

@@ -1,0 +1,22 @@
+#!/usr/bin/ruby
+
+SCALE = 300.0
+CITY = {}
+CITIES = []
+ARGF.each do |line|
+   fields = line.split
+   CITY[fields[2]] = [fields[4].to_f, fields[6].to_f]
+  CITIES << fields[2]
+end
+
+print <<END_HEADER
+graph Cities {
+END_HEADER
+
+CITIES.each do |city|
+  puts %Q(    #{city} [pos="#{'%.1f' % (CITY[city][0]/SCALE)}, #{'%.1f' % (CITY[city][1]/SCALE)}"])
+end
+
+print <<END_FOOTER   
+}
+END_FOOTER

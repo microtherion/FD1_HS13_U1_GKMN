@@ -1,0 +1,22 @@
+graph Cities {
+    ZRH [pos="2277.5, 827.2"]
+    GVA [pos="1668.4, 391.1"]
+    BSL [pos="2038.6, 891.4"]
+    LAU [pos="1794.0, 506.8"]
+    BRN [pos="2000.0, 666.7"]
+    WIN [pos="2329.3, 872.8"]
+    LZN [pos="2218.2, 704.5"]
+    QGL [pos="2487.6, 847.7"]
+    LUG [pos="2393.4, 321.9"]
+    BIE [pos="1951.6, 735.8"]
+
+    ZRH -- WIN [label="21"]
+    BRN -- BIE [label="25"]
+    ZRH -- LZN [label="41"]
+    WIN -- QGL [label="48"]
+    GVA -- LAU [label="51"]
+    BSL -- BIE [label="53"]
+    BRN -- LZN [label="66"]
+    LAU -- BRN [label="78"]
+    LZN -- LUG [label="126"]
+}

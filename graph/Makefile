@@ -1,7 +1,7 @@
 vpath %.pdf img
 
-.PHONY: directed undirected
-all : directed undirected
+.PHONY: directed undirected plot
+all : directed undirected plot
 
 DIRECTED 	= Lernziele Gerichtet GerichtetUnschlicht Travel SubWegGewicht
 UNDIRECTED	= Ungerichtet UngerichtetUnschlicht Sub1 Sub2 Sub3 \
@@ -15,6 +15,7 @@ UNDIRECTED	= Ungerichtet UngerichtetUnschlicht Sub1 Sub2 Sub3 \
 	KapiteltestSubgraph3 KapiteltestMST BaumBsp WaldBsp \
 	UngerSpann1 UngerSpann2 UngerSpann3 Kapiteltest1 \
 	Exspan_w1 Exspan_w2 KapiteltestMST_s1 KapiteltestMST_s2
+PLOT            = Cities Cities10
 
 DIRECTED_pdf	= $(patsubst %,%.pdf,$(DIRECTED))
 $(DIRECTED_pdf) : %.pdf : %.dot
@@ -24,7 +25,12 @@ UNDIRECTED_pdf	= $(patsubst %,%.pdf,$(UNDIRECTED))
 $(UNDIRECTED_pdf) : %.pdf : %.dot
 	neato -Tpdf $< -o img/$@
 
+PLOT_pdf	= $(patsubst %,%.pdf,$(PLOT))
+$(PLOT_pdf) : %.pdf : %.dot
+	neato -n -Tpdf $< -o img/$@
+
 directed: 	$(DIRECTED_pdf)
 undirected: 	$(UNDIRECTED_pdf)
+plot: 		$(PLOT_pdf)
 
 
