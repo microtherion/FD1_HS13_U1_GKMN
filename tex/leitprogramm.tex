@@ -670,13 +670,17 @@ Zeichne alle minimalen Spannb\"{a}ume dieses Graphen auf:
 Wie findet man denn nun einen minimalen Spannbaum in einem
 Graphen, der nicht so einfach ist, dass die L\"{o}sung ziemlich
 offensichtlich ist? In diesem Kapitel werden wir zwei
-verschiedene Algorithmen kennenlernen, die dies bewerkstelligen.
+verschiedene Algorithmen kennenlernen, die einen minimalen Spannbaum
+in einer Folge von \"{u}bersichtlichen Schritten bestimmen. Beide
+dieser Algorithmen geh\"{o}ren der Familie der \emph{gierigen}
+Algorithmen an.
 
 \section{Gierige Algorithmen}
 
 Ein Algorithmus wird \textbf{gierig} (bzw. das Englische Aequivalent
 \textbf{greedy}) genannt, wenn er in jedem Schritt einen \emph{lokal
-  optimalen} Folgezustand w\"{a}hlt. In Reiseproblem, das in
+  optimalen} Folgezustand w\"{a}hlt, das heisst, den Zustand, der ohne
+weitere Vorausplanung am besten aussieht. In Reiseproblem, das in
 Aufgabe~\ref{extravel} besprochen wurde, w\"{u}rde ein gieriger
 Algorithmus z.B. in jedem Schritt den k\"{u}rzesten oder den
 billigsten Flug aus der gegenw\"{a}rtigen Stadt in eine noch nicht
@@ -687,14 +691,31 @@ sie l\"{o}sen viele Probleme nicht optimal: In unserem Beispiel
 w\"{u}rde der Algorithmus zwar den billigsten Weg finden, aber im
 allgemeinen Fall ist das nicht garantiert, und der Algorithmus
 w\"{u}rde hier die falsche L\"{o}sung f\"{u}r den k\"{u}rzesten Weg
-finden.
+finden:
+
+\begin{itemize}
+\item Im ersten Schritt ist von Z\"{u}rich aus die Reise nach Moskau
+  sowohl am k\"{u}rzesten als auch am billigsten.
+\item Im n\"{a}chsten Schritt wollen wir nicht umkehren, also reisen
+  wir nach Ulan Bator weiter.
+\item Zuletzt fliegen wir nach Sydney weiter.
+\end{itemize}
+
+Folglich w\"{u}rde sowohl nach dem ``k\"{u}rzesten'' als auch nach dem
+``billigsten'' Kriterium die Route Z\"{u}rich--Moskau--Ulan
+Bator--Sydney gew\"{a}hlt, w\"{a}hrend in Wirklichkeit die Route
+Z\"{u}rich--Singapur--Sydney k\"{u}rzer ist.
 
 Gl\"{u}cklicherweise ist das Finden eines minimalen Spannbaums eines
 der Probleme, bei denen gierige Algorithmen ein optimales Resultat
-garantieren k\"{o}nnen:
+garantieren k\"{o}nnen. Wir k\"{o}nnen n\"{a}mlich zeigen, dass wir,
+wenn wir einen minimalen Spannbaum f\"{u}r einen \emph{Teil} des
+Graphen um die minimale Kante erweitern, die vom Spannbaum zu einem
+neuen Knoten f\"{u}hrt, das Resultat immer zu einem Spannbaum f\"{u}r
+den \emph{ganzen} Graphen erweitern k\"{o}nnen:
 
 \begin{proof}\label{minimalkante}
-  Es sei $G(V,E)$ ein kantenbewerteter
+  Es sei $G(V,E)$ ein kantengewichteter
   zusammenh\"{a}ngender Graph. $U$ sei eine Teilmenge der Knoten $V$ und
   $e_{min}$ die Kante mit dem kleinsten Gewicht in der Kantenmenge
   $\{e=\{u,v\} \mid e\in E, u\in U, v\in (V\!\setminus\!U) \}$. Dann existiert ein
@@ -713,8 +734,10 @@ das von $\{u',v'\}$, kann auch das Gewicht von $B'$ nicht
 gr\"{o}sser sein als das von $B$: $B'$ muss ebenfalls ein minimaler
 Spannbaum sein, und da $B'$ $e_{min}$ enth\"{a}lt, ist die
 Gegenannahme widerlegt.
-
 \end{proof} 
+
+Somit wissen wir, dass jeder gierige Algorithmus, der in jedem Schritt eine
+solche minimale Kante ausw\"{a}hlt, zu einem minimalen Spannbaum f\"{u}hrt.
 
 \section{Der Algorithmus von Kruskal}
 
