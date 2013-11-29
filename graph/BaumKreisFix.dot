@@ -3,7 +3,7 @@ graph Baum {
       A -- D
       C -- D
       A -- E
-      B -- F [style="dotted",label="entfernen"]
+      B -- F [style="dotted",label="entfernen",color="red"]
       F -- A
       D -- G
 }
