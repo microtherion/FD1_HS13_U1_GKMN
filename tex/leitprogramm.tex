@@ -1043,7 +1043,9 @@ Ende, bis der minimale Spannbaum konstruiert ist.
 \end{exercise}
 
 \begin{exercise}\label{exprimadj2}
-Finden Sie den minimalen Spannbaum f\"{u}r den Graphen mit folgender Adjazenzmatrix:
+Finden Sie den minimalen Spannbaum f\"{u}r den Graphen mit folgender
+Adjazenzmatrix:
+
 \begin{tabular}{|l|r|r|r|r|r|r|r|r|}\hline
    	&A	& B 	& C 	& D 	& E 	& F 	& G  & H\\ \hline
 A 	&	& 6	& 10	&	&	&  3 	&  6	&   \\
@@ -1107,12 +1109,21 @@ den gleichen minimalen Spannbaum:
 \scalebox{0.5}{\includegraphics{Final1_1.pdf}}
 \scalebox{0.5}{\includegraphics{Final1_2.pdf}}
 \scalebox{0.5}{\includegraphics{Final1_3.pdf}}
-Reihenfolge bei Kruskal: $\{E, G\}, \{B, D\}, \{A, B\}, \{B, C\},$ danach beliebig.\\*
-Reihenfolge bei Prim: $\{A, B\}, \{B, D\}, \{B, C\},$ danach gibt es vier Möglichkeiten: \\*
-1:$\{A, E\}, \{E, G\}, \{E, F\},$\\*
-2:$\{A, E\}, \{E, G\}, \{C, F\},$\\*
-3:$\{C, F\}, \{E, F\}, \{E, G\},$\\*
-4:$\{C, F\}, \{A, E\}, \{E, G\},$ \\*
+Reihenfolge bei Kruskal: $\{E, G\}, \{B, D\}, \{A, B\}, \{B, C\},$
+danach beliebig.
+
+Reihenfolge bei Prim: $\{A, B\}, \{B, D\}, \{B, C\},$ danach gibt es
+vier Möglichkeiten: 
+
+\begin{enumerate}
+\item $\{A, E\}, \{E, G\}, \{E, F\},$
+\item $\{A, E\}, \{E, G\}, \{C, F\},$
+\item $\{C, F\}, \{E, F\}, \{E, G\},$
+\item $\{C, F\}, \{A, E\}, \{E, G\},$
+\end{enumerate}
+
+Wie sie sehen, liefern M\"oglichkeiten 1 und 4 das gleiche
+Endresultat, nur in unterscheidlicher Reihenfolge.
 
 \pagebreak
 \item[Aufgabe~\ref{exfinal2} und ~\ref{exprim3}]\hfill\\*
