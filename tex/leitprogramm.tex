@@ -817,6 +817,17 @@ sukzessive verbunden werden, bis ein einziger minimaler Spannbaum
 F\"{u}hren Sie den Algorithmus von Kruskal im vorstehenden Beispiel zu
 Ende, bis der minimale Spannbaum konstruiert ist.
 \end{exercise}
+\begin{exercise}\label{exfinal1}
+Berechnen Sie mit dem Algorithmus von Kruskal die minimalen Spannb\"{a}ume f\"{u}r den folgenden
+Graphen.
+
+\scalebox{0.6}{\includegraphics{FinalExercise1.pdf}}
+\end{exercise}
+\begin{exercise}\label{exfinal2}
+Berechnen Sie mit dem Algorithmus von Kruskal den minimalen Spannbaum f\"{u}r den folgenden Graphen.
+
+\scalebox{0.6}{\includegraphics{FinalExercise2.pdf}}
+\end{exercise}
 
 Mathematisch etwas pr\"{a}ziser ausgedr\"{u}ckt, konstruiert der
 Algorithmus von Kruskal eine minimalen Spannbaum f\"{u}r den 
@@ -919,6 +930,14 @@ F\"{u}hren Sie den Algorithmus von Prim im vorstehenden Beispiel zu
 Ende, bis der minimale Spannbaum konstruiert ist.
 \end{exercise}
 
+\begin{exercise}\label{exprim2}
+Berechnen Sie mit dem Algorithmus von Prim die minimalen Spannb\"{a}ume f\"{u}r den
+Graphen aus Aufgabe ~\ref{exfinal1} von Knoten $A$ ausgehend.
+\end{exercise}
+\begin{exercise}\label{exprim3}
+Berechnen Sie mit dem Algorithmus von Prim den minimalen Spannbaum f\"{u}r den Graphen aus Aufgabe ~\ref{exfinal2} von Knoten F ausgehend.
+\end{exercise}
+
 \newpage
 \section{Der Algorithmus von Prim f\"{u}r eine Adjazenzmatrix}
 
@@ -1019,6 +1038,22 @@ F\"{u}hren Sie auch diese Form des Algorithmus zu
 Ende, bis der minimale Spannbaum konstruiert ist.
 \end{exercise}
 
+\begin{exercise}\label{exprimadj2}
+Finden Sie den minimalen Spannbaum f\"{u}r den Graphen mit folgender Adjazenzmatrix:
+\begin{tabular}{|l|r|r|r|r|r|r|r|r|}\hline
+   	&A	& B 	& C 	& D 	& E 	& F 	& G  & H\\ \hline
+A 	&	& 6	& 10	&	&	&  3 	&  6	&   \\
+B 	& 6	&  	&  	&  	&  	&  2 	&  	& \\
+C 	& 10 &  	&   	& 7	& 	& 	&  1	&\\
+D 	&  	&  	& 7	&   	& 3	& 	&  5 	& 4\\
+E 	&   	&  	&  	& 3	& 	& 	& 	& 5\\
+F 	& 3  	&  2 	&  	& 	& 	&   	& 1	&\\
+G 	& 6	&   	&  1	&  5 	& 	& 1 	& 9 	&\\ 
+H 	&   	&   	&   	&  4	& 5	&	&	&\\ 
+\hline
+\end{tabular}
+\end{exercise}
+
 \section{Schlussbetrachtung: Wer Gewinnt?}
 
 Wenn mehrere verschiedene Algorithmen zur L\"{o}sung eines Problems
@@ -1045,16 +1080,11 @@ kurz erw\"{a}hnt sein:
 \end{itemize}
 
 \newpage
-\begin{exercise}\label{exfinal1}
-Berechnen Sie die minimalen Spannb\"{a}ume f\"{u}r den folgenden
-Graphen.
 
-\scalebox{0.6}{\includegraphics{FinalExercise1.pdf}}
-\end{exercise}
-\begin{exercise}\label{exfinal2}
+\begin{exercise}\label{exMedium}
 Berechnen Sie den minimalen Spannbaum f\"{u}r den folgenden Graphen.
 
-\scalebox{0.6}{\includegraphics{FinalExercise2.pdf}}
+\scalebox{0.6}{\includegraphics{ExMedium.pdf}}
 \end{exercise}
 
 \newpage
@@ -1065,8 +1095,30 @@ Berechnen Sie den minimalen Spannbaum f\"{u}r den folgenden Graphen.
 den gleichen minimalen Spannbaum:
 
 \scalebox{0.5}{\includegraphics{DemoResult.pdf}}
-\item[Aufgabe~\ref{exprimadj}] konstruiert den gleichen Spannbaum, als
-  Adjazenzmatrix:
+
+\item[Aufgabe~\ref{exfinal1} und ~\ref{exprim2}] Es gibt drei verschiedene minimale
+  Spannb\"{a}ume, da Knoten $E$ und $F$ je mit zwei Kanten mit identischem
+  Gewicht erreicht werden kann.\\*
+
+\scalebox{0.5}{\includegraphics{Final1_1.pdf}}
+\scalebox{0.5}{\includegraphics{Final1_2.pdf}}
+\scalebox{0.5}{\includegraphics{Final1_3.pdf}}
+Reihenfolge bei Kruskal: $\{E, G\}, \{B, D\}, \{A, B\}, \{B, C\},$ danach beliebig.\\*
+Reihenfolge bei Prim: $\{A, B\}, \{B, D\}, \{B, C\},$ danach gibt es vier Möglichkeiten: \\*
+1:$\{A, E\}, \{E, G\}, \{E, F\},$\\*
+2:$\{A, E\}, \{E, G\}, \{C, F\},$\\*
+3:$\{C, F\}, \{E, F\}, \{E, G\},$\\*
+4:$\{C, F\}, \{A, E\}, \{E, G\},$ \\*
+
+\pagebreak
+\item[Aufgabe~\ref{exfinal2} und ~\ref{exprim3}]\hfill\\*
+
+\scalebox{0.6}{\includegraphics{Final2.pdf}}\\*
+Reihenfolge bei Kruskal: $\{E, F\}, \{A, D\}, \{C, F\}, \{B, F\}, \{D, F\}, \{E, G\}$\\*
+Reihenfolge bei Prim: $\{E, F\}, \{C, F\}, \{B, F\}, \{D, F\}, \{A, D\}, \{E, G\}$ \\*
+
+\item[Aufgabe~\ref{exprimadj}] konstruiert den gleichen Spannbaum wie Aufgaben ~\ref{exkruskal} 
+und ~\ref{exprim}, als Adjazenzmatrix:
 
 \begin{tabular}{|l|r|r|r|r|r|r|r|}\hline
    & \ucl & \ucl  & \ucl & \ucl & \ucl & \ucl   & \ucl \\ \hline
@@ -1081,16 +1133,22 @@ den gleichen minimalen Spannbaum:
 \hline
 \end{tabular}
 
-\item[Aufgabe~\ref{exfinal1}]Es gibt zwei verschiedene minimale
-  Spannb\"{a}ume, da Knoten $F$ mit zwei Kanten mit identischem
-  Gewicht erreicht werden kann.\\*
+\item[Aufgabe ~\ref{exprimadj2}]\hfill\\*
+\begin{tabular}{|l|r|r|r|r|r|r|r|r|}\hline
+ &A	& B 	& C 	& D 	& E 	& F 	& G  & H\\ \hline
+\ign  A 	&	& 6	& 10	&	&	&  \usd{3} 	&  6	&   \\
+\ign  B 	& 6	&  	&  	&  	&  	&  \usd{2} 	&  	& \\
+\ign  C 	& 10 &  	&   	& 7	& 	& 	&  \usd{1}	&\\
+\ign  D 	&  	&  	& 7	&   	& \usd{3}	& 	&  \usd{5} 	& \usd{4}\\
+\ign  E 	&   	&  	&  	& \usd{3}	& 	& 	& 	& 5\\
+\ign  F 	& \usd{3}  	&  \usd{2} 	&  	& 	& 	&   	& \usd{1}	&\\
+\ign  G 	& 6	&   	&  \usd{1}	&  \usd{5} 	& 	& \usd{1} 	& 9 	&\\ 
+\ign  H 	&   	&   	&   	&  \usd{4}	& 5	&	&	&\\ 
+\hline
+\end{tabular}
+\item[Aufgabe~\ref{exMedium}]\hfill\\*
 
-\scalebox{0.5}{\includegraphics{Final1_1.pdf}}
-\scalebox{0.5}{\includegraphics{Final1_2.pdf}}
-\pagebreak
-\item[Aufgabe~\ref{exfinal2}]\hfill\\*
-
-\scalebox{0.6}{\includegraphics{Final2.pdf}}
+\scalebox{0.6}{\includegraphics{ExMediumSolution.pdf}}
 \end{description}
 \pagebreak
 
