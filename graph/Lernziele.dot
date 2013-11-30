@@ -37,8 +37,25 @@ digraph C {
 	"Hilfssatz" -> "Kruskal";
 	"Hilfssatz" -> "Prim";
 
+	"Algorithmen" -> "Korrektheit";
+	"Algorithmen" -> "Laufzeit";
+	
+	"Korrektheit" -> "Kruskal";
+	"Laufzeit" -> "Kruskal";
+	
+	"Korrektheit" -> "Prim";
+	"Laufzeit" -> "Prim";
+
 	subgraph clusterVorkenntnisse {
 		 graph [bgcolor="grey89"];
-		 "Graph"; "Knoten"; "Kante"; "gerichtet"; "ungerichtet"; "Weg"; "zusammenhängend"; "geschlossen"; "Teilgraph"; "Indirekte Beweise"
+		 "Graph"; "Knoten"; "Kante"; "gerichtet"; "ungerichtet"; "Weg"; "zusammenhängend"; "geschlossen"; "Teilgraph"
 	}
+	subgraph clusterVorkenntnisse2 {
+		 graph [bgcolor="grey89"];
+		 "Indirekte Beweise"
+	}
+	subgraph clusterVorkenntnisse3 {
+		 graph [bgcolor="grey89"];
+		 "Algorithmen", "Korrektheit", "Laufzeit"
+		}
 }
