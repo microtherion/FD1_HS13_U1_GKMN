@@ -791,6 +791,34 @@ n\"{u}tzlich, und wir d\"{u}rfen sie nicht verwenden.}
   Spannbaum vollendet.}
 
 \newpage
+Mathematisch etwas pr\"{a}ziser ausgedr\"{u}ckt, konstruiert der
+Algorithmus von Kruskal eine minimalen Spannbaum f\"{u}r den 
+Graphen~$G(V,E)$, indem ein Wald von minimalen B\"{a}umen~$W(V, E')$
+sukzessive verbunden wird, bis ein einziger minimaler Spannbaum
+\"ubrigbleibt:
+
+\begin{enumerate}
+\item Der Anfangszustand des Waldes besteht aus einem Baum pro Knoten:
+  $W \gets (V, \{\})$ (Beachten Sie, dass ein
+  einzelner Knoten bereits einen Baum darstellt)
+\item So lange es Kanten $K$ mit $K\subset (E\setminus{E'})$ gibt, die in $W$ noch nicht
+  verwendet wurden, und die mit den verwendeten Kanten $E'$ keinen
+  geschlossenen Weg bilden:
+\begin{enumerate}
+\item W\"{a}hlen Sie die Kante $e_i\in K$ mit dem kleinsten
+  Kantengewicht aus.
+\item F\"{u}gen Sie diese Kante zu $W$ hinzu: $E' \gets E'+\{e_i\}$.
+\end{enumerate}
+\item Wenn jede verbleibende Kante in $E\setminus{E'}$ mit den
+  verwendeten Kanten einen geschlossenen Weg bilden w\"{u}rde, ist der
+  minimale Spannbaum $B(V,E')$ gefunden und der Algorithmus ist beendet.
+\end{enumerate}
+
+FAKULTATIV: Der Beweis des Algorithmus von Kruskal ist etwas
+schwieriger als die anderen Beweise, die wir in diesem Text diskutiert
+haben. Sie k\"{o}nnen ihn im Abschnitt~\ref{kruskproof} finden.
+
+\newpage
 Wenn wir uns das Vorgehen an einem etwas gr\"{o}sseren Beispiel
 ansehen, sehen wir, dass zun\"{a}chst jeder Knoten
 als separater Spannbaum betrachtet wird, und diese B\"{a}ume dann
@@ -828,33 +856,6 @@ Berechnen Sie mit dem Algorithmus von Kruskal den minimalen Spannbaum f\"{u}r de
 
 \scalebox{0.6}{\includegraphics{FinalExercise2.pdf}}
 \end{exercise}
-
-Mathematisch etwas pr\"{a}ziser ausgedr\"{u}ckt, konstruiert der
-Algorithmus von Kruskal eine minimalen Spannbaum f\"{u}r den 
-Graphen~$G(V,E)$, indem ein Wald von minimalen B\"{a}umen~$W(V, E')$
-sukzessive verbunden wird, bis ein einziger minimaler Spannbaum
-\"ubrigbleibt:
-
-\begin{enumerate}
-\item Der Anfangszustand des Waldes besteht aus einem Baum pro Knoten:
-  $W \gets (V, \{\})$ (Beachten Sie, dass ein
-  einzelner Knoten bereits einen Baum darstellt)
-\item So lange es Kanten $K$ mit $K\subset (E\setminus{E'})$ gibt, die in $W$ noch nicht
-  verwendet wurden, und die mit den verwendeten Kanten $E'$ keinen
-  geschlossenen Weg bilden:
-\begin{enumerate}
-\item W\"{a}hlen Sie die Kante $e_i\in K$ mit dem kleinsten
-  Kantengewicht aus.
-\item F\"{u}gen Sie diese Kante zu $W$ hinzu: $E' \gets E'+\{e_i\}$.
-\end{enumerate}
-\item Wenn jede verbleibende Kante in $E\setminus{E'}$ mit den
-  verwendeten Kanten einen geschlossenen Weg bilden w\"{u}rde, ist der
-  minimale Spannbaum $B(V,E')$ gefunden und der Algorithmus ist beendet.
-\end{enumerate}
-
-FAKULTATIV: Der Beweis des Algorithmus von Kruskal ist etwas
-schwieriger als die anderen Beweise, die wir in diesem Text diskutiert
-haben. Sie k\"{o}nnen ihn im Abschnitt~\ref{kruskproof} finden.
 
 \newpage
 \section{Der Algorithmus von Prim}
